@@ -10,6 +10,7 @@ from PySide6.QtWidgets import (
     ,QComboBox
     ,QRadioButton
 )
+from PySide6 import QtCore, QtWidgets, QtGui
 import sys
 
 
