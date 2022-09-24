@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Compunist</class>
- <widget class="QMainWindow" name="Compunist">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -45,7 +45,7 @@
           </layout>
          </item>
          <item row="0" column="1">
-          <widget class="QComboBox" name="mode"/>
+          <widget class="QComboBox" name="composition_mode"/>
          </item>
          <item row="7" column="1" colspan="2">
           <layout class="QHBoxLayout" name="horizontalLayout_3">

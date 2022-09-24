@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'Compunist.ui'
+## Form generated from reading UI file 'compunist.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.3.2
 ##
@@ -20,12 +20,12 @@ from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QGridLayout,
     QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
     QStatusBar, QVBoxLayout, QWidget)
 
-class Ui_Compunist(object):
-    def setupUi(self, Compunist):
-        if not Compunist.objectName():
-            Compunist.setObjectName(u"Compunist")
-        Compunist.resize(515, 577)
-        self.centralwidget = QWidget(Compunist)
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
+        MainWindow.resize(515, 577)
+        self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout_4 = QGridLayout(self.centralwidget)
         self.gridLayout_4.setObjectName(u"gridLayout_4")
@@ -55,10 +55,10 @@ class Ui_Compunist(object):
 
         self.gridLayout_2.addLayout(self.horizontalLayout_4, 0, 0, 1, 1)
 
-        self.mode = QComboBox(self.groupBox)
-        self.mode.setObjectName(u"mode")
+        self.composition_mode = QComboBox(self.groupBox)
+        self.composition_mode.setObjectName(u"composition_mode")
 
-        self.gridLayout_2.addWidget(self.mode, 0, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.composition_mode, 0, 1, 1, 1)
 
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
@@ -261,38 +261,38 @@ class Ui_Compunist(object):
 
         self.gridLayout_4.addLayout(self.horizontalLayout_5, 1, 0, 1, 1)
 
-        Compunist.setCentralWidget(self.centralwidget)
-        self.statusbar = QStatusBar(Compunist)
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
-        Compunist.setStatusBar(self.statusbar)
+        MainWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(Compunist)
+        self.retranslateUi(MainWindow)
 
-        QMetaObject.connectSlotsByName(Compunist)
+        QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
 
-    def retranslateUi(self, Compunist):
-        Compunist.setWindowTitle(QCoreApplication.translate("Compunist", u"Compunist", None))
-        self.groupBox.setTitle(QCoreApplication.translate("Compunist", u"Compunist score settings", None))
-        self.label_7.setText(QCoreApplication.translate("Compunist", u"Output filename", None))
-        self.label.setText(QCoreApplication.translate("Compunist", u"Compunist mode", None))
-        self.label_13.setText(QCoreApplication.translate("Compunist", u"chance", None))
-        self.label_15.setText(QCoreApplication.translate("Compunist", u"%", None))
-        self.label_5.setText(QCoreApplication.translate("Compunist", u"Tempo", None))
-        self.open_file_explorer.setText(QCoreApplication.translate("Compunist", u"...", None))
-        self.label_14.setText(QCoreApplication.translate("Compunist", u"chance", None))
-        self.label_16.setText(QCoreApplication.translate("Compunist", u"%", None))
-        self.label_3.setText(QCoreApplication.translate("Compunist", u"Number of voices", None))
-        self.label_9.setText(QCoreApplication.translate("Compunist", u"% notes", None))
-        self.label_10.setText(QCoreApplication.translate("Compunist", u"% rests", None))
-        self.label_17.setText(QCoreApplication.translate("Compunist", u"bpm", None))
-        self.label_2.setText(QCoreApplication.translate("Compunist", u"Number of series repeats", None))
-        self.label_12.setText(QCoreApplication.translate("Compunist", u"Repeat current note?", None))
-        self.label_4.setText(QCoreApplication.translate("Compunist", u"Key signature", None))
-        self.label_6.setText(QCoreApplication.translate("Compunist", u"Time signature", None))
-        self.label_8.setText(QCoreApplication.translate("Compunist", u"Notes/rests balance", None))
+    def retranslateUi(self, MainWindow):
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Compunist", None))
+        self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"Compunist score settings", None))
+        self.label_7.setText(QCoreApplication.translate("MainWindow", u"Output filename", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Compunist mode", None))
+        self.label_13.setText(QCoreApplication.translate("MainWindow", u"chance", None))
+        self.label_15.setText(QCoreApplication.translate("MainWindow", u"%", None))
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"Tempo", None))
+        self.open_file_explorer.setText(QCoreApplication.translate("MainWindow", u"...", None))
+        self.label_14.setText(QCoreApplication.translate("MainWindow", u"chance", None))
+        self.label_16.setText(QCoreApplication.translate("MainWindow", u"%", None))
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"Number of voices", None))
+        self.label_9.setText(QCoreApplication.translate("MainWindow", u"% notes", None))
+        self.label_10.setText(QCoreApplication.translate("MainWindow", u"% rests", None))
+        self.label_17.setText(QCoreApplication.translate("MainWindow", u"bpm", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Number of series repeats", None))
+        self.label_12.setText(QCoreApplication.translate("MainWindow", u"Repeat current note?", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Key signature", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"Time signature", None))
+        self.label_8.setText(QCoreApplication.translate("MainWindow", u"Notes/rests balance", None))
         self.label_18.setText("")
-        self.label_11.setText(QCoreApplication.translate("Compunist", u"Repeat previous note?", None))
-        self.GenerateScore.setText(QCoreApplication.translate("Compunist", u"Generate score", None))
+        self.label_11.setText(QCoreApplication.translate("MainWindow", u"Repeat previous note?", None))
+        self.GenerateScore.setText(QCoreApplication.translate("MainWindow", u"Generate score", None))
     # retranslateUi
 
