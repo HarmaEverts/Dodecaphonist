@@ -17,8 +17,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QGridLayout,
     QGroupBox, QHBoxLayout, QLabel, QLineEdit,
-    QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
-    QStatusBar, QVBoxLayout, QWidget)
+    QMainWindow, QPushButton, QSizePolicy, QSlider,
+    QSpacerItem, QSpinBox, QStatusBar, QVBoxLayout,
+    QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -35,11 +36,6 @@ class Ui_MainWindow(object):
         self.gridLayout_3.setObjectName(u"gridLayout_3")
         self.gridLayout_2 = QGridLayout()
         self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.no_of_voices = QLineEdit(self.groupBox)
-        self.no_of_voices.setObjectName(u"no_of_voices")
-
-        self.gridLayout_2.addWidget(self.no_of_voices, 2, 1, 1, 1)
-
         self.label_7 = QLabel(self.groupBox)
         self.label_7.setObjectName(u"label_7")
 
@@ -137,25 +133,23 @@ class Ui_MainWindow(object):
 
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
-        self.notes_percentage = QLineEdit(self.groupBox)
-        self.notes_percentage.setObjectName(u"notes_percentage")
+        self.notes_rests_slider = QSlider(self.groupBox)
+        self.notes_rests_slider.setObjectName(u"notes_rests_slider")
+        self.notes_rests_slider.setMaximum(100)
+        self.notes_rests_slider.setSliderPosition(100)
+        self.notes_rests_slider.setOrientation(Qt.Horizontal)
 
-        self.gridLayout.addWidget(self.notes_percentage, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.notes_rests_slider, 0, 1, 1, 1)
 
-        self.label_9 = QLabel(self.groupBox)
-        self.label_9.setObjectName(u"label_9")
+        self.percent_rests = QLabel(self.groupBox)
+        self.percent_rests.setObjectName(u"percent_rests")
 
-        self.gridLayout.addWidget(self.label_9, 0, 1, 1, 1)
+        self.gridLayout.addWidget(self.percent_rests, 0, 3, 1, 1)
 
-        self.rests_percentage = QLineEdit(self.groupBox)
-        self.rests_percentage.setObjectName(u"rests_percentage")
+        self.percent_notes = QLabel(self.groupBox)
+        self.percent_notes.setObjectName(u"percent_notes")
 
-        self.gridLayout.addWidget(self.rests_percentage, 1, 0, 1, 1)
-
-        self.label_10 = QLabel(self.groupBox)
-        self.label_10.setObjectName(u"label_10")
-
-        self.gridLayout.addWidget(self.label_10, 1, 1, 1, 1)
+        self.gridLayout.addWidget(self.percent_notes, 0, 0, 1, 1)
 
 
         self.gridLayout_2.addLayout(self.gridLayout, 6, 1, 1, 2)
@@ -241,6 +235,11 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.no_of_repeats, 1, 1, 1, 1)
 
+        self.no_of_voices = QSpinBox(self.groupBox)
+        self.no_of_voices.setObjectName(u"no_of_voices")
+
+        self.gridLayout_2.addWidget(self.no_of_voices, 2, 1, 1, 1)
+
 
         self.gridLayout_3.addLayout(self.gridLayout_2, 0, 0, 1, 1)
 
@@ -265,6 +264,20 @@ class Ui_MainWindow(object):
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
         MainWindow.setStatusBar(self.statusbar)
+#if QT_CONFIG(shortcut)
+        self.label_7.setBuddy(self.output_filename)
+        self.label.setBuddy(self.composition_mode)
+        self.label_13.setBuddy(self.repeat_current_node_chance)
+        self.label_5.setBuddy(self.tempo)
+        self.label_14.setBuddy(self.repeat_previous_note_chance)
+        self.label_3.setBuddy(self.no_of_voices)
+        self.percent_notes.setBuddy(self.notes_rests_slider)
+        self.label_17.setBuddy(self.tempo)
+        self.label_2.setBuddy(self.no_of_repeats)
+        self.label_12.setBuddy(self.repeat_current_note)
+        self.label_4.setBuddy(self.key)
+        self.label_11.setBuddy(self.repeat_previous_note)
+#endif // QT_CONFIG(shortcut)
 
         self.retranslateUi(MainWindow)
 
@@ -283,8 +296,8 @@ class Ui_MainWindow(object):
         self.label_14.setText(QCoreApplication.translate("MainWindow", u"chance", None))
         self.label_16.setText(QCoreApplication.translate("MainWindow", u"%", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Number of voices", None))
-        self.label_9.setText(QCoreApplication.translate("MainWindow", u"% notes", None))
-        self.label_10.setText(QCoreApplication.translate("MainWindow", u"% rests", None))
+        self.percent_rests.setText(QCoreApplication.translate("MainWindow", u"% rests", None))
+        self.percent_notes.setText(QCoreApplication.translate("MainWindow", u"% notes", None))
         self.label_17.setText(QCoreApplication.translate("MainWindow", u"bpm", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"Number of series repeats", None))
         self.label_12.setText(QCoreApplication.translate("MainWindow", u"Repeat current note?", None))

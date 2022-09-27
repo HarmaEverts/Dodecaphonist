@@ -23,13 +23,13 @@
       <layout class="QGridLayout" name="gridLayout_3">
        <item row="0" column="0">
         <layout class="QGridLayout" name="gridLayout_2">
-         <item row="2" column="1">
-          <widget class="QLineEdit" name="no_of_voices"/>
-         </item>
          <item row="9" column="0">
           <widget class="QLabel" name="label_7">
            <property name="text">
             <string>Output filename</string>
+           </property>
+           <property name="buddy">
+            <cstring>output_filename</cstring>
            </property>
           </widget>
          </item>
@@ -39,6 +39,9 @@
             <widget class="QLabel" name="label">
              <property name="text">
               <string>Compunist mode</string>
+             </property>
+             <property name="buddy">
+              <cstring>composition_mode</cstring>
              </property>
             </widget>
            </item>
@@ -56,6 +59,9 @@
             <widget class="QLabel" name="label_13">
              <property name="text">
               <string>chance</string>
+             </property>
+             <property name="buddy">
+              <cstring>repeat_current_node_chance</cstring>
              </property>
             </widget>
            </item>
@@ -75,6 +81,9 @@
           <widget class="QLabel" name="label_5">
            <property name="text">
             <string>Tempo</string>
+           </property>
+           <property name="buddy">
+            <cstring>tempo</cstring>
            </property>
           </widget>
          </item>
@@ -102,6 +111,9 @@
              <property name="text">
               <string>chance</string>
              </property>
+             <property name="buddy">
+              <cstring>repeat_previous_note_chance</cstring>
+             </property>
             </widget>
            </item>
            <item>
@@ -121,27 +133,40 @@
            <property name="text">
             <string>Number of voices</string>
            </property>
+           <property name="buddy">
+            <cstring>no_of_voices</cstring>
+           </property>
           </widget>
          </item>
          <item row="6" column="1" colspan="2">
           <layout class="QGridLayout" name="gridLayout">
-           <item row="0" column="0">
-            <widget class="QLineEdit" name="notes_percentage"/>
-           </item>
            <item row="0" column="1">
-            <widget class="QLabel" name="label_9">
-             <property name="text">
-              <string>% notes</string>
+            <widget class="QSlider" name="notes_rests_slider">
+             <property name="maximum">
+              <number>100</number>
+             </property>
+             <property name="sliderPosition">
+              <number>100</number>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
-           <item row="1" column="0">
-            <widget class="QLineEdit" name="rests_percentage"/>
-           </item>
-           <item row="1" column="1">
-            <widget class="QLabel" name="label_10">
+           <item row="0" column="3">
+            <widget class="QLabel" name="percent_rests">
              <property name="text">
               <string>% rests</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="percent_notes">
+             <property name="text">
+              <string>% notes</string>
+             </property>
+             <property name="buddy">
+              <cstring>notes_rests_slider</cstring>
              </property>
             </widget>
            </item>
@@ -152,6 +177,9 @@
            <property name="text">
             <string>bpm</string>
            </property>
+           <property name="buddy">
+            <cstring>tempo</cstring>
+           </property>
           </widget>
          </item>
          <item row="3" column="1">
@@ -161,6 +189,9 @@
           <widget class="QLabel" name="label_2">
            <property name="text">
             <string>Number of series repeats</string>
+           </property>
+           <property name="buddy">
+            <cstring>no_of_repeats</cstring>
            </property>
           </widget>
          </item>
@@ -182,12 +213,18 @@
            <property name="text">
             <string>Repeat current note?</string>
            </property>
+           <property name="buddy">
+            <cstring>repeat_current_note</cstring>
+           </property>
           </widget>
          </item>
          <item row="3" column="0">
           <widget class="QLabel" name="label_4">
            <property name="text">
             <string>Key signature</string>
+           </property>
+           <property name="buddy">
+            <cstring>key</cstring>
            </property>
           </widget>
          </item>
@@ -237,10 +274,16 @@
            <property name="text">
             <string>Repeat previous note?</string>
            </property>
+           <property name="buddy">
+            <cstring>repeat_previous_note</cstring>
+           </property>
           </widget>
          </item>
          <item row="1" column="1">
           <widget class="QLineEdit" name="no_of_repeats"/>
+         </item>
+         <item row="2" column="1">
+          <widget class="QSpinBox" name="no_of_voices"/>
          </item>
         </layout>
        </item>
