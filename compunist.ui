@@ -388,6 +388,25 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>composition_mode</tabstop>
+  <tabstop>no_of_repeats</tabstop>
+  <tabstop>no_of_voices</tabstop>
+  <tabstop>key</tabstop>
+  <tabstop>time_enumerator</tabstop>
+  <tabstop>time_denominator</tabstop>
+  <tabstop>tempo</tabstop>
+  <tabstop>notes_rests_slider</tabstop>
+  <tabstop>repeat_current_note</tabstop>
+  <tabstop>currentslider</tabstop>
+  <tabstop>repeat_previous_note</tabstop>
+  <tabstop>previousslider</tabstop>
+  <tabstop>score_title</tabstop>
+  <tabstop>output_filename_2</tabstop>
+  <tabstop>output_foldername</tabstop>
+  <tabstop>open_file_explorer</tabstop>
+  <tabstop>generate_score</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

@@ -69,6 +69,9 @@ class MainWindow(QMainWindow):
         # Generate the compusition:
         self.ui.generate_score.clicked.connect(self.create_score)
 
+        # Set initial focus:
+        self.ui.composition_mode.setFocus()
+
     # SLOTS =================================================================
     def update_mode(self):
         """
@@ -174,6 +177,10 @@ class MainWindow(QMainWindow):
 
     # OTHER FUNCTIONS ============================================================================
 
+    def get_folder_name(self):
+        """ Retrieve the selected folder name from the UI """
+        self.comp.foldername = self.ui.output_foldername.text()
+
     def update_from_UI(self):
         """ Get all current UI settings and update the compusiton object accordingly """
         self.update_key_signature()
@@ -186,12 +193,15 @@ class MainWindow(QMainWindow):
         self.update_repeat_previous_note_chance()
         self.update_score_title()
         self.update_filename()
-        self.update_folder_name()
+        self.get_folder_name()
 
     def validate_settings(self):
         """ Validate the provided input settings.
         :return: True if the settings are valid
         :return: False if the settings are not valid """
+        # First, make sure that all UI settings are registered.
+        self.update_from_UI()
+
         return True
 
     def create_score(self):

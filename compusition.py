@@ -17,4 +17,5 @@ class Compusition():
         previous_chance = 0     # Repeat previous note chance
 
     def generate(self):
+        """ Generate a compusition based on the settings provided. """
         print("generating compusition")
