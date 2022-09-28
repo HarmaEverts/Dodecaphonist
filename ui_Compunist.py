@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(515, 577)
+        MainWindow.resize(515, 597)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout_4 = QGridLayout(self.centralwidget)
@@ -42,10 +42,6 @@ class Ui_MainWindow(object):
         self.repeat_previous_note.setObjectName(u"repeat_previous_note")
 
         self.horizontalLayout_2.addWidget(self.repeat_previous_note)
-
-        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_2.addItem(self.horizontalSpacer_4)
 
         self.previouslabel = QLabel(self.groupBox)
         self.previouslabel.setObjectName(u"previouslabel")
@@ -76,6 +72,11 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.label_18, 4, 2, 1, 1)
 
+        self.label_9 = QLabel(self.groupBox)
+        self.label_9.setObjectName(u"label_9")
+
+        self.gridLayout_2.addWidget(self.label_9, 10, 0, 1, 1)
+
         self.label_3 = QLabel(self.groupBox)
         self.label_3.setObjectName(u"label_3")
 
@@ -97,10 +98,6 @@ class Ui_MainWindow(object):
         self.repeat_current_note.setObjectName(u"repeat_current_note")
 
         self.horizontalLayout_3.addWidget(self.repeat_current_note)
-
-        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_3.addItem(self.horizontalSpacer_3)
 
         self.currentlabel = QLabel(self.groupBox)
         self.currentlabel.setObjectName(u"currentlabel")
@@ -135,6 +132,11 @@ class Ui_MainWindow(object):
         self.label_6.setObjectName(u"label_6")
 
         self.gridLayout_2.addWidget(self.label_6, 4, 0, 1, 1)
+
+        self.label_13 = QLabel(self.groupBox)
+        self.label_13.setObjectName(u"label_13")
+
+        self.gridLayout_2.addWidget(self.label_13, 9, 0, 1, 1)
 
         self.composition_mode = QComboBox(self.groupBox)
         self.composition_mode.setObjectName(u"composition_mode")
@@ -186,6 +188,11 @@ class Ui_MainWindow(object):
         self.label_17.setObjectName(u"label_17")
 
         self.gridLayout_2.addWidget(self.label_17, 5, 2, 1, 1)
+
+        self.label_10 = QLabel(self.groupBox)
+        self.label_10.setObjectName(u"label_10")
+
+        self.gridLayout_2.addWidget(self.label_10, 10, 2, 1, 1)
 
         self.label_12 = QLabel(self.groupBox)
         self.label_12.setObjectName(u"label_12")
@@ -240,6 +247,11 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addItem(self.horizontalSpacer, 1, 2, 1, 1)
 
+        self.output_filename_2 = QLineEdit(self.groupBox)
+        self.output_filename_2.setObjectName(u"output_filename_2")
+
+        self.gridLayout_2.addWidget(self.output_filename_2, 10, 1, 1, 1)
+
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.output_foldername = QLineEdit(self.groupBox)
@@ -253,27 +265,17 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.open_file_explorer)
 
 
-        self.gridLayout_2.addLayout(self.horizontalLayout, 10, 1, 1, 2)
+        self.gridLayout_2.addLayout(self.horizontalLayout, 11, 1, 1, 2)
 
         self.label_7 = QLabel(self.groupBox)
         self.label_7.setObjectName(u"label_7")
 
-        self.gridLayout_2.addWidget(self.label_7, 10, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.label_7, 11, 0, 1, 1)
 
-        self.label_9 = QLabel(self.groupBox)
-        self.label_9.setObjectName(u"label_9")
+        self.score_title = QLineEdit(self.groupBox)
+        self.score_title.setObjectName(u"score_title")
 
-        self.gridLayout_2.addWidget(self.label_9, 9, 0, 1, 1)
-
-        self.output_filename_2 = QLineEdit(self.groupBox)
-        self.output_filename_2.setObjectName(u"output_filename_2")
-
-        self.gridLayout_2.addWidget(self.output_filename_2, 9, 1, 1, 1)
-
-        self.label_10 = QLabel(self.groupBox)
-        self.label_10.setObjectName(u"label_10")
-
-        self.gridLayout_2.addWidget(self.label_10, 9, 2, 1, 1)
+        self.gridLayout_2.addWidget(self.score_title, 9, 1, 1, 2)
 
 
         self.gridLayout_3.addLayout(self.gridLayout_2, 0, 0, 1, 1)
@@ -316,28 +318,29 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Compunist", None))
         self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"Compunist score settings", None))
         self.repeat_previous_note.setText("")
-        self.previouslabel.setText(QCoreApplication.translate("MainWindow", u"Chance", None))
+        self.previouslabel.setText(QCoreApplication.translate("MainWindow", u"    Chance", None))
         self.previouspercentage.setText(QCoreApplication.translate("MainWindow", u"0%", None))
         self.label_18.setText("")
+        self.label_9.setText(QCoreApplication.translate("MainWindow", u"Output filename", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Number of voices", None))
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"Notes/rests balance", None))
         self.repeat_current_note.setText("")
-        self.currentlabel.setText(QCoreApplication.translate("MainWindow", u"Chance", None))
+        self.currentlabel.setText(QCoreApplication.translate("MainWindow", u"    Chance", None))
         self.currentpercentage.setText(QCoreApplication.translate("MainWindow", u"0%", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"Number of series repeats", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Time signature", None))
+        self.label_13.setText(QCoreApplication.translate("MainWindow", u"Score title", None))
         self.label_11.setText(QCoreApplication.translate("MainWindow", u"Repeat previous note", None))
         self.percent_notes.setText(QCoreApplication.translate("MainWindow", u"% notes", None))
         self.percent_rests.setText(QCoreApplication.translate("MainWindow", u"% rests", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Key signature", None))
         self.label_17.setText(QCoreApplication.translate("MainWindow", u"bpm", None))
+        self.label_10.setText(QCoreApplication.translate("MainWindow", u".pdf", None))
         self.label_12.setText(QCoreApplication.translate("MainWindow", u"Repeat current note", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"Tempo", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Template", None))
         self.open_file_explorer.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"Output folder", None))
-        self.label_9.setText(QCoreApplication.translate("MainWindow", u"Output filename", None))
-        self.label_10.setText(QCoreApplication.translate("MainWindow", u".pdf", None))
         self.generate_score.setText(QCoreApplication.translate("MainWindow", u"Generate score", None))
     # retranslateUi
 
