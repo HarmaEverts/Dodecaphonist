@@ -38,7 +38,7 @@
            <item>
             <widget class="QLabel" name="label">
              <property name="text">
-              <string>Compunist mode</string>
+              <string>Template</string>
              </property>
              <property name="buddy">
               <cstring>composition_mode</cstring>
@@ -53,25 +53,58 @@
          <item row="7" column="1" colspan="2">
           <layout class="QHBoxLayout" name="horizontalLayout_3">
            <item>
-            <widget class="QComboBox" name="repeat_current_note"/>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_13">
+            <widget class="QCheckBox" name="repeat_current_note">
              <property name="text">
-              <string>chance</string>
-             </property>
-             <property name="buddy">
-              <cstring>repeat_current_node_chance</cstring>
+              <string/>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="repeat_current_node_chance"/>
+            <spacer name="horizontalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
            </item>
            <item>
-            <widget class="QLabel" name="label_15">
+            <widget class="QLabel" name="currentlabel">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="text">
-              <string>%</string>
+              <string>Chance</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSlider" name="currentslider">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="minimum">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <number>100</number>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="currentpercentage">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>0%</string>
              </property>
             </widget>
            </item>
@@ -81,9 +114,6 @@
           <widget class="QLabel" name="label_5">
            <property name="text">
             <string>Tempo</string>
-           </property>
-           <property name="buddy">
-            <cstring>tempo</cstring>
            </property>
           </widget>
          </item>
@@ -104,25 +134,58 @@
          <item row="8" column="1" colspan="2">
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
-            <widget class="QComboBox" name="repeat_previous_note"/>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_14">
+            <widget class="QCheckBox" name="repeat_previous_note">
              <property name="text">
-              <string>chance</string>
-             </property>
-             <property name="buddy">
-              <cstring>repeat_previous_note_chance</cstring>
+              <string/>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="repeat_previous_note_chance"/>
+            <spacer name="horizontalSpacer_4">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
            </item>
            <item>
-            <widget class="QLabel" name="label_16">
+            <widget class="QLabel" name="previouslabel">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="text">
-              <string>%</string>
+              <string>Chance</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSlider" name="previousslider">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="minimum">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <number>100</number>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="previouspercentage">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>0%</string>
              </property>
             </widget>
            </item>
@@ -153,13 +216,6 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="3">
-            <widget class="QLabel" name="percent_rests">
-             <property name="text">
-              <string>% rests</string>
-             </property>
-            </widget>
-           </item>
            <item row="0" column="0">
             <widget class="QLabel" name="percent_notes">
              <property name="text">
@@ -170,15 +226,19 @@
              </property>
             </widget>
            </item>
+           <item row="0" column="3">
+            <widget class="QLabel" name="percent_rests">
+             <property name="text">
+              <string>% rests</string>
+             </property>
+            </widget>
+           </item>
           </layout>
          </item>
          <item row="5" column="2">
           <widget class="QLabel" name="label_17">
            <property name="text">
             <string>bpm</string>
-           </property>
-           <property name="buddy">
-            <cstring>tempo</cstring>
            </property>
           </widget>
          </item>
@@ -189,9 +249,6 @@
           <widget class="QLabel" name="label_2">
            <property name="text">
             <string>Number of series repeats</string>
-           </property>
-           <property name="buddy">
-            <cstring>no_of_repeats</cstring>
            </property>
           </widget>
          </item>
@@ -211,10 +268,7 @@
          <item row="7" column="0">
           <widget class="QLabel" name="label_12">
            <property name="text">
-            <string>Repeat current note?</string>
-           </property>
-           <property name="buddy">
-            <cstring>repeat_current_note</cstring>
+            <string>Repeat current note</string>
            </property>
           </widget>
          </item>
@@ -228,23 +282,21 @@
            </property>
           </widget>
          </item>
-         <item row="5" column="1">
-          <widget class="QLineEdit" name="tempo"/>
-         </item>
          <item row="4" column="1">
           <layout class="QVBoxLayout" name="verticalLayout">
            <item>
-            <widget class="QComboBox" name="time_enumerator"/>
-           </item>
-           <item>
-            <widget class="Line" name="line">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
+            <widget class="QComboBox" name="time_enumerator">
+             <property name="styleSheet">
+              <string notr="true"/>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QComboBox" name="time_denominator"/>
+            <widget class="QComboBox" name="time_denominator">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+            </widget>
            </item>
           </layout>
          </item>
@@ -272,18 +324,35 @@
          <item row="8" column="0">
           <widget class="QLabel" name="label_11">
            <property name="text">
-            <string>Repeat previous note?</string>
+            <string>Repeat previous note</string>
            </property>
-           <property name="buddy">
-            <cstring>repeat_previous_note</cstring>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QSpinBox" name="no_of_voices"/>
+         </item>
+         <item row="5" column="1">
+          <widget class="QSpinBox" name="tempo">
+           <property name="minimum">
+            <number>12</number>
+           </property>
+           <property name="maximum">
+            <number>200</number>
+           </property>
+           <property name="value">
+            <number>60</number>
            </property>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="no_of_repeats"/>
-         </item>
-         <item row="2" column="1">
-          <widget class="QSpinBox" name="no_of_voices"/>
+          <widget class="QSpinBox" name="no_of_repeats">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="value">
+            <number>10</number>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
