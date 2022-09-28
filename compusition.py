@@ -8,6 +8,7 @@ class Compusition():
         key = 0                 # 0 is sharps, 1 is flats
         repeats = 0             # Number of times the series is repeated
         voices = 0              # Number of voices (1-6)
+        voices = []             # List of voice types, one for each voice
         time_enumerator = 0     # Beats per measure (1-12)
         time_denominator = 0    # Counting unit (1/1 - 1/32)
         tempo = 0               # Tempo (bpm)

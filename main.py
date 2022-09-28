@@ -69,8 +69,32 @@ class MainWindow(QMainWindow):
         # Generate the compusition:
         self.ui.generate_score.clicked.connect(self.create_score)
 
+    # INITIAL UI SETTINGS ==================================================+
+
         # Set initial focus:
         self.ui.composition_mode.setFocus()
+
+        # Hide extra voices and their labels:
+        self.ui.voice2.hide()
+        self.ui.voice3.hide()
+        self.ui.voice4.hide()
+        self.ui.voice5.hide()
+        self.ui.voice6.hide()
+
+        self.ui.voice2label.hide()
+        self.ui.voice3label.hide()
+        self.ui.voice4label.hide()
+        self.ui.voice5label.hide()
+        self.ui.voice6label.hide()
+
+        # Set drop-down options for voices:
+        voice_list = ["Soprano", "Mezzo-soprano", "Alto", "Tenor", "Baritone", "Bass"]
+        self.ui.voice1.addItems(voice_list)
+        self.ui.voice2.addItems(voice_list)
+        self.ui.voice3.addItems(voice_list)
+        self.ui.voice4.addItems(voice_list)
+        self.ui.voice5.addItems(voice_list)
+        self.ui.voice6.addItems(voice_list)
 
     # SLOTS =================================================================
     def update_mode(self):
@@ -103,6 +127,7 @@ class MainWindow(QMainWindow):
     def update_voices(self):
         """ Update the number of voices (1-6) """
         self.comp.voices = self.ui.no_of_voices.value()
+        # TODO Show all applicable voices and process their inputs.
 
     def update_key_signature(self):
         """ Toggles between sharps and flats depending on the selection in the drop-down list.
@@ -205,7 +230,7 @@ class MainWindow(QMainWindow):
         return True
 
     def create_score(self):
-        """ Creates a Compusition object based on the provided settings and outputs the generated compusition (.ly)
+        """ Creates a Compusition object based on the provided settings and outputs the generated compusition
         to the specified folder with the filename as its name. """
         if self.validate_settings():
             self.comp.generate()
