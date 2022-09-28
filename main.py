@@ -5,7 +5,7 @@ from PySide6.QtWidgets import (
 )
 import sys
 from ui_Compunist import Ui_MainWindow
-from compusition import Compusition
+from dodecaphony import Dodecaphony
 
 
 class MainWindow(QMainWindow):
@@ -13,7 +13,7 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.comp = Compusition()
+        self.dodec = Dodecaphony()
 
     # SIGNALS ===============================================================================
 
@@ -99,7 +99,7 @@ class MainWindow(QMainWindow):
     # SLOTS =================================================================
     def update_mode(self):
         """
-        Updates the compusition settings based on the selected mode.
+        Updates the composition settings based on the selected mode.
         """
         if self.ui.composition_mode.currentIndex() == 0:
             self.apply_schoenberg_template()
@@ -109,58 +109,58 @@ class MainWindow(QMainWindow):
             self.apply_stravinsky_template()
 
     def apply_schoenberg_template(self):
-        """ Updates the compusition settings and UI according to the Schoenberg template. """
+        """ Updates the composition settings and UI according to the Schoenberg template. """
         print("Schoenberg")
 
     def apply_webern_template(self):
-        """ Updates the compusition settings and UI according to the Webern template. """
+        """ Updates the composition settings and UI according to the Webern template. """
         print("Webern")
 
     def apply_stravinsky_template(self):
-        """ Updates the compusition settings and UI according to the Stravinsky template. """
+        """ Updates the composition settings and UI according to the Stravinsky template. """
         print("Stravinsky")
 
     def update_repeats(self):
         """ Updates the number of repeats of the series """
-        self.comp.repeats = self.ui.no_of_repeats.value()
+        self.dodec.repeats = self.ui.no_of_repeats.value()
 
     def update_voices(self):
         """ Update the number of voices (1-6) """
-        self.comp.voices = self.ui.no_of_voices.value()
+        self.dodec.voices = self.ui.no_of_voices.value()
         # TODO Show all applicable voices and process their inputs.
 
     def update_key_signature(self):
         """ Toggles between sharps and flats depending on the selection in the drop-down list.
         0 is sharps, 1 is flats. """
-        self.comp.key = self.ui.key.currentIndex()
+        self.dodec.key = self.ui.key.currentIndex()
 
     def update_time_enumerator(self):
         """ Set the number of beats per measure (1-12). """
-        self.comp.time_enumerator = self.ui.time_enumerator.currentIndex()+1
+        self.dodec.time_enumerator = self.ui.time_enumerator.currentIndex() + 1
 
     def update_time_denominator(self):
         """ Set the type of note to count with (1/1, 1/2, 1/4, 1/8, 1/16, 1/32).
         Contains one number (the denominator, the enumerator is stored in time_enumerator) """
-        self.comp.time_denominator = int(self.ui.time_denominator.currentText())
+        self.dodec.time_denominator = int(self.ui.time_denominator.currentText())
 
     def update_tempo(self):
         """ Set the tempo for the piece in beats per minute. """
-        self.comp.tempo = self.ui.tempo.value()
+        self.dodec.tempo = self.ui.tempo.value()
 
     def notes_rests_valuechange(self):
         """ Checks the value of the notes - rests slider, and updates the notes and rests percentage labels accordingly.
         The total should always sum up to 100%. """
-        self.comp.notes_value = self.ui.notes_rests_slider.value()
-        self.comp.rests_value = 100 - self.comp.notes_value
-        self.ui.percent_notes.setText(str(self.comp.notes_value) + " % notes")
-        self.ui.percent_rests.setText(str(self.comp.rests_value) + " % rests")
+        self.dodec.notes_value = self.ui.notes_rests_slider.value()
+        self.dodec.rests_value = 100 - self.dodec.notes_value
+        self.ui.percent_notes.setText(str(self.dodec.notes_value) + " % notes")
+        self.ui.percent_rests.setText(str(self.dodec.rests_value) + " % rests")
 
     def toggle_repeat_current_note(self):
         """ Toggles the repeat current note details depending on whether the checkbox is selected. """
         self.ui.currentlabel.setEnabled(self.ui.repeat_current_note.isChecked())
         self.ui.currentslider.setEnabled(self.ui.repeat_current_note.isChecked())
         self.ui.currentpercentage.setEnabled(self.ui.repeat_current_note.isChecked())
-        self.comp.repeat_current = self.ui.repeat_current_note.isChecked()
+        self.dodec.repeat_current = self.ui.repeat_current_note.isChecked()
 
         if not self.ui.repeat_current_note.isChecked():
             self.ui.repeat_previous_note.setChecked(False)
@@ -171,43 +171,43 @@ class MainWindow(QMainWindow):
 
     def update_repeat_current_note_chance(self):
         """ Updates the chance of repeating the current note. """
-        self.comp.current_chance = self.ui.currentslider.value()
-        self.ui.currentpercentage.setText(str(self.comp.current_chance) + " %")
+        self.dodec.current_chance = self.ui.currentslider.value()
+        self.ui.currentpercentage.setText(str(self.dodec.current_chance) + " %")
 
     def toggle_repeat_previous_note(self):
         """ Toggles the repeat previous note details depending on whether the checkbox is selected."""
         self.ui.previouslabel.setEnabled(self.ui.repeat_previous_note.isChecked())
         self.ui.previousslider.setEnabled(self.ui.repeat_previous_note.isChecked())
         self.ui.previouspercentage.setEnabled(self.ui.repeat_previous_note.isChecked())
-        self.comp.repeat_previous = self.ui.repeat_previous_note.isChecked()
+        self.dodec.repeat_previous = self.ui.repeat_previous_note.isChecked()
 
     def update_repeat_previous_note_chance(self):
         """ Updates the chance of repeating the previous note. """
-        self.comp.previous_chance = self.ui.previousslider.value()
-        self.ui.previouspercentage.setText(str(self.comp.previous_chance) + " %")
+        self.dodec.previous_chance = self.ui.previousslider.value()
+        self.ui.previouspercentage.setText(str(self.dodec.previous_chance) + " %")
 
     def update_score_title(self):
         """ Update the title of the compusition """
-        self.comp.title = self.ui.score_title.text()
+        self.dodec.title = self.ui.score_title.text()
 
     def update_filename(self):
         """ Set the filename for the output file. All generated files will have the same filename,
         with a different extension for each type (.ly, .pdf, .mid). """
-        self.comp.filename = self.ui.output_filename_2.text()
+        self.dodec.filename = self.ui.output_filename_2.text()
 
     def update_folder_name(self):
         """ Selects the folder in which the generated files will be saved. """
-        self.comp.foldername = str(QFileDialog.getExistingDirectory(self, "Select Directory"))
-        self.ui.output_foldername.setText(self.comp.foldername)
+        self.dodec.foldername = str(QFileDialog.getExistingDirectory(self, "Select Directory"))
+        self.ui.output_foldername.setText(self.dodec.foldername)
 
     # OTHER FUNCTIONS ============================================================================
 
     def get_folder_name(self):
         """ Retrieve the selected folder name from the UI """
-        self.comp.foldername = self.ui.output_foldername.text()
+        self.dodec.foldername = self.ui.output_foldername.text()
 
     def update_from_UI(self):
-        """ Get all current UI settings and update the compusiton object accordingly """
+        """ Get all current UI settings and update the compositon object accordingly """
         self.update_key_signature()
         self.update_time_enumerator()
         self.update_time_denominator()
@@ -230,10 +230,10 @@ class MainWindow(QMainWindow):
         return True
 
     def create_score(self):
-        """ Creates a Compusition object based on the provided settings and outputs the generated compusition
+        """ Creates a Dodecaphony object based on the provided settings and outputs the generated composition
         to the specified folder with the filename as its name. """
         if self.validate_settings():
-            self.comp.generate()
+            self.dodec.generate()
         else:
             print("Invalid settings.")
 

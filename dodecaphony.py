@@ -1,4 +1,4 @@
-class Compusition():
+class Dodecaphony():
     def __init__(self):
         title = ""              # Title of the compusition
         filename = ""           # Filename, used for ly, pdf, mid
