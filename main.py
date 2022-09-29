@@ -75,17 +75,11 @@ class MainWindow(QMainWindow):
         self.ui.composition_mode.setFocus()
 
         # Hide extra voices and their labels:
-        self.ui.voice2.hide()
-        self.ui.voice3.hide()
-        self.ui.voice4.hide()
-        self.ui.voice5.hide()
-        self.ui.voice6.hide()
-
-        self.ui.voice2label.hide()
-        self.ui.voice3label.hide()
-        self.ui.voice4label.hide()
-        self.ui.voice5label.hide()
-        self.ui.voice6label.hide()
+        self.ui.v2.hide()
+        self.ui.v3_2.hide()
+        self.ui.v4_2.hide()
+        self.ui.v5_2.hide()
+        self.ui.v6_2.hide()
 
         # Set drop-down options for voices:
         voice_list = ["Soprano", "Mezzo-soprano", "Alto", "Tenor", "Baritone", "Bass"]
@@ -143,40 +137,49 @@ class MainWindow(QMainWindow):
     def update_voices(self):
         """ Update the number of voices (1-6) """
         self.dodec.voices = self.ui.no_of_voices.value()
-        # TODO Show all applicable voices and process their inputs.
-        if self.dodec.voices >= 1:
-            self.ui.voice1.show()
-            self.ui.voice1label.show()
-            if self.dodec.voices >= 2:
-                self.ui.voice2.show()
-                self.ui.voice2label.show()
-                if self.dodec.voices >= 3:
-                    self.ui.voice3.show()
-                    self.ui.voice3label.show()
-                    if self.dodec.voices >= 4:
-                        self.ui.voice4.show()
-                        self.ui.voice4label.show()
-                        if self.dodec.voices >= 5:
-                            self.ui.voice5.show()
-                            self.ui.voice5label.show()
-                            if self.dodec.voices == 6:
-                                self.ui.voice6.show()
-                                self.ui.voice6label.show()
-                            else:
-                                self.ui.voice6.hide()
-                                self.ui.voice6label.hide()
-                        else:
-                            self.ui.voice5.hide()
-                            self.ui.voice5label.hide()
-                    else:
-                        self.ui.voice4.hide()
-                        self.ui.voice4label.hide()
-                else:
-                    self.ui.voice3.hide()
-                    self.ui.voice3label.hide()
-            else:
-                self.ui.voice2.hide()
-                self.ui.voice2label.hide()
+
+        if self.dodec.voices == 1:
+            self.ui.v1.show()
+            self.ui.v2.hide()
+            self.ui.v3_2.hide()
+            self.ui.v4_2.hide()
+            self.ui.v5_2.hide()
+            self.ui.v6_2.hide()
+        elif self.dodec.voices == 2:
+            self.ui.v1.show()
+            self.ui.v2.show()
+            self.ui.v3_2.hide()
+            self.ui.v4_2.hide()
+            self.ui.v5_2.hide()
+            self.ui.v6_2.hide()
+        elif self.dodec.voices == 3:
+            self.ui.v1.show()
+            self.ui.v2.show()
+            self.ui.v3_2.show()
+            self.ui.v4_2.hide()
+            self.ui.v5_2.hide()
+            self.ui.v6_2.hide()
+        elif self.dodec.voices == 4:
+            self.ui.v1.show()
+            self.ui.v2.show()
+            self.ui.v3_2.show()
+            self.ui.v4_2.show()
+            self.ui.v5_2.hide()
+            self.ui.v6_2.hide()
+        elif self.dodec.voices == 5:
+            self.ui.v1.show()
+            self.ui.v2.show()
+            self.ui.v3_2.show()
+            self.ui.v4_2.show()
+            self.ui.v5_2.show()
+            self.ui.v6_2.hide()
+        elif self.dodec.voices == 6:
+            self.ui.v1.show()
+            self.ui.v2.show()
+            self.ui.v3_2.show()
+            self.ui.v4_2.show()
+            self.ui.v5_2.show()
+            self.ui.v6_2.show()
 
     def update_key_signature(self):
         """ Toggles between sharps and flats depending on the selection in the drop-down list.

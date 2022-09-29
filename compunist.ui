@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>515</width>
-    <height>597</height>
+    <height>813</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,17 +23,37 @@
       <layout class="QGridLayout" name="gridLayout_3">
        <item row="0" column="0">
         <layout class="QGridLayout" name="gridLayout_2">
-         <item row="10" column="2">
-          <widget class="QLabel" name="label_18">
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_3">
            <property name="text">
-            <string/>
+            <string>Number of voices</string>
+           </property>
+           <property name="buddy">
+            <cstring>no_of_voices</cstring>
            </property>
           </widget>
          </item>
-         <item row="16" column="1">
+         <item row="7" column="0">
+          <widget class="QLabel" name="label_5">
+           <property name="text">
+            <string>Tempo</string>
+           </property>
+          </widget>
+         </item>
+         <item row="12" column="1">
           <widget class="QLineEdit" name="output_filename_2"/>
          </item>
-         <item row="14" column="1" colspan="2">
+         <item row="1" column="1">
+          <widget class="QSpinBox" name="no_of_repeats">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="value">
+            <number>10</number>
+           </property>
+          </widget>
+         </item>
+         <item row="10" column="1" colspan="2">
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
             <widget class="QCheckBox" name="repeat_previous_note">
@@ -80,10 +100,251 @@
            </item>
           </layout>
          </item>
-         <item row="15" column="1" colspan="2">
-          <widget class="QLineEdit" name="score_title"/>
+         <item row="11" column="0">
+          <widget class="QLabel" name="label_13">
+           <property name="text">
+            <string>Score title</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1">
+          <widget class="QSpinBox" name="tempo">
+           <property name="minimum">
+            <number>12</number>
+           </property>
+           <property name="maximum">
+            <number>200</number>
+           </property>
+           <property name="value">
+            <number>60</number>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QComboBox" name="key"/>
+         </item>
+         <item row="3" column="1">
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
+            <widget class="QWidget" name="v1" native="true">
+             <layout class="QHBoxLayout" name="horizontalLayout_6">
+              <item>
+               <widget class="QLabel" name="voice1label">
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string>Voice 1</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="voice1"/>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="v2" native="true">
+             <layout class="QHBoxLayout" name="horizontalLayout_7">
+              <item>
+               <widget class="QLabel" name="voice2label">
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string>Voice 2</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="voice2"/>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="v3_2" native="true">
+             <layout class="QHBoxLayout" name="v3">
+              <item>
+               <widget class="QLabel" name="voice3label">
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string>Voice 3</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="voice3"/>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="v4_2" native="true">
+             <layout class="QHBoxLayout" name="v4">
+              <item>
+               <widget class="QLabel" name="voice4label">
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string>Voice 4</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="voice4"/>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="v5_2" native="true">
+             <layout class="QHBoxLayout" name="v5">
+              <item>
+               <widget class="QLabel" name="voice5label">
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string>Voice 5</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="voice5"/>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="v6_2" native="true">
+             <layout class="QHBoxLayout" name="v6">
+              <item>
+               <widget class="QLabel" name="voice6label">
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string>Voice 6</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="voice6"/>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="label_6">
+           <property name="text">
+            <string>Time signature</string>
+           </property>
+          </widget>
          </item>
          <item row="13" column="1" colspan="2">
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QLineEdit" name="output_foldername"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="open_file_explorer">
+             <property name="text">
+              <string>...</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="13" column="0">
+          <widget class="QLabel" name="label_7">
+           <property name="text">
+            <string>Output folder</string>
+           </property>
+           <property name="buddy">
+            <cstring>output_foldername</cstring>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="1" colspan="2">
+          <layout class="QGridLayout" name="gridLayout">
+           <item row="0" column="1">
+            <widget class="QSlider" name="notes_rests_slider">
+             <property name="maximum">
+              <number>100</number>
+             </property>
+             <property name="sliderPosition">
+              <number>100</number>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="3">
+            <widget class="QLabel" name="percent_rests">
+             <property name="text">
+              <string>0 % rests</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="percent_notes">
+             <property name="text">
+              <string>100 % notes</string>
+             </property>
+             <property name="buddy">
+              <cstring>notes_rests_slider</cstring>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="10" column="0">
+          <widget class="QLabel" name="label_11">
+           <property name="text">
+            <string>Repeat previous note</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string>Key signature</string>
+           </property>
+           <property name="buddy">
+            <cstring>key</cstring>
+           </property>
+          </widget>
+         </item>
+         <item row="12" column="0">
+          <widget class="QLabel" name="label_9">
+           <property name="text">
+            <string>Output filename</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="2">
+          <widget class="QLabel" name="label_17">
+           <property name="text">
+            <string>bpm</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="0">
+          <widget class="QLabel" name="label_8">
+           <property name="text">
+            <string>Notes/rests balance</string>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="1" colspan="2">
           <layout class="QHBoxLayout" name="horizontalLayout_3">
            <item>
             <widget class="QCheckBox" name="repeat_current_note">
@@ -133,136 +394,24 @@
          <item row="0" column="1">
           <widget class="QComboBox" name="composition_mode"/>
          </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_3">
-           <property name="text">
-            <string>Number of voices</string>
-           </property>
-           <property name="buddy">
-            <cstring>no_of_voices</cstring>
-           </property>
-          </widget>
-         </item>
-         <item row="17" column="1" colspan="2">
-          <layout class="QHBoxLayout" name="horizontalLayout">
-           <item>
-            <widget class="QLineEdit" name="output_foldername"/>
-           </item>
-           <item>
-            <widget class="QPushButton" name="open_file_explorer">
-             <property name="text">
-              <string>...</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="12" column="1" colspan="2">
-          <layout class="QGridLayout" name="gridLayout">
-           <item row="0" column="1">
-            <widget class="QSlider" name="notes_rests_slider">
-             <property name="maximum">
-              <number>100</number>
-             </property>
-             <property name="sliderPosition">
-              <number>100</number>
-             </property>
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="percent_notes">
-             <property name="text">
-              <string>100 % notes</string>
-             </property>
-             <property name="buddy">
-              <cstring>notes_rests_slider</cstring>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="3">
-            <widget class="QLabel" name="percent_rests">
-             <property name="text">
-              <string>0 % rests</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="11" column="2">
-          <widget class="QLabel" name="label_17">
-           <property name="text">
-            <string>bpm</string>
-           </property>
-          </widget>
-         </item>
-         <item row="10" column="0">
-          <widget class="QLabel" name="label_6">
-           <property name="text">
-            <string>Time signature</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_4">
-           <item>
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Template</string>
-             </property>
-             <property name="buddy">
-              <cstring>composition_mode</cstring>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="13" column="0">
+         <item row="9" column="0">
           <widget class="QLabel" name="label_12">
            <property name="text">
             <string>Repeat current note</string>
            </property>
           </widget>
          </item>
-         <item row="9" column="1">
-          <widget class="QComboBox" name="key"/>
-         </item>
-         <item row="11" column="0">
-          <widget class="QLabel" name="label_5">
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_2">
            <property name="text">
-            <string>Tempo</string>
+            <string>Number of series repeats</string>
            </property>
           </widget>
          </item>
-         <item row="1" column="1">
-          <widget class="QSpinBox" name="no_of_repeats">
-           <property name="minimum">
-            <number>1</number>
-           </property>
-           <property name="value">
-            <number>10</number>
-           </property>
-          </widget>
-         </item>
-         <item row="15" column="0">
-          <widget class="QLabel" name="label_13">
+         <item row="12" column="2">
+          <widget class="QLabel" name="label_10">
            <property name="text">
-            <string>Score title</string>
-           </property>
-          </widget>
-         </item>
-         <item row="11" column="1">
-          <widget class="QSpinBox" name="tempo">
-           <property name="minimum">
-            <number>12</number>
-           </property>
-           <property name="maximum">
-            <number>200</number>
-           </property>
-           <property name="value">
-            <number>60</number>
+            <string>.pdf</string>
            </property>
           </widget>
          </item>
@@ -273,27 +422,23 @@
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>40</width>
+             <width>132</width>
              <height>20</height>
             </size>
            </property>
           </spacer>
          </item>
-         <item row="16" column="2">
-          <widget class="QLabel" name="label_10">
-           <property name="text">
-            <string>.pdf</string>
+         <item row="2" column="1">
+          <widget class="QSpinBox" name="no_of_voices">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>6</number>
            </property>
           </widget>
          </item>
-         <item row="16" column="0">
-          <widget class="QLabel" name="label_9">
-           <property name="text">
-            <string>Output filename</string>
-           </property>
-          </widget>
-         </item>
-         <item row="10" column="1">
+         <item row="5" column="1">
           <layout class="QVBoxLayout" name="verticalLayout">
            <item>
             <widget class="QComboBox" name="time_enumerator">
@@ -311,163 +456,60 @@
            </item>
           </layout>
          </item>
-         <item row="14" column="0">
-          <widget class="QLabel" name="label_11">
-           <property name="text">
-            <string>Repeat previous note</string>
-           </property>
-          </widget>
+         <item row="14" column="0" colspan="3">
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item>
+            <spacer name="horizontalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="generate_score">
+             <property name="text">
+              <string>Generate score</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="label_2">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label">
            <property name="text">
-            <string>Number of series repeats</string>
-           </property>
-          </widget>
-         </item>
-         <item row="17" column="0">
-          <widget class="QLabel" name="label_7">
-           <property name="text">
-            <string>Output folder</string>
+            <string>Template</string>
            </property>
            <property name="buddy">
-            <cstring>output_foldername</cstring>
+            <cstring>composition_mode</cstring>
            </property>
           </widget>
          </item>
-         <item row="2" column="1">
-          <widget class="QSpinBox" name="no_of_voices">
-           <property name="minimum">
-            <number>1</number>
-           </property>
-           <property name="maximum">
-            <number>6</number>
-           </property>
-          </widget>
-         </item>
-         <item row="12" column="0">
-          <widget class="QLabel" name="label_8">
-           <property name="text">
-            <string>Notes/rests balance</string>
-           </property>
-          </widget>
-         </item>
-         <item row="9" column="0">
-          <widget class="QLabel" name="label_4">
-           <property name="text">
-            <string>Key signature</string>
-           </property>
-           <property name="buddy">
-            <cstring>key</cstring>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="voice1label">
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-           <property name="text">
-            <string>Voice 1</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="0">
-          <widget class="QLabel" name="voice2label">
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-           <property name="text">
-            <string>Voice 2</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="0">
-          <widget class="QLabel" name="voice3label">
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-           <property name="text">
-            <string>Voice 3</string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="0">
-          <widget class="QLabel" name="voice4label">
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-           <property name="text">
-            <string>Voice 4</string>
-           </property>
-          </widget>
-         </item>
-         <item row="7" column="0">
-          <widget class="QLabel" name="voice5label">
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-           <property name="text">
-            <string>Voice 5</string>
-           </property>
-          </widget>
-         </item>
-         <item row="8" column="0">
-          <widget class="QLabel" name="voice6label">
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-           <property name="text">
-            <string>Voice 6</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QComboBox" name="voice1"/>
-         </item>
-         <item row="4" column="1">
-          <widget class="QComboBox" name="voice2"/>
-         </item>
-         <item row="5" column="1">
-          <widget class="QComboBox" name="voice3"/>
-         </item>
-         <item row="6" column="1">
-          <widget class="QComboBox" name="voice4"/>
-         </item>
-         <item row="7" column="1">
-          <widget class="QComboBox" name="voice5"/>
-         </item>
-         <item row="8" column="1">
-          <widget class="QComboBox" name="voice6"/>
+         <item row="11" column="1" colspan="2">
+          <widget class="QLineEdit" name="score_title"/>
          </item>
         </layout>
        </item>
       </layout>
+      <widget class="QLabel" name="label_18">
+       <property name="geometry">
+        <rect>
+         <x>341</x>
+         <y>421</y>
+         <width>16</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
      </widget>
-    </item>
-    <item row="1" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout_5">
-      <item>
-       <spacer name="horizontalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QPushButton" name="generate_score">
-        <property name="text">
-         <string>Generate score</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
     </item>
    </layout>
   </widget>
@@ -477,10 +519,15 @@
   <tabstop>composition_mode</tabstop>
   <tabstop>no_of_repeats</tabstop>
   <tabstop>no_of_voices</tabstop>
+  <tabstop>voice1</tabstop>
+  <tabstop>voice2</tabstop>
+  <tabstop>voice3</tabstop>
+  <tabstop>voice4</tabstop>
+  <tabstop>voice5</tabstop>
+  <tabstop>voice6</tabstop>
   <tabstop>key</tabstop>
   <tabstop>time_enumerator</tabstop>
   <tabstop>time_denominator</tabstop>
-  <tabstop>tempo</tabstop>
   <tabstop>notes_rests_slider</tabstop>
   <tabstop>repeat_current_note</tabstop>
   <tabstop>currentslider</tabstop>
@@ -490,7 +537,6 @@
   <tabstop>output_filename_2</tabstop>
   <tabstop>output_foldername</tabstop>
   <tabstop>open_file_explorer</tabstop>
-  <tabstop>generate_score</tabstop>
  </tabstops>
  <resources/>
  <connections/>
