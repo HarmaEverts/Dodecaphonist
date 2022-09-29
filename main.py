@@ -160,7 +160,6 @@ class MainWindow(QMainWindow):
         self.ui.currentlabel.setEnabled(self.ui.repeat_current_note.isChecked())
         self.ui.currentslider.setEnabled(self.ui.repeat_current_note.isChecked())
         self.ui.currentpercentage.setEnabled(self.ui.repeat_current_note.isChecked())
-        self.dodec.repeat_current = self.ui.repeat_current_note.isChecked()
 
         if not self.ui.repeat_current_note.isChecked():
             self.ui.repeat_previous_note.setChecked(False)
@@ -171,7 +170,6 @@ class MainWindow(QMainWindow):
 
     def update_repeat_current_note_chance(self):
         """ Updates the chance of repeating the current note. """
-        self.dodec.current_chance = self.ui.currentslider.value()
         self.ui.currentpercentage.setText(str(self.dodec.current_chance) + " %")
 
     def toggle_repeat_previous_note(self):
@@ -179,11 +177,9 @@ class MainWindow(QMainWindow):
         self.ui.previouslabel.setEnabled(self.ui.repeat_previous_note.isChecked())
         self.ui.previousslider.setEnabled(self.ui.repeat_previous_note.isChecked())
         self.ui.previouspercentage.setEnabled(self.ui.repeat_previous_note.isChecked())
-        self.dodec.repeat_previous = self.ui.repeat_previous_note.isChecked()
 
     def update_repeat_previous_note_chance(self):
         """ Updates the chance of repeating the previous note. """
-        self.dodec.previous_chance = self.ui.previousslider.value()
         self.ui.previouspercentage.setText(str(self.dodec.previous_chance) + " %")
 
     def update_score_title(self):
@@ -206,8 +202,8 @@ class MainWindow(QMainWindow):
         """ Retrieve the selected folder name from the UI """
         self.dodec.foldername = self.ui.output_foldername.text()
 
-    def update_from_UI(self):
-        """ Get all current UI settings and update the compositon object accordingly """
+    def update_from_ui(self):
+        """ Get all current UI settings and update the Dodecaphony object accordingly """
         self.update_key_signature()
         self.update_time_enumerator()
         self.update_time_denominator()
@@ -215,7 +211,10 @@ class MainWindow(QMainWindow):
         self.update_voices()
         self.update_tempo()
         self.update_repeat_current_note_chance()
-        self.update_repeat_previous_note_chance()
+        self.dodec.repeat_current = self.ui.repeat_current_note.isChecked()
+        self.dodec.current_chance = self.ui.currentslider.value()
+        self.dodec.repeat_previous = self.ui.repeat_previous_note.isChecked()
+        self.dodec.previous_chance = self.ui.previousslider.value()
         self.update_score_title()
         self.update_filename()
         self.get_folder_name()
@@ -225,7 +224,7 @@ class MainWindow(QMainWindow):
         :return: True if the settings are valid
         :return: False if the settings are not valid """
         # First, make sure that all UI settings are registered.
-        self.update_from_UI()
+        self.update_from_ui()
 
         return True
 

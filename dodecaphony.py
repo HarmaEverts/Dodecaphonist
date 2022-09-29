@@ -16,6 +16,11 @@ class Dodecaphony():
         current_chance = 0      # Repeat current note chance
         repeat_previous = False # Repeat previous note or not
         previous_chance = 0     # Repeat previous note chance
+        _series = []
+        _retrograde = []
+        _inverse = []
+        _retrogradeinverse = []
+
 
     def generate(self):
         """ Generate a compusition based on the settings provided. """
