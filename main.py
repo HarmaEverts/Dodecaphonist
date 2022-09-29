@@ -19,7 +19,7 @@ class MainWindow(QMainWindow):
 
         # Set up the UI options in drop-downs etc.
         # Compusition template:
-        self.ui.composition_mode.addItems(["Schoenberg", "Webern", "Stravinsky"])
+        self.ui.composition_mode.addItems(["Select", "Schoenberg", "Webern", "Stravinsky"])
         self.ui.composition_mode.currentIndexChanged.connect(self.update_mode)
 
         # Series repeats:
@@ -101,16 +101,32 @@ class MainWindow(QMainWindow):
         """
         Updates the composition settings based on the selected mode.
         """
-        if self.ui.composition_mode.currentIndex() == 0:
+        if self.ui.composition_mode.currentIndex() == 1:
             self.apply_schoenberg_template()
-        elif self.ui.composition_mode.currentIndex() == 1:
-            self.apply_webern_template()
         elif self.ui.composition_mode.currentIndex() == 2:
+            self.apply_webern_template()
+        elif self.ui.composition_mode.currentIndex() == 3:
             self.apply_stravinsky_template()
 
     def apply_schoenberg_template(self):
         """ Updates the composition settings and UI according to the Schoenberg template. """
-        print("Schoenberg")
+        self.ui.no_of_voices.setValue(4)
+        self.ui.voice1.setCurrentIndex(0)
+        self.ui.voice2.setCurrentIndex(2)
+        self.ui.voice3.setCurrentIndex(3)
+        self.ui.voice4.setCurrentIndex(5)
+        self.ui.key.setCurrentIndex(1)
+        self.ui.tempo.setValue(44)
+        self.ui.time_enumerator.setCurrentIndex(1)
+        self.ui.time_denominator.setCurrentIndex(1)
+        self.ui.notes_rests_slider.setValue(91)
+        self.ui.score_title.setText("Schoenberg")
+        self.ui.output_filename_2.setText("Schoenberg")
+        self.ui.repeat_previous_note.setEnabled(False)
+        self.ui.repeat_current_note.setEnabled(False)
+        self.ui.previousslider.setValue(0)
+        self.ui.currentslider.setValue(0)
+        self.ui.no_of_repeats.setValue(3)
 
     def apply_webern_template(self):
         """ Updates the composition settings and UI according to the Webern template. """
@@ -128,6 +144,39 @@ class MainWindow(QMainWindow):
         """ Update the number of voices (1-6) """
         self.dodec.voices = self.ui.no_of_voices.value()
         # TODO Show all applicable voices and process their inputs.
+        if self.dodec.voices >= 1:
+            self.ui.voice1.show()
+            self.ui.voice1label.show()
+            if self.dodec.voices >= 2:
+                self.ui.voice2.show()
+                self.ui.voice2label.show()
+                if self.dodec.voices >= 3:
+                    self.ui.voice3.show()
+                    self.ui.voice3label.show()
+                    if self.dodec.voices >= 4:
+                        self.ui.voice4.show()
+                        self.ui.voice4label.show()
+                        if self.dodec.voices >= 5:
+                            self.ui.voice5.show()
+                            self.ui.voice5label.show()
+                            if self.dodec.voices == 6:
+                                self.ui.voice6.show()
+                                self.ui.voice6label.show()
+                            else:
+                                self.ui.voice6.hide()
+                                self.ui.voice6label.hide()
+                        else:
+                            self.ui.voice5.hide()
+                            self.ui.voice5label.hide()
+                    else:
+                        self.ui.voice4.hide()
+                        self.ui.voice4label.hide()
+                else:
+                    self.ui.voice3.hide()
+                    self.ui.voice3label.hide()
+            else:
+                self.ui.voice2.hide()
+                self.ui.voice2label.hide()
 
     def update_key_signature(self):
         """ Toggles between sharps and flats depending on the selection in the drop-down list.
