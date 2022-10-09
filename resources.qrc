@@ -1,0 +1,17 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource prefix="icons">
+        <file alias="eighth note">images/eighth note.png</file>
+        <file alias="eighth rest">images/eighth rest.png</file>
+        <file alias="half note">images/half note.png</file>
+        <file alias="half rest">images/half rest.png</file>
+        <file alias="quarter note">images/quarter note.png</file>
+        <file alias="quarter rest">images/quarter rest.png</file>
+        <file alias="sixteenth note">images/sixteenth note.png</file>
+        <file alias="sixteenth rest">images/sixteenth rest.png</file>
+        <file alias="thirty second note">images/thirty second note.png</file>
+        <file alias="thirty second rest">images/thirty second rest.png</file>
+        <file alias="whole note">images/whole_note.png</file>
+        <file alias="whole rest">images/whole rest.png</file>
+    </qresource>
+</RCC>
