@@ -26,7 +26,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(839, 1359)
+        MainWindow.resize(839, 939)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout_4 = QGridLayout(self.centralwidget)
@@ -372,6 +372,121 @@ class Ui_MainWindow(object):
 
         self.gridLayout_6.addWidget(self.label_18, 2, 1, 1, 1)
 
+        self.groupBox_7 = QGroupBox(self.groupBox)
+        self.groupBox_7.setObjectName(u"groupBox_7")
+        self.gridLayout_9 = QGridLayout(self.groupBox_7)
+        self.gridLayout_9.setObjectName(u"gridLayout_9")
+        self.sixteenth_rest_slider = QSlider(self.groupBox_7)
+        self.sixteenth_rest_slider.setObjectName(u"sixteenth_rest_slider")
+        self.sixteenth_rest_slider.setOrientation(Qt.Horizontal)
+
+        self.gridLayout_9.addWidget(self.sixteenth_rest_slider, 4, 1, 1, 1)
+
+        self.half_rest_slider = QSlider(self.groupBox_7)
+        self.half_rest_slider.setObjectName(u"half_rest_slider")
+        self.half_rest_slider.setOrientation(Qt.Horizontal)
+
+        self.gridLayout_9.addWidget(self.half_rest_slider, 1, 1, 1, 1)
+
+        self.label_27 = QLabel(self.groupBox_7)
+        self.label_27.setObjectName(u"label_27")
+        self.label_27.setPixmap(QPixmap(u":/icons/thirty second rest"))
+        self.label_27.setScaledContents(True)
+
+        self.gridLayout_9.addWidget(self.label_27, 5, 0, 1, 1)
+
+        self.quarter_rest_slider = QSlider(self.groupBox_7)
+        self.quarter_rest_slider.setObjectName(u"quarter_rest_slider")
+        self.quarter_rest_slider.setOrientation(Qt.Horizontal)
+
+        self.gridLayout_9.addWidget(self.quarter_rest_slider, 2, 1, 1, 1)
+
+        self.label_25 = QLabel(self.groupBox_7)
+        self.label_25.setObjectName(u"label_25")
+        self.label_25.setPixmap(QPixmap(u":/icons/eighth rest"))
+        self.label_25.setScaledContents(True)
+
+        self.gridLayout_9.addWidget(self.label_25, 3, 0, 1, 1)
+
+        self.whole_rest_slider = QSlider(self.groupBox_7)
+        self.whole_rest_slider.setObjectName(u"whole_rest_slider")
+        self.whole_rest_slider.setOrientation(Qt.Horizontal)
+
+        self.gridLayout_9.addWidget(self.whole_rest_slider, 0, 1, 1, 1)
+
+        self.eighth_rest_slider = QSlider(self.groupBox_7)
+        self.eighth_rest_slider.setObjectName(u"eighth_rest_slider")
+        self.eighth_rest_slider.setOrientation(Qt.Horizontal)
+
+        self.gridLayout_9.addWidget(self.eighth_rest_slider, 3, 1, 1, 1)
+
+        self.label_23 = QLabel(self.groupBox_7)
+        self.label_23.setObjectName(u"label_23")
+        self.label_23.setPixmap(QPixmap(u":/icons/half rest"))
+        self.label_23.setScaledContents(True)
+
+        self.gridLayout_9.addWidget(self.label_23, 1, 0, 1, 1)
+
+        self.label_24 = QLabel(self.groupBox_7)
+        self.label_24.setObjectName(u"label_24")
+        self.label_24.setPixmap(QPixmap(u":/icons/quarter rest"))
+        self.label_24.setScaledContents(True)
+
+        self.gridLayout_9.addWidget(self.label_24, 2, 0, 1, 1)
+
+        self.label_26 = QLabel(self.groupBox_7)
+        self.label_26.setObjectName(u"label_26")
+        self.label_26.setPixmap(QPixmap(u":/icons/sixteenth rest"))
+        self.label_26.setScaledContents(True)
+
+        self.gridLayout_9.addWidget(self.label_26, 4, 0, 1, 1)
+
+        self.label_22 = QLabel(self.groupBox_7)
+        self.label_22.setObjectName(u"label_22")
+        self.label_22.setPixmap(QPixmap(u":/icons/whole rest"))
+        self.label_22.setScaledContents(True)
+
+        self.gridLayout_9.addWidget(self.label_22, 0, 0, 1, 1)
+
+        self.thirty_second_rest_slider = QSlider(self.groupBox_7)
+        self.thirty_second_rest_slider.setObjectName(u"thirty_second_rest_slider")
+        self.thirty_second_rest_slider.setOrientation(Qt.Horizontal)
+
+        self.gridLayout_9.addWidget(self.thirty_second_rest_slider, 5, 1, 1, 1)
+
+        self.whole_rest_pc = QLabel(self.groupBox_7)
+        self.whole_rest_pc.setObjectName(u"whole_rest_pc")
+
+        self.gridLayout_9.addWidget(self.whole_rest_pc, 0, 2, 1, 1)
+
+        self.half_rest_pc = QLabel(self.groupBox_7)
+        self.half_rest_pc.setObjectName(u"half_rest_pc")
+
+        self.gridLayout_9.addWidget(self.half_rest_pc, 1, 2, 1, 1)
+
+        self.quarter_rest_pc = QLabel(self.groupBox_7)
+        self.quarter_rest_pc.setObjectName(u"quarter_rest_pc")
+
+        self.gridLayout_9.addWidget(self.quarter_rest_pc, 2, 2, 1, 1)
+
+        self.eighth_rest_pc = QLabel(self.groupBox_7)
+        self.eighth_rest_pc.setObjectName(u"eighth_rest_pc")
+
+        self.gridLayout_9.addWidget(self.eighth_rest_pc, 3, 2, 1, 1)
+
+        self.sixteenth_rest_pc = QLabel(self.groupBox_7)
+        self.sixteenth_rest_pc.setObjectName(u"sixteenth_rest_pc")
+
+        self.gridLayout_9.addWidget(self.sixteenth_rest_pc, 4, 2, 1, 1)
+
+        self.thirty_second_rest_pc = QLabel(self.groupBox_7)
+        self.thirty_second_rest_pc.setObjectName(u"thirty_second_rest_pc")
+
+        self.gridLayout_9.addWidget(self.thirty_second_rest_pc, 5, 2, 1, 1)
+
+
+        self.gridLayout_6.addWidget(self.groupBox_7, 3, 2, 1, 1)
+
         self.groupBox_3 = QGroupBox(self.groupBox)
         self.groupBox_3.setObjectName(u"groupBox_3")
         self.gridLayout_3 = QGridLayout(self.groupBox_3)
@@ -424,107 +539,23 @@ class Ui_MainWindow(object):
 
         self.gridLayout_6.addWidget(self.groupBox_3, 4, 0, 1, 2)
 
-        self.groupBox_7 = QGroupBox(self.groupBox)
-        self.groupBox_7.setObjectName(u"groupBox_7")
-        self.gridLayout_9 = QGridLayout(self.groupBox_7)
-        self.gridLayout_9.setObjectName(u"gridLayout_9")
-        self.horizontalSlider_11 = QSlider(self.groupBox_7)
-        self.horizontalSlider_11.setObjectName(u"horizontalSlider_11")
-        self.horizontalSlider_11.setOrientation(Qt.Horizontal)
-
-        self.gridLayout_9.addWidget(self.horizontalSlider_11, 4, 1, 1, 1)
-
-        self.horizontalSlider_8 = QSlider(self.groupBox_7)
-        self.horizontalSlider_8.setObjectName(u"horizontalSlider_8")
-        self.horizontalSlider_8.setOrientation(Qt.Horizontal)
-
-        self.gridLayout_9.addWidget(self.horizontalSlider_8, 1, 1, 1, 1)
-
-        self.label_27 = QLabel(self.groupBox_7)
-        self.label_27.setObjectName(u"label_27")
-        self.label_27.setPixmap(QPixmap(u":/icons/thirty second rest"))
-        self.label_27.setScaledContents(True)
-
-        self.gridLayout_9.addWidget(self.label_27, 5, 0, 1, 1)
-
-        self.horizontalSlider_9 = QSlider(self.groupBox_7)
-        self.horizontalSlider_9.setObjectName(u"horizontalSlider_9")
-        self.horizontalSlider_9.setOrientation(Qt.Horizontal)
-
-        self.gridLayout_9.addWidget(self.horizontalSlider_9, 2, 1, 1, 1)
-
-        self.label_25 = QLabel(self.groupBox_7)
-        self.label_25.setObjectName(u"label_25")
-        self.label_25.setPixmap(QPixmap(u":/icons/eighth rest"))
-        self.label_25.setScaledContents(True)
-
-        self.gridLayout_9.addWidget(self.label_25, 3, 0, 1, 1)
-
-        self.horizontalSlider_7 = QSlider(self.groupBox_7)
-        self.horizontalSlider_7.setObjectName(u"horizontalSlider_7")
-        self.horizontalSlider_7.setOrientation(Qt.Horizontal)
-
-        self.gridLayout_9.addWidget(self.horizontalSlider_7, 0, 1, 1, 1)
-
-        self.horizontalSlider_10 = QSlider(self.groupBox_7)
-        self.horizontalSlider_10.setObjectName(u"horizontalSlider_10")
-        self.horizontalSlider_10.setOrientation(Qt.Horizontal)
-
-        self.gridLayout_9.addWidget(self.horizontalSlider_10, 3, 1, 1, 1)
-
-        self.label_23 = QLabel(self.groupBox_7)
-        self.label_23.setObjectName(u"label_23")
-        self.label_23.setPixmap(QPixmap(u":/icons/half rest"))
-        self.label_23.setScaledContents(True)
-
-        self.gridLayout_9.addWidget(self.label_23, 1, 0, 1, 1)
-
-        self.label_24 = QLabel(self.groupBox_7)
-        self.label_24.setObjectName(u"label_24")
-        self.label_24.setPixmap(QPixmap(u":/icons/quarter rest"))
-        self.label_24.setScaledContents(True)
-
-        self.gridLayout_9.addWidget(self.label_24, 2, 0, 1, 1)
-
-        self.label_26 = QLabel(self.groupBox_7)
-        self.label_26.setObjectName(u"label_26")
-        self.label_26.setPixmap(QPixmap(u":/icons/sixteenth rest"))
-        self.label_26.setScaledContents(True)
-
-        self.gridLayout_9.addWidget(self.label_26, 4, 0, 1, 1)
-
-        self.label_22 = QLabel(self.groupBox_7)
-        self.label_22.setObjectName(u"label_22")
-        self.label_22.setPixmap(QPixmap(u":/icons/whole rest"))
-        self.label_22.setScaledContents(True)
-
-        self.gridLayout_9.addWidget(self.label_22, 0, 0, 1, 1)
-
-        self.horizontalSlider_12 = QSlider(self.groupBox_7)
-        self.horizontalSlider_12.setObjectName(u"horizontalSlider_12")
-        self.horizontalSlider_12.setOrientation(Qt.Horizontal)
-
-        self.gridLayout_9.addWidget(self.horizontalSlider_12, 5, 1, 1, 1)
-
-
-        self.gridLayout_6.addWidget(self.groupBox_7, 3, 2, 1, 1)
-
         self.groupBox_5 = QGroupBox(self.groupBox)
         self.groupBox_5.setObjectName(u"groupBox_5")
         self.gridLayout_8 = QGridLayout(self.groupBox_5)
         self.gridLayout_8.setObjectName(u"gridLayout_8")
+        self.label_16 = QLabel(self.groupBox_5)
+        self.label_16.setObjectName(u"label_16")
+        self.label_16.setPixmap(QPixmap(u":/icons/quarter note"))
+        self.label_16.setScaledContents(True)
+
+        self.gridLayout_8.addWidget(self.label_16, 2, 0, 1, 1)
+
         self.label_14 = QLabel(self.groupBox_5)
         self.label_14.setObjectName(u"label_14")
         self.label_14.setPixmap(QPixmap(u":/icons/whole note"))
         self.label_14.setScaledContents(True)
 
         self.gridLayout_8.addWidget(self.label_14, 0, 0, 1, 1)
-
-        self.horizontalSlider = QSlider(self.groupBox_5)
-        self.horizontalSlider.setObjectName(u"horizontalSlider")
-        self.horizontalSlider.setOrientation(Qt.Horizontal)
-
-        self.gridLayout_8.addWidget(self.horizontalSlider, 0, 1, 1, 1)
 
         self.label_15 = QLabel(self.groupBox_5)
         self.label_15.setObjectName(u"label_15")
@@ -534,66 +565,95 @@ class Ui_MainWindow(object):
 
         self.gridLayout_8.addWidget(self.label_15, 1, 0, 1, 1)
 
-        self.horizontalSlider_2 = QSlider(self.groupBox_5)
-        self.horizontalSlider_2.setObjectName(u"horizontalSlider_2")
-        self.horizontalSlider_2.setOrientation(Qt.Horizontal)
-
-        self.gridLayout_8.addWidget(self.horizontalSlider_2, 1, 1, 1, 1)
-
-        self.label_16 = QLabel(self.groupBox_5)
-        self.label_16.setObjectName(u"label_16")
-        self.label_16.setPixmap(QPixmap(u":/icons/quarter note"))
-        self.label_16.setScaledContents(True)
-
-        self.gridLayout_8.addWidget(self.label_16, 2, 0, 1, 1)
-
-        self.horizontalSlider_3 = QSlider(self.groupBox_5)
-        self.horizontalSlider_3.setObjectName(u"horizontalSlider_3")
-        self.horizontalSlider_3.setOrientation(Qt.Horizontal)
-
-        self.gridLayout_8.addWidget(self.horizontalSlider_3, 2, 1, 1, 1)
-
         self.label_19 = QLabel(self.groupBox_5)
         self.label_19.setObjectName(u"label_19")
         self.label_19.setPixmap(QPixmap(u":/icons/eighth note"))
         self.label_19.setScaledContents(True)
 
-        self.gridLayout_8.addWidget(self.label_19, 3, 0, 2, 2)
-
-        self.horizontalSlider_4 = QSlider(self.groupBox_5)
-        self.horizontalSlider_4.setObjectName(u"horizontalSlider_4")
-        self.horizontalSlider_4.setOrientation(Qt.Horizontal)
-
-        self.gridLayout_8.addWidget(self.horizontalSlider_4, 4, 1, 1, 1)
+        self.gridLayout_8.addWidget(self.label_19, 4, 0, 1, 1)
 
         self.label_20 = QLabel(self.groupBox_5)
         self.label_20.setObjectName(u"label_20")
         self.label_20.setPixmap(QPixmap(u":/icons/sixteenth note"))
         self.label_20.setScaledContents(True)
 
-        self.gridLayout_8.addWidget(self.label_20, 5, 0, 2, 2)
-
-        self.horizontalSlider_5 = QSlider(self.groupBox_5)
-        self.horizontalSlider_5.setObjectName(u"horizontalSlider_5")
-        self.horizontalSlider_5.setOrientation(Qt.Horizontal)
-
-        self.gridLayout_8.addWidget(self.horizontalSlider_5, 6, 1, 1, 1)
+        self.gridLayout_8.addWidget(self.label_20, 6, 0, 1, 1)
 
         self.label_21 = QLabel(self.groupBox_5)
         self.label_21.setObjectName(u"label_21")
         self.label_21.setPixmap(QPixmap(u":/icons/thirty second note"))
         self.label_21.setScaledContents(True)
 
-        self.gridLayout_8.addWidget(self.label_21, 7, 0, 2, 2)
+        self.gridLayout_8.addWidget(self.label_21, 9, 0, 1, 1)
 
-        self.horizontalSlider_6 = QSlider(self.groupBox_5)
-        self.horizontalSlider_6.setObjectName(u"horizontalSlider_6")
-        self.horizontalSlider_6.setOrientation(Qt.Horizontal)
+        self.eighth_note_slider = QSlider(self.groupBox_5)
+        self.eighth_note_slider.setObjectName(u"eighth_note_slider")
+        self.eighth_note_slider.setOrientation(Qt.Horizontal)
 
-        self.gridLayout_8.addWidget(self.horizontalSlider_6, 8, 1, 1, 1)
+        self.gridLayout_8.addWidget(self.eighth_note_slider, 4, 1, 1, 1)
+
+        self.sixteenth_note_slider = QSlider(self.groupBox_5)
+        self.sixteenth_note_slider.setObjectName(u"sixteenth_note_slider")
+        self.sixteenth_note_slider.setOrientation(Qt.Horizontal)
+
+        self.gridLayout_8.addWidget(self.sixteenth_note_slider, 6, 1, 1, 1)
+
+        self.thirty_second_note_slider = QSlider(self.groupBox_5)
+        self.thirty_second_note_slider.setObjectName(u"thirty_second_note_slider")
+        self.thirty_second_note_slider.setOrientation(Qt.Horizontal)
+
+        self.gridLayout_8.addWidget(self.thirty_second_note_slider, 9, 1, 1, 1)
+
+        self.half_note_slider = QSlider(self.groupBox_5)
+        self.half_note_slider.setObjectName(u"half_note_slider")
+        self.half_note_slider.setOrientation(Qt.Horizontal)
+
+        self.gridLayout_8.addWidget(self.half_note_slider, 1, 1, 1, 1)
+
+        self.whole_note_slider = QSlider(self.groupBox_5)
+        self.whole_note_slider.setObjectName(u"whole_note_slider")
+        self.whole_note_slider.setOrientation(Qt.Horizontal)
+
+        self.gridLayout_8.addWidget(self.whole_note_slider, 0, 1, 1, 1)
+
+        self.quarter_note_slider = QSlider(self.groupBox_5)
+        self.quarter_note_slider.setObjectName(u"quarter_note_slider")
+        self.quarter_note_slider.setOrientation(Qt.Horizontal)
+
+        self.gridLayout_8.addWidget(self.quarter_note_slider, 2, 1, 1, 1)
+
+        self.whole_note_pc = QLabel(self.groupBox_5)
+        self.whole_note_pc.setObjectName(u"whole_note_pc")
+
+        self.gridLayout_8.addWidget(self.whole_note_pc, 0, 2, 1, 1)
+
+        self.half_note_pc = QLabel(self.groupBox_5)
+        self.half_note_pc.setObjectName(u"half_note_pc")
+
+        self.gridLayout_8.addWidget(self.half_note_pc, 1, 2, 1, 1)
+
+        self.quarter_note_pc = QLabel(self.groupBox_5)
+        self.quarter_note_pc.setObjectName(u"quarter_note_pc")
+
+        self.gridLayout_8.addWidget(self.quarter_note_pc, 2, 2, 1, 1)
+
+        self.eighth_note_pc = QLabel(self.groupBox_5)
+        self.eighth_note_pc.setObjectName(u"eighth_note_pc")
+
+        self.gridLayout_8.addWidget(self.eighth_note_pc, 4, 2, 1, 1)
+
+        self.sixteenth_note_pc = QLabel(self.groupBox_5)
+        self.sixteenth_note_pc.setObjectName(u"sixteenth_note_pc")
+
+        self.gridLayout_8.addWidget(self.sixteenth_note_pc, 6, 2, 1, 1)
+
+        self.thirty_second_note_pc = QLabel(self.groupBox_5)
+        self.thirty_second_note_pc.setObjectName(u"thirty_second_note_pc")
+
+        self.gridLayout_8.addWidget(self.thirty_second_note_pc, 9, 2, 1, 1)
 
 
-        self.gridLayout_6.addWidget(self.groupBox_5, 3, 0, 1, 1)
+        self.gridLayout_6.addWidget(self.groupBox_5, 3, 0, 1, 2)
 
 
         self.gridLayout_4.addWidget(self.groupBox, 0, 0, 1, 1)
@@ -622,22 +682,22 @@ class Ui_MainWindow(object):
         self.label_4.setBuddy(self.key)
         self.label_17.setBuddy(self.tempo)
         self.percent_notes.setBuddy(self.notes_rests_slider)
+        self.label_27.setBuddy(self.thirty_second_rest_slider)
+        self.label_25.setBuddy(self.eighth_rest_slider)
+        self.label_23.setBuddy(self.half_rest_slider)
+        self.label_24.setBuddy(self.quarter_rest_slider)
+        self.label_26.setBuddy(self.sixteenth_rest_slider)
+        self.label_22.setBuddy(self.whole_rest_slider)
         self.label_13.setBuddy(self.score_title)
         self.label_9.setBuddy(self.output_filename_2)
         self.label_10.setBuddy(self.output_filename_2)
         self.label_7.setBuddy(self.output_foldername)
-        self.label_27.setBuddy(self.horizontalSlider_12)
-        self.label_25.setBuddy(self.horizontalSlider_10)
-        self.label_23.setBuddy(self.horizontalSlider_8)
-        self.label_24.setBuddy(self.horizontalSlider_9)
-        self.label_26.setBuddy(self.horizontalSlider_11)
-        self.label_22.setBuddy(self.horizontalSlider_7)
-        self.label_14.setBuddy(self.horizontalSlider)
-        self.label_15.setBuddy(self.horizontalSlider_2)
-        self.label_16.setBuddy(self.horizontalSlider_3)
-        self.label_19.setBuddy(self.horizontalSlider_4)
-        self.label_20.setBuddy(self.horizontalSlider_5)
-        self.label_21.setBuddy(self.horizontalSlider_6)
+        self.label_16.setBuddy(self.quarter_note_slider)
+        self.label_14.setBuddy(self.whole_note_slider)
+        self.label_15.setBuddy(self.half_note_slider)
+        self.label_19.setBuddy(self.eighth_note_slider)
+        self.label_20.setBuddy(self.sixteenth_note_slider)
+        self.label_21.setBuddy(self.thirty_second_note_slider)
 #endif // QT_CONFIG(shortcut)
         QWidget.setTabOrder(self.composition_mode, self.no_of_repeats)
         QWidget.setTabOrder(self.no_of_repeats, self.no_of_voices)
@@ -660,13 +720,25 @@ class Ui_MainWindow(object):
         QWidget.setTabOrder(self.output_foldername, self.open_file_explorer)
 
         self.retranslateUi(MainWindow)
+        self.whole_note_slider.valueChanged.connect(self.whole_note_pc.setNum)
+        self.half_note_slider.valueChanged.connect(self.half_note_pc.setNum)
+        self.quarter_note_slider.valueChanged.connect(self.quarter_note_pc.setNum)
+        self.eighth_note_slider.valueChanged.connect(self.eighth_note_pc.setNum)
+        self.sixteenth_note_slider.valueChanged.connect(self.sixteenth_note_pc.setNum)
+        self.thirty_second_note_slider.valueChanged.connect(self.thirty_second_note_pc.setNum)
+        self.whole_rest_slider.valueChanged.connect(self.whole_rest_pc.setNum)
+        self.half_rest_slider.valueChanged.connect(self.half_rest_pc.setNum)
+        self.quarter_rest_slider.valueChanged.connect(self.quarter_rest_pc.setNum)
+        self.eighth_rest_slider.valueChanged.connect(self.eighth_rest_pc.setNum)
+        self.sixteenth_rest_slider.valueChanged.connect(self.sixteenth_rest_pc.setNum)
+        self.thirty_second_rest_slider.valueChanged.connect(self.thirty_second_rest_pc.setNum)
 
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Compunist", None))
-        self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"Dodecaphony", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Dodecaphony", None))
+        self.groupBox.setTitle("")
         self.groupBox_6.setTitle(QCoreApplication.translate("MainWindow", u"Dodecaphony settings", None))
         self.label_12.setText(QCoreApplication.translate("MainWindow", u"Repeat current note", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Template", None))
@@ -696,12 +768,6 @@ class Ui_MainWindow(object):
         self.percent_rests.setText(QCoreApplication.translate("MainWindow", u"0 % rests", None))
         self.percent_notes.setText(QCoreApplication.translate("MainWindow", u"100 % notes", None))
         self.label_18.setText("")
-        self.groupBox_3.setTitle(QCoreApplication.translate("MainWindow", u"Output", None))
-        self.label_13.setText(QCoreApplication.translate("MainWindow", u"Score title", None))
-        self.label_9.setText(QCoreApplication.translate("MainWindow", u"Output filename", None))
-        self.label_10.setText(QCoreApplication.translate("MainWindow", u".pdf", None))
-        self.label_7.setText(QCoreApplication.translate("MainWindow", u"Output folder", None))
-        self.open_file_explorer.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.groupBox_7.setTitle(QCoreApplication.translate("MainWindow", u"Rests", None))
         self.label_27.setText("")
         self.label_25.setText("")
@@ -709,12 +775,30 @@ class Ui_MainWindow(object):
         self.label_24.setText("")
         self.label_26.setText("")
         self.label_22.setText("")
+        self.whole_rest_pc.setText(QCoreApplication.translate("MainWindow", u" %", None))
+        self.half_rest_pc.setText(QCoreApplication.translate("MainWindow", u" %", None))
+        self.quarter_rest_pc.setText(QCoreApplication.translate("MainWindow", u" %", None))
+        self.eighth_rest_pc.setText(QCoreApplication.translate("MainWindow", u" %", None))
+        self.sixteenth_rest_pc.setText(QCoreApplication.translate("MainWindow", u" %", None))
+        self.thirty_second_rest_pc.setText(QCoreApplication.translate("MainWindow", u" %", None))
+        self.groupBox_3.setTitle(QCoreApplication.translate("MainWindow", u"Output", None))
+        self.label_13.setText(QCoreApplication.translate("MainWindow", u"Score title", None))
+        self.label_9.setText(QCoreApplication.translate("MainWindow", u"Output filename", None))
+        self.label_10.setText(QCoreApplication.translate("MainWindow", u".pdf", None))
+        self.label_7.setText(QCoreApplication.translate("MainWindow", u"Output folder", None))
+        self.open_file_explorer.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.groupBox_5.setTitle(QCoreApplication.translate("MainWindow", u"Notes", None))
+        self.label_16.setText("")
         self.label_14.setText("")
         self.label_15.setText("")
-        self.label_16.setText("")
         self.label_19.setText("")
         self.label_20.setText("")
         self.label_21.setText("")
+        self.whole_note_pc.setText(QCoreApplication.translate("MainWindow", u" %", None))
+        self.half_note_pc.setText(QCoreApplication.translate("MainWindow", u" %", None))
+        self.quarter_note_pc.setText(QCoreApplication.translate("MainWindow", u" %", None))
+        self.eighth_note_pc.setText(QCoreApplication.translate("MainWindow", u" %", None))
+        self.sixteenth_note_pc.setText(QCoreApplication.translate("MainWindow", u" %", None))
+        self.thirty_second_note_pc.setText(QCoreApplication.translate("MainWindow", u" %", None))
     # retranslateUi
 

@@ -11,14 +11,14 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Compunist</string>
+   <string>Dodecaphony</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_4">
     <item row="0" column="0">
      <widget class="QGroupBox" name="groupBox">
       <property name="title">
-       <string>Dodecaphony</string>
+       <string/>
       </property>
       <layout class="QGridLayout" name="gridLayout_6">
        <item row="1" column="0" rowspan="2" colspan="2">
@@ -189,188 +189,260 @@
          </layout>
         </widget>
        </item>
-       <item row="4" column="2">
-        <layout class="QHBoxLayout" name="horizontalLayout_5">
-         <item>
-          <spacer name="horizontalSpacer_2">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="generate_score">
-           <property name="text">
-            <string>Generate score</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="0" column="2" rowspan="3">
-        <widget class="QGroupBox" name="groupBox_2">
+       <item row="3" column="0" colspan="2">
+        <widget class="QGroupBox" name="groupBox_5">
          <property name="title">
-          <string>Voices</string>
+          <string>Notes</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_2">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_3">
+         <layout class="QGridLayout" name="gridLayout_8">
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_16">
             <property name="text">
-             <string>Number of voices</string>
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="resources.qrc">:/icons/quarter note</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
             </property>
             <property name="buddy">
-             <cstring>no_of_voices</cstring>
+             <cstring>quarter_note_slider</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_14">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="resources.qrc">:/icons/whole note</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+            <property name="buddy">
+             <cstring>whole_note_slider</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_15">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="resources.qrc">:/icons/half note</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+            <property name="buddy">
+             <cstring>half_note_slider</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_19">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="resources.qrc">:/icons/eighth note</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+            <property name="buddy">
+             <cstring>eighth_note_slider</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="label_20">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="resources.qrc">:/icons/sixteenth note</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+            <property name="buddy">
+             <cstring>sixteenth_note_slider</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="0">
+           <widget class="QLabel" name="label_21">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="resources.qrc">:/icons/thirty second note</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+            <property name="buddy">
+             <cstring>thirty_second_note_slider</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QSlider" name="eighth_note_slider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QSlider" name="sixteenth_note_slider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="1">
+           <widget class="QSlider" name="thirty_second_note_slider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QSlider" name="half_note_slider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
             </property>
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QSpinBox" name="no_of_voices">
-            <property name="minimum">
-             <number>1</number>
-            </property>
-            <property name="maximum">
-             <number>6</number>
+           <widget class="QSlider" name="whole_note_slider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
             </property>
            </widget>
           </item>
-          <item row="1" column="0" colspan="2">
-           <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item row="2" column="1">
+           <widget class="QSlider" name="quarter_note_slider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QLabel" name="whole_note_pc">
+            <property name="text">
+             <string> %</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLabel" name="half_note_pc">
+            <property name="text">
+             <string> %</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QLabel" name="quarter_note_pc">
+            <property name="text">
+             <string> %</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="2">
+           <widget class="QLabel" name="eighth_note_pc">
+            <property name="text">
+             <string> %</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="2">
+           <widget class="QLabel" name="sixteenth_note_pc">
+            <property name="text">
+             <string> %</string>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="2">
+           <widget class="QLabel" name="thirty_second_note_pc">
+            <property name="text">
+             <string> %</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="5" column="0" colspan="2">
+        <widget class="QGroupBox" name="groupBox_3">
+         <property name="title">
+          <string>Output</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_13">
+            <property name="text">
+             <string>Score title</string>
+            </property>
+            <property name="buddy">
+             <cstring>score_title</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="score_title"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_9">
+            <property name="text">
+             <string>Output filename</string>
+            </property>
+            <property name="buddy">
+             <cstring>output_filename_2</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="output_filename_2"/>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLabel" name="label_10">
+            <property name="text">
+             <string>.pdf</string>
+            </property>
+            <property name="buddy">
+             <cstring>output_filename_2</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_7">
+            <property name="text">
+             <string>Output folder</string>
+            </property>
+            <property name="buddy">
+             <cstring>output_foldername</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout">
             <item>
-             <widget class="QWidget" name="v1" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_6">
-               <item>
-                <widget class="QLabel" name="voice1label">
-                 <property name="styleSheet">
-                  <string notr="true"/>
-                 </property>
-                 <property name="text">
-                  <string>Voice 1</string>
-                 </property>
-                 <property name="buddy">
-                  <cstring>voice1</cstring>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QComboBox" name="voice1"/>
-               </item>
-              </layout>
-             </widget>
+             <widget class="QLineEdit" name="output_foldername"/>
             </item>
             <item>
-             <widget class="QWidget" name="v2" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_7">
-               <item>
-                <widget class="QLabel" name="voice2label">
-                 <property name="styleSheet">
-                  <string notr="true"/>
-                 </property>
-                 <property name="text">
-                  <string>Voice 2</string>
-                 </property>
-                 <property name="buddy">
-                  <cstring>voice2</cstring>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QComboBox" name="voice2"/>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item>
-             <widget class="QWidget" name="v3_2" native="true">
-              <layout class="QHBoxLayout" name="v3">
-               <item>
-                <widget class="QLabel" name="voice3label">
-                 <property name="styleSheet">
-                  <string notr="true"/>
-                 </property>
-                 <property name="text">
-                  <string>Voice 3</string>
-                 </property>
-                 <property name="buddy">
-                  <cstring>voice3</cstring>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QComboBox" name="voice3"/>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item>
-             <widget class="QWidget" name="v4_2" native="true">
-              <layout class="QHBoxLayout" name="v4">
-               <item>
-                <widget class="QLabel" name="voice4label">
-                 <property name="styleSheet">
-                  <string notr="true"/>
-                 </property>
-                 <property name="text">
-                  <string>Voice 4</string>
-                 </property>
-                 <property name="buddy">
-                  <cstring>voice4</cstring>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QComboBox" name="voice4"/>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item>
-             <widget class="QWidget" name="v5_2" native="true">
-              <layout class="QHBoxLayout" name="v5">
-               <item>
-                <widget class="QLabel" name="voice5label">
-                 <property name="styleSheet">
-                  <string notr="true"/>
-                 </property>
-                 <property name="text">
-                  <string>Voice 5</string>
-                 </property>
-                 <property name="buddy">
-                  <cstring>voice5</cstring>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QComboBox" name="voice5"/>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item>
-             <widget class="QWidget" name="v6_2" native="true">
-              <layout class="QHBoxLayout" name="v6">
-               <item>
-                <widget class="QLabel" name="voice6label">
-                 <property name="styleSheet">
-                  <string notr="true"/>
-                 </property>
-                 <property name="text">
-                  <string>Voice 6</string>
-                 </property>
-                 <property name="buddy">
-                  <cstring>voice6</cstring>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QComboBox" name="voice6"/>
-               </item>
-              </layout>
+             <widget class="QPushButton" name="open_file_explorer">
+              <property name="text">
+               <string>...</string>
+              </property>
              </widget>
             </item>
            </layout>
@@ -695,68 +767,164 @@
          </layout>
         </widget>
        </item>
-       <item row="4" column="0" colspan="2">
-        <widget class="QGroupBox" name="groupBox_3">
+       <item row="0" column="2" rowspan="3">
+        <widget class="QGroupBox" name="groupBox_2">
          <property name="title">
-          <string>Output</string>
+          <string>Voices</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_3">
+         <layout class="QGridLayout" name="gridLayout_2">
           <item row="0" column="0">
-           <widget class="QLabel" name="label_13">
+           <widget class="QLabel" name="label_3">
             <property name="text">
-             <string>Score title</string>
+             <string>Number of voices</string>
             </property>
             <property name="buddy">
-             <cstring>score_title</cstring>
+             <cstring>no_of_voices</cstring>
             </property>
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QLineEdit" name="score_title"/>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_9">
-            <property name="text">
-             <string>Output filename</string>
+           <widget class="QSpinBox" name="no_of_voices">
+            <property name="minimum">
+             <number>1</number>
             </property>
-            <property name="buddy">
-             <cstring>output_filename_2</cstring>
+            <property name="maximum">
+             <number>6</number>
             </property>
            </widget>
           </item>
-          <item row="1" column="1">
-           <widget class="QLineEdit" name="output_filename_2"/>
-          </item>
-          <item row="1" column="2">
-           <widget class="QLabel" name="label_10">
-            <property name="text">
-             <string>.pdf</string>
-            </property>
-            <property name="buddy">
-             <cstring>output_filename_2</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="label_7">
-            <property name="text">
-             <string>Output folder</string>
-            </property>
-            <property name="buddy">
-             <cstring>output_foldername</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <layout class="QHBoxLayout" name="horizontalLayout">
+          <item row="1" column="0" colspan="2">
+           <layout class="QVBoxLayout" name="verticalLayout_2">
             <item>
-             <widget class="QLineEdit" name="output_foldername"/>
+             <widget class="QWidget" name="v1" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_6">
+               <item>
+                <widget class="QLabel" name="voice1label">
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
+                 <property name="text">
+                  <string>Voice 1</string>
+                 </property>
+                 <property name="buddy">
+                  <cstring>voice1</cstring>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="voice1"/>
+               </item>
+              </layout>
+             </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="open_file_explorer">
-              <property name="text">
-               <string>...</string>
-              </property>
+             <widget class="QWidget" name="v2" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_7">
+               <item>
+                <widget class="QLabel" name="voice2label">
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
+                 <property name="text">
+                  <string>Voice 2</string>
+                 </property>
+                 <property name="buddy">
+                  <cstring>voice2</cstring>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="voice2"/>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="v3_2" native="true">
+              <layout class="QHBoxLayout" name="v3">
+               <item>
+                <widget class="QLabel" name="voice3label">
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
+                 <property name="text">
+                  <string>Voice 3</string>
+                 </property>
+                 <property name="buddy">
+                  <cstring>voice3</cstring>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="voice3"/>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="v4_2" native="true">
+              <layout class="QHBoxLayout" name="v4">
+               <item>
+                <widget class="QLabel" name="voice4label">
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
+                 <property name="text">
+                  <string>Voice 4</string>
+                 </property>
+                 <property name="buddy">
+                  <cstring>voice4</cstring>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="voice4"/>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="v5_2" native="true">
+              <layout class="QHBoxLayout" name="v5">
+               <item>
+                <widget class="QLabel" name="voice5label">
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
+                 <property name="text">
+                  <string>Voice 5</string>
+                 </property>
+                 <property name="buddy">
+                  <cstring>voice5</cstring>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="voice5"/>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="v6_2" native="true">
+              <layout class="QHBoxLayout" name="v6">
+               <item>
+                <widget class="QLabel" name="voice6label">
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
+                 <property name="text">
+                  <string>Voice 6</string>
+                 </property>
+                 <property name="buddy">
+                  <cstring>voice6</cstring>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="voice6"/>
+               </item>
+              </layout>
              </widget>
             </item>
            </layout>
@@ -764,194 +932,58 @@
          </layout>
         </widget>
        </item>
-       <item row="3" column="0" colspan="2">
-        <widget class="QGroupBox" name="groupBox_5">
+       <item row="5" column="2">
+        <widget class="QGroupBox" name="groupBox_8">
          <property name="title">
-          <string>Notes</string>
+          <string>Generate</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_8">
-          <item row="2" column="0">
-           <widget class="QLabel" name="label_16">
+         <layout class="QGridLayout" name="gridLayout_10">
+          <item row="0" column="0">
+           <widget class="QPushButton" name="generate_series">
             <property name="text">
-             <string/>
-            </property>
-            <property name="pixmap">
-             <pixmap resource="resources.qrc">:/icons/quarter note</pixmap>
-            </property>
-            <property name="scaledContents">
-             <bool>true</bool>
-            </property>
-            <property name="buddy">
-             <cstring>quarter_note_slider</cstring>
+             <string>Generate series</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_14">
+          <item row="3" column="1">
+           <widget class="QPushButton" name="generate_score">
             <property name="text">
-             <string/>
-            </property>
-            <property name="pixmap">
-             <pixmap resource="resources.qrc">:/icons/whole note</pixmap>
-            </property>
-            <property name="scaledContents">
-             <bool>true</bool>
-            </property>
-            <property name="buddy">
-             <cstring>whole_note_slider</cstring>
+             <string>Generate score</string>
             </property>
            </widget>
+          </item>
+          <item row="3" column="0">
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
           </item>
           <item row="1" column="0">
-           <widget class="QLabel" name="label_15">
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
+           <widget class="QLabel" name="series_label">
             <property name="text">
-             <string/>
-            </property>
-            <property name="pixmap">
-             <pixmap resource="resources.qrc">:/icons/half note</pixmap>
-            </property>
-            <property name="scaledContents">
-             <bool>true</bool>
-            </property>
-            <property name="buddy">
-             <cstring>half_note_slider</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="label_19">
-            <property name="text">
-             <string/>
-            </property>
-            <property name="pixmap">
-             <pixmap resource="resources.qrc">:/icons/eighth note</pixmap>
-            </property>
-            <property name="scaledContents">
-             <bool>true</bool>
-            </property>
-            <property name="buddy">
-             <cstring>eighth_note_slider</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="0">
-           <widget class="QLabel" name="label_20">
-            <property name="text">
-             <string/>
-            </property>
-            <property name="pixmap">
-             <pixmap resource="resources.qrc">:/icons/sixteenth note</pixmap>
-            </property>
-            <property name="scaledContents">
-             <bool>true</bool>
-            </property>
-            <property name="buddy">
-             <cstring>sixteenth_note_slider</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="9" column="0">
-           <widget class="QLabel" name="label_21">
-            <property name="text">
-             <string/>
-            </property>
-            <property name="pixmap">
-             <pixmap resource="resources.qrc">:/icons/thirty second note</pixmap>
-            </property>
-            <property name="scaledContents">
-             <bool>true</bool>
-            </property>
-            <property name="buddy">
-             <cstring>thirty_second_note_slider</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="QSlider" name="eighth_note_slider">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="1">
-           <widget class="QSlider" name="sixteenth_note_slider">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item row="9" column="1">
-           <widget class="QSlider" name="thirty_second_note_slider">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QSlider" name="half_note_slider">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+             <string>Series:</string>
             </property>
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QSlider" name="whole_note_slider">
+           <spacer name="horizontalSpacer_2">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QSlider" name="quarter_note_slider">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
             </property>
-           </widget>
-          </item>
-          <item row="0" column="2">
-           <widget class="QLabel" name="whole_note_pc">
-            <property name="text">
-             <string> %</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="2">
-           <widget class="QLabel" name="half_note_pc">
-            <property name="text">
-             <string> %</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="2">
-           <widget class="QLabel" name="quarter_note_pc">
-            <property name="text">
-             <string> %</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="2">
-           <widget class="QLabel" name="eighth_note_pc">
-            <property name="text">
-             <string> %</string>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="2">
-           <widget class="QLabel" name="sixteenth_note_pc">
-            <property name="text">
-             <string> %</string>
-            </property>
-           </widget>
-          </item>
-          <item row="9" column="2">
-           <widget class="QLabel" name="thirty_second_note_pc">
-            <property name="text">
-             <string> %</string>
-            </property>
-           </widget>
+           </spacer>
           </item>
          </layout>
         </widget>
@@ -988,5 +1020,198 @@
  <resources>
   <include location="resources.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>whole_note_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>whole_note_pc</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>232</x>
+     <y>503</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>394</x>
+     <y>508</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>half_note_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>half_note_pc</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>321</x>
+     <y>546</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>389</x>
+     <y>548</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>quarter_note_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>quarter_note_pc</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>298</x>
+     <y>586</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>396</x>
+     <y>582</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>eighth_note_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>eighth_note_pc</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>187</x>
+     <y>623</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>390</x>
+     <y>630</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sixteenth_note_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>sixteenth_note_pc</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>285</x>
+     <y>671</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>386</x>
+     <y>665</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>thirty_second_note_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>thirty_second_note_pc</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>258</x>
+     <y>717</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>391</x>
+     <y>717</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>whole_rest_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>whole_rest_pc</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>714</x>
+     <y>498</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>784</x>
+     <y>506</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>half_rest_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>half_rest_pc</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>637</x>
+     <y>541</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>791</x>
+     <y>547</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>quarter_rest_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>quarter_rest_pc</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>634</x>
+     <y>592</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>784</x>
+     <y>584</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>eighth_rest_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>eighth_rest_pc</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>587</x>
+     <y>631</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>781</x>
+     <y>628</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sixteenth_rest_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>sixteenth_rest_pc</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>581</x>
+     <y>671</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>787</x>
+     <y>664</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>thirty_second_rest_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>thirty_second_rest_pc</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>618</x>
+     <y>710</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>789</x>
+     <y>705</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

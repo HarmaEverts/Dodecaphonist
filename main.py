@@ -1,7 +1,6 @@
 from PySide6 import QtCore, QtGui
 from PySide6.QtWidgets import (
-    QApplication
-, QMainWindow, QFileDialog
+    QApplication, QMainWindow, QFileDialog
 )
 import sys
 from ui_Compunist import Ui_MainWindow
