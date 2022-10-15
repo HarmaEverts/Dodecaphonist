@@ -152,7 +152,16 @@ class MainWindow(QMainWindow):
         self.ui.previousslider.setValue(0)
         self.ui.currentslider.setValue(0)
         self.ui.no_of_repeats.setValue(3)
-
+        self.ui.half_note_slider.setValue(2)
+        self.ui.quarter_note_slider.setValue(17)
+        self.ui.dotted_quarter_note_slider.setValue(22)
+        self.ui.eighth_note_slider.setValue(72)
+        self.ui.dotted_eighth_note_slider.setValue(80)
+        self.ui.sixteenth_note_slider.setValue(90)
+        self.ui.half_rest_slider.setValue(92)
+        self.ui.quarter_rest_slider.setValue(94)
+        self.ui.eighth_rest_slider.setValue(98)
+        self.ui.sixteenth_rest_slider.setValue(100)
 
     def apply_webern_template(self):
         """ Updates the composition settings and UI according to the Webern template. """
@@ -340,7 +349,7 @@ class MainWindow(QMainWindow):
     def generate_series(self):
         if self.validate_settings():
             self.dodec.generate_series()
-            self.ui.generate_series.setText("Regenerate")
+            self.ui.generate_series.setText("Regenerate series")
         else:
             print("Invalid settings, cannot generate series.")
 
