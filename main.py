@@ -21,9 +21,6 @@ class MainWindow(QMainWindow):
         self.ui.composition_mode.addItems(["Select", "Schoenberg", "Webern", "Stravinsky"])
         self.ui.composition_mode.currentIndexChanged.connect(self.update_mode)
 
-        # Voices:
-        self.ui.no_of_voices.valueChanged.connect(self.update_voices)
-
         # Key signature:
         self.ui.key.addItems(["Sharps", "Flats"])
         self.ui.key.currentIndexChanged.connect(self.update_key_signature)
@@ -42,14 +39,12 @@ class MainWindow(QMainWindow):
         # Notes versus rests balance:
         self.ui.notes_rests_slider.valueChanged.connect(self.notes_rests_valuechange)
 
-        # Repeat current note or not:
-        self.ui.repeat_current_note.stateChanged.connect(self.toggle_repeat_current_note)
-        # Chance:
+        # Repeat current note chance:
         self.ui.currentslider.valueChanged.connect(self.update_repeat_current_note_chance)
 
         # Repeat previous note or not (initially disabled):
-        self.ui.repeat_previous_note.setEnabled(False)
-        self.ui.repeat_previous_note.stateChanged.connect(self.toggle_repeat_previous_note)
+        self.ui.previousslider.setEnabled(False)
+        self.ui.previouspercentage.setEnabled(False)
         # Chance:
         self.ui.previousslider.valueChanged.connect(self.update_repeat_previous_note_chance)
 
@@ -85,8 +80,13 @@ class MainWindow(QMainWindow):
         # Set initial focus:
         self.ui.composition_mode.setFocus()
 
-        # Enable 2 voices as the default:
-        self.ui.no_of_voices.setValue(2)
+        # Enable chance of repeating current item
+        self.ui.currentslider.setEnabled(True)
+        self.ui.currentpercentage.setEnabled(True)
+
+        # Disable chance of repeating previous item (until current chance is turned on)
+        self.ui.previousslider.setEnabled(False)
+        self.ui.previouspercentage.setEnabled(False)
 
         # Set drop-down options for voices:
         voice_list = ["Not set", "Soprano", "Mezzo-soprano", "Alto", "Tenor", "Baritone", "Bass"]
@@ -96,6 +96,14 @@ class MainWindow(QMainWindow):
         self.ui.voice4.addItems(voice_list)
         self.ui.voice5.addItems(voice_list)
         self.ui.voice6.addItems(voice_list)
+
+        # Update voices
+        self.ui.voice1.currentIndexChanged.connect(self.update_voices)
+        self.ui.voice2.currentIndexChanged.connect(self.update_voices)
+        self.ui.voice3.currentIndexChanged.connect(self.update_voices)
+        self.ui.voice4.currentIndexChanged.connect(self.update_voices)
+        self.ui.voice5.currentIndexChanged.connect(self.update_voices)
+        self.ui.voice6.currentIndexChanged.connect(self.update_voices)
 
     # SLOTS =================================================================
 
@@ -124,7 +132,6 @@ class MainWindow(QMainWindow):
 
     def apply_schoenberg_template(self):
         """ Updates the composition settings and UI according to the Schoenberg template. """
-        self.ui.no_of_voices.setValue(4)
         self.ui.voice1.setCurrentIndex(1)
         self.ui.voice2.setCurrentIndex(3)
         self.ui.voice3.setCurrentIndex(4)
@@ -136,8 +143,6 @@ class MainWindow(QMainWindow):
         self.ui.notes_rests_slider.setValue(91)
         self.ui.score_title.setText("Schoenberg")
         self.ui.output_filename_2.setText("Schoenberg")
-        self.ui.repeat_previous_note.setEnabled(False)
-        self.ui.repeat_current_note.setEnabled(False)
         self.ui.previousslider.setValue(0)
         self.ui.currentslider.setValue(0)
         self.ui.no_of_repeats.setValue(3)
@@ -154,66 +159,22 @@ class MainWindow(QMainWindow):
         self.dodec.repeats = self.ui.no_of_repeats.value()
 
     def update_voices(self):
-        """ Update the number of voices (1-6) """
-        voices = self.ui.no_of_voices.value()
+        """ Update the voices (1-6) """
+        self.dodec.voices = []
+        if self.ui.voice1.currentIndex() != 0:
+            self.dodec.voices.append(self.ui.voice1.currentIndex())
+        if self.ui.voice2.currentIndex() != 0:
+            self.dodec.voices.append(self.ui.voice2.currentIndex())
+        if self.ui.voice3.currentIndex() != 0:
+            self.dodec.voices.append(self.ui.voice3.currentIndex())
+        if self.ui.voice4.currentIndex() != 0:
+            self.dodec.voices.append(self.ui.voice4.currentIndex())
+        if self.ui.voice5.currentIndex() != 0:
+            self.dodec.voices.append(self.ui.voice5.currentIndex())
+        if self.ui.voice6.currentIndex() != 0:
+            self.dodec.voices.append(self.ui.voice6.currentIndex())
 
-        if voices == 1:
-            self.ui.v1.setEnabled(True)
-            self.ui.v2.setEnabled(False)
-            self.ui.voice2.setCurrentIndex(0)
-            self.ui.v3_2.setEnabled(False)
-            self.ui.voice3.setCurrentIndex(0)
-            self.ui.v4_2.setEnabled(False)
-            self.ui.voice4.setCurrentIndex(0)
-            self.ui.v5_2.setEnabled(False)
-            self.ui.voice5.setCurrentIndex(0)
-            self.ui.v6_2.setEnabled(False)
-            self.ui.voice6.setCurrentIndex(0)
-        elif voices == 2:
-            self.ui.v1.setEnabled(True)
-            self.ui.v2.setEnabled(True)
-            self.ui.v3_2.setEnabled(False)
-            self.ui.voice3.setCurrentIndex(0)
-            self.ui.v4_2.setEnabled(False)
-            self.ui.voice4.setCurrentIndex(0)
-            self.ui.v5_2.setEnabled(False)
-            self.ui.voice5.setCurrentIndex(0)
-            self.ui.v6_2.setEnabled(False)
-            self.ui.voice6.setCurrentIndex(0)
-        elif voices == 3:
-            self.ui.v1.setEnabled(True)
-            self.ui.v2.setEnabled(True)
-            self.ui.v3_2.setEnabled(True)
-            self.ui.v4_2.setEnabled(False)
-            self.ui.voice4.setCurrentIndex(0)
-            self.ui.v5_2.setEnabled(False)
-            self.ui.voice5.setCurrentIndex(0)
-            self.ui.v6_2.setEnabled(False)
-            self.ui.voice6.setCurrentIndex(0)
-        elif voices == 4:
-            self.ui.v1.setEnabled(True)
-            self.ui.v2.setEnabled(True)
-            self.ui.v3_2.setEnabled(True)
-            self.ui.v4_2.setEnabled(True)
-            self.ui.v5_2.setEnabled(False)
-            self.ui.voice5.setCurrentIndex(0)
-            self.ui.v6_2.setEnabled(False)
-            self.ui.voice6.setCurrentIndex(0)
-        elif voices == 5:
-            self.ui.v1.setEnabled(True)
-            self.ui.v2.setEnabled(True)
-            self.ui.v3_2.setEnabled(True)
-            self.ui.v4_2.setEnabled(True)
-            self.ui.v5_2.setEnabled(True)
-            self.ui.v6_2.setEnabled(False)
-            self.ui.voice6.setCurrentIndex(0)
-        elif voices == 6:
-            self.ui.v1.setEnabled(True)
-            self.ui.v2.setEnabled(True)
-            self.ui.v3_2.setEnabled(True)
-            self.ui.v4_2.setEnabled(True)
-            self.ui.v5_2.setEnabled(True)
-            self.ui.v6_2.setEnabled(True)
+        self.dodec.no_of_voices = len(self.dodec.voices)
 
     def notes_rests_valuechange(self):
         """ Checks the value of the notes - rests slider, and updates the notes and rests percentage labels accordingly.
@@ -223,32 +184,27 @@ class MainWindow(QMainWindow):
         self.ui.percent_notes.setText(str(notes_value) + " % notes")
         self.ui.percent_rests.setText(str(rests_value) + " % rests")
 
-    def toggle_repeat_current_note(self):
+    def update_repeat_note_settings(self):
         """ Toggles the repeat current note details depending on whether the checkbox is selected. """
-        self.ui.currentlabel.setEnabled(self.ui.repeat_current_note.isChecked())
-        self.ui.currentslider.setEnabled(self.ui.repeat_current_note.isChecked())
-        self.ui.currentpercentage.setEnabled(self.ui.repeat_current_note.isChecked())
-
-        if self.ui.repeat_current_note.isChecked():
-            self.ui.repeat_previous_note.setEnabled(True)
-        else:
-            self.ui.repeat_previous_note.setChecked(False)
-            self.toggle_repeat_previous_note()
-            self.ui.repeat_previous_note.setEnabled(False)
+        if self.ui.currentslider.value() != 0:  # Current note repetition is on -> previous is enabled.
+            self.ui.previouspercentage.setEnabled(True)
+            self.ui.previousslider.setEnabled(True)
+        else:  # Current note repetition is off -> previous must also be off.
+            self.ui.previouspercentage.setEnabled(False)
+            self.ui.previousslider.setEnabled(False)
+            self.ui.previousslider.setValue(0)
 
     def update_repeat_current_note_chance(self):
         """ Updates the chance of repeating the current note. """
         self.ui.currentpercentage.setText(str(self.ui.currentslider.value()) + " %")
-
-    def toggle_repeat_previous_note(self):
-        """ Toggles the repeat previous note details depending on whether the checkbox is selected."""
-        self.ui.previouslabel.setEnabled(self.ui.repeat_previous_note.isChecked())
-        self.ui.previousslider.setEnabled(self.ui.repeat_previous_note.isChecked())
-        self.ui.previouspercentage.setEnabled(self.ui.repeat_previous_note.isChecked())
+        self.dodec.current_chance = self.ui.currentslider.value()
+        self.update_repeat_note_settings()
 
     def update_repeat_previous_note_chance(self):
         """ Updates the chance of repeating the previous note. """
         self.ui.previouspercentage.setText(str(self.ui.previousslider.value()) + " %")
+        self.dodec.previous_chance = self.ui.previousslider.value()
+        self.update_repeat_note_settings()
 
     def update_whole_note(self):
         self.ui.whole_note_pc.setText(str(self.ui.whole_note_slider.value()) + '%')

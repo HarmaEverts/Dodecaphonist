@@ -30,10 +30,7 @@
           <item row="2" column="0">
            <widget class="QLabel" name="label_12">
             <property name="text">
-             <string>Repeat current note</string>
-            </property>
-            <property name="buddy">
-             <cstring>repeat_current_note</cstring>
+             <string>Repeat current note chance</string>
             </property>
            </widget>
           </item>
@@ -50,35 +47,15 @@
           <item row="2" column="1">
            <layout class="QHBoxLayout" name="horizontalLayout_3">
             <item>
-             <widget class="QCheckBox" name="repeat_current_note">
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="currentlabel">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-              <property name="text">
-               <string>    Chance</string>
-              </property>
-              <property name="buddy">
-               <cstring>currentslider</cstring>
-              </property>
-             </widget>
-            </item>
-            <item>
              <widget class="QSlider" name="currentslider">
               <property name="enabled">
                <bool>false</bool>
               </property>
               <property name="minimum">
-               <number>1</number>
+               <number>0</number>
               </property>
               <property name="maximum">
-               <number>100</number>
+               <number>99</number>
               </property>
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
@@ -116,35 +93,15 @@
           <item row="3" column="1">
            <layout class="QHBoxLayout" name="horizontalLayout_2">
             <item>
-             <widget class="QCheckBox" name="repeat_previous_note">
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="previouslabel">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-              <property name="text">
-               <string>    Chance</string>
-              </property>
-              <property name="buddy">
-               <cstring>previousslider</cstring>
-              </property>
-             </widget>
-            </item>
-            <item>
              <widget class="QSlider" name="previousslider">
               <property name="enabled">
                <bool>false</bool>
               </property>
               <property name="minimum">
-               <number>1</number>
+               <number>0</number>
               </property>
               <property name="maximum">
-               <number>100</number>
+               <number>99</number>
               </property>
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
@@ -179,10 +136,7 @@
           <item row="3" column="0">
            <widget class="QLabel" name="label_11">
             <property name="text">
-             <string>Repeat previous note</string>
-            </property>
-            <property name="buddy">
-             <cstring>repeat_previous_note</cstring>
+             <string>Repeat previous note chance</string>
             </property>
            </widget>
           </item>
@@ -195,35 +149,81 @@
           <string>Notes</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_8">
-          <item row="2" column="0">
-           <widget class="QLabel" name="label_16">
+          <item row="1" column="2">
+           <widget class="QLabel" name="half_note_pc">
             <property name="text">
-             <string/>
-            </property>
-            <property name="pixmap">
-             <pixmap resource="resources.qrc">:/icons/quarter note</pixmap>
-            </property>
-            <property name="scaledContents">
-             <bool>true</bool>
-            </property>
-            <property name="buddy">
-             <cstring>quarter_note_slider</cstring>
+             <string>0%</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_14">
+          <item row="2" column="1">
+           <widget class="QSlider" name="quarter_note_slider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QSlider" name="sixteenth_note_slider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QLabel" name="quarter_note_pc">
+            <property name="text">
+             <string>0%</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="2">
+           <widget class="QLabel" name="sixteenth_note_pc">
+            <property name="text">
+             <string>0%</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="2">
+           <widget class="QLabel" name="eighth_note_pc">
+            <property name="text">
+             <string>0%</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QSlider" name="whole_note_slider">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="1">
+           <widget class="QSlider" name="thirty_second_note_slider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_19">
             <property name="text">
              <string/>
             </property>
             <property name="pixmap">
-             <pixmap resource="resources.qrc">:/icons/whole note</pixmap>
+             <pixmap resource="resources.qrc">:/icons/eighth note</pixmap>
             </property>
             <property name="scaledContents">
              <bool>true</bool>
             </property>
             <property name="buddy">
-             <cstring>whole_note_slider</cstring>
+             <cstring>eighth_note_slider</cstring>
             </property>
            </widget>
           </item>
@@ -246,35 +246,36 @@
             </property>
            </widget>
           </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="label_19">
+          <item row="0" column="2">
+           <widget class="QLabel" name="whole_note_pc">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
             <property name="text">
-             <string/>
-            </property>
-            <property name="pixmap">
-             <pixmap resource="resources.qrc">:/icons/eighth note</pixmap>
-            </property>
-            <property name="scaledContents">
-             <bool>true</bool>
-            </property>
-            <property name="buddy">
-             <cstring>eighth_note_slider</cstring>
+             <string>0%</string>
             </property>
            </widget>
           </item>
-          <item row="6" column="0">
-           <widget class="QLabel" name="label_20">
+          <item row="4" column="1">
+           <widget class="QSlider" name="eighth_note_slider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_16">
             <property name="text">
              <string/>
             </property>
             <property name="pixmap">
-             <pixmap resource="resources.qrc">:/icons/sixteenth note</pixmap>
+             <pixmap resource="resources.qrc">:/icons/quarter note</pixmap>
             </property>
             <property name="scaledContents">
              <bool>true</bool>
             </property>
             <property name="buddy">
-             <cstring>sixteenth_note_slider</cstring>
+             <cstring>quarter_note_slider</cstring>
             </property>
            </widget>
           </item>
@@ -294,24 +295,42 @@
             </property>
            </widget>
           </item>
-          <item row="4" column="1">
-           <widget class="QSlider" name="eighth_note_slider">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+          <item row="9" column="2">
+           <widget class="QLabel" name="thirty_second_note_pc">
+            <property name="text">
+             <string>0%</string>
             </property>
            </widget>
           </item>
-          <item row="6" column="1">
-           <widget class="QSlider" name="sixteenth_note_slider">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+          <item row="6" column="0">
+           <widget class="QLabel" name="label_20">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="resources.qrc">:/icons/sixteenth note</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+            <property name="buddy">
+             <cstring>sixteenth_note_slider</cstring>
             </property>
            </widget>
           </item>
-          <item row="9" column="1">
-           <widget class="QSlider" name="thirty_second_note_slider">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_14">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="resources.qrc">:/icons/whole note</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+            <property name="buddy">
+             <cstring>whole_note_slider</cstring>
             </property>
            </widget>
           </item>
@@ -319,62 +338,6 @@
            <widget class="QSlider" name="half_note_slider">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QSlider" name="whole_note_slider">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QSlider" name="quarter_note_slider">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2">
-           <widget class="QLabel" name="whole_note_pc">
-            <property name="text">
-             <string>0%</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="2">
-           <widget class="QLabel" name="half_note_pc">
-            <property name="text">
-             <string>0%</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="2">
-           <widget class="QLabel" name="quarter_note_pc">
-            <property name="text">
-             <string>0%</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="2">
-           <widget class="QLabel" name="eighth_note_pc">
-            <property name="text">
-             <string>0%</string>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="2">
-           <widget class="QLabel" name="sixteenth_note_pc">
-            <property name="text">
-             <string>0%</string>
-            </property>
-           </widget>
-          </item>
-          <item row="9" column="2">
-           <widget class="QLabel" name="thirty_second_note_pc">
-            <property name="text">
-             <string>0%</string>
             </property>
            </widget>
           </item>
@@ -500,13 +463,6 @@
            </layout>
           </item>
          </layout>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QLabel" name="label_18">
-         <property name="text">
-          <string/>
-         </property>
         </widget>
        </item>
        <item row="3" column="2">
@@ -704,27 +660,7 @@
           <string>Voices</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_2">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_3">
-            <property name="text">
-             <string>Number of voices</string>
-            </property>
-            <property name="buddy">
-             <cstring>no_of_voices</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QSpinBox" name="no_of_voices">
-            <property name="minimum">
-             <number>1</number>
-            </property>
-            <property name="maximum">
-             <number>6</number>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0" colspan="2">
+          <item row="0" column="0" colspan="2">
            <layout class="QVBoxLayout" name="verticalLayout_2">
             <item>
              <widget class="QWidget" name="v1" native="true">
@@ -990,9 +926,7 @@
   <tabstop>notes_rests_slider</tabstop>
   <tabstop>composition_mode</tabstop>
   <tabstop>no_of_repeats</tabstop>
-  <tabstop>repeat_current_note</tabstop>
   <tabstop>currentslider</tabstop>
-  <tabstop>repeat_previous_note</tabstop>
   <tabstop>previousslider</tabstop>
   <tabstop>whole_note_slider</tabstop>
   <tabstop>half_note_slider</tabstop>
@@ -1001,7 +935,6 @@
   <tabstop>sixteenth_note_slider</tabstop>
   <tabstop>thirty_second_note_slider</tabstop>
   <tabstop>generate_series</tabstop>
-  <tabstop>no_of_voices</tabstop>
   <tabstop>voice1</tabstop>
   <tabstop>voice2</tabstop>
   <tabstop>voice3</tabstop>
