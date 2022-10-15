@@ -53,18 +53,24 @@ class MainWindow(QMainWindow):
 
         # Settings for different note and rest types:
         self.ui.whole_note_slider.valueChanged.connect(self.update_whole_note)
+        self.ui.dotted_whole_note_slider.valueChanged.connect(self.update_dotted_whole_note)
         self.ui.half_note_slider.valueChanged.connect(self.update_half_note)
+        self.ui.dotted_half_note_slider.valueChanged.connect(self.update_dotted_half_note)
         self.ui.quarter_note_slider.valueChanged.connect(self.update_quarter_note)
+        self.ui.dotted_quarter_note_slider.valueChanged.connect(self.update_dotted_quarter_note)
         self.ui.eighth_note_slider.valueChanged.connect(self.update_eighth_note)
+        self.ui.dotted_eighth_note_slider.valueChanged.connect(self.update_dotted_eighth_note)
         self.ui.sixteenth_note_slider.valueChanged.connect(self.update_sixteenth_note)
-        self.ui.thirty_second_note_slider.valueChanged.connect(self.update_thirty_second_note)
 
         self.ui.whole_rest_slider.valueChanged.connect(self.update_whole_rest)
+        self.ui.dotted_whole_rest_slider.valueChanged.connect(self.update_dotted_whole_rest)
         self.ui.half_rest_slider.valueChanged.connect(self.update_half_rest)
+        self.ui.dotted_half_rest_slider.valueChanged.connect(self.update_dotted_half_rest)
         self.ui.quarter_rest_slider.valueChanged.connect(self.update_quarter_rest)
+        self.ui.dotted_quarter_rest_slider.valueChanged.connect(self.update_dotted_quarter_rest)
         self.ui.eighth_rest_slider.valueChanged.connect(self.update_eighth_rest)
+        self.ui.dotted_eighth_rest_slider.valueChanged.connect(self.update_dotted_eighth_rest)
         self.ui.sixteenth_rest_slider.valueChanged.connect(self.update_sixteenth_rest)
-        self.ui.thirty_second_rest_slider.valueChanged.connect(self.update_thirty_second_rest)
 
         # Select output folder:
         self.ui.open_file_explorer.clicked.connect(self.update_folder_name)
@@ -147,6 +153,7 @@ class MainWindow(QMainWindow):
         self.ui.currentslider.setValue(0)
         self.ui.no_of_repeats.setValue(3)
 
+
     def apply_webern_template(self):
         """ Updates the composition settings and UI according to the Webern template. """
         print("Webern")
@@ -210,49 +217,73 @@ class MainWindow(QMainWindow):
         self.ui.whole_note_pc.setText(str(self.ui.whole_note_slider.value()) + '%')
         self.dodec.note_chances["Whole"] = self.ui.whole_note_slider.value()
 
+    def update_dotted_whole_note(self):
+        self.ui.dotted_whole_note_pc.setText(str(self.ui.dotted_whole_note_slider.value()) + '%')
+        self.dodec.note_chances["Dotted-whole"] = self.ui.dotted_whole_note_slider.value()
+
     def update_half_note(self):
         self.ui.half_note_pc.setText(str(self.ui.half_note_slider.value()) + '%')
         self.dodec.note_chances["Half"] = self.ui.half_note_slider.value()
+
+    def update_dotted_half_note(self):
+        self.ui.dotted_half_note_pc.setText(str(self.ui.dotted_half_note_slider.value()) + '%')
+        self.dodec.note_chances["Dotted-half"] = self.ui.dotted_half_note_slider.value()
 
     def update_quarter_note(self):
         self.ui.quarter_note_pc.setText(str(self.ui.quarter_note_slider.value()) + '%')
         self.dodec.note_chances["Quarter"] = self.ui.quarter_note_slider.value()
 
+    def update_dotted_quarter_note(self):
+        self.ui.dotted_quarter_note_pc.setText(str(self.ui.dotted_quarter_note_slider.value()) + '%')
+        self.dodec.note_chances["Dotted-quarter"] = self.ui.dotted_quarter_note_slider.value()
+
     def update_eighth_note(self):
         self.ui.eighth_note_pc.setText(str(self.ui.eighth_note_slider.value()) + '%')
         self.dodec.note_chances["Eighth"] = self.ui.eighth_note_slider.value()
+
+    def update_dotted_eighth_note(self):
+        self.ui.dotted_eighth_note_pc.setText(str(self.ui.dotted_eighth_note_slider.value()) + '%')
+        self.dodec.note_chances["Dotted-eighth"] = self.ui.dotted_eighth_note_slider.value()
 
     def update_sixteenth_note(self):
         self.ui.sixteenth_note_pc.setText(str(self.ui.sixteenth_note_slider.value()) + '%')
         self.dodec.note_chances["Sixteenth"] = self.ui.sixteenth_note_slider.value()
 
-    def update_thirty_second_note(self):
-        self.ui.thirty_second_note_pc.setText(str(self.ui.thirty_second_note_slider.value()) + '%')
-        self.dodec.note_chances["Thirty-second"] = self.ui.thirty_second_note_slider.value()
-
     def update_whole_rest(self):
         self.ui.whole_rest_pc.setText(str(self.ui.whole_rest_slider.value()) + '%')
         self.dodec.rest_chances["Whole"] = self.ui.whole_rest_slider.value()
+
+    def update_dotted_whole_rest(self):
+        self.ui.dotted_whole_rest_pc.setText(str(self.ui.dotted_whole_rest_slider.value()) + '%')
+        self.dodec.rest_chances["Dotted-whole"] = self.ui.dotted_whole_rest_slider.value()
 
     def update_half_rest(self):
         self.ui.half_rest_pc.setText(str(self.ui.half_rest_slider.value()) + '%')
         self.dodec.rest_chances["Half"] = self.ui.half_rest_slider.value()
 
+    def update_dotted_half_rest(self):
+        self.ui.dotted_half_rest_pc.setText(str(self.ui.dotted_half_rest_slider.value()) + '%')
+        self.dodec.rest_chances["Dotted-half"] = self.ui.dotted_half_rest_slider.value()
+
     def update_quarter_rest(self):
         self.ui.quarter_rest_pc.setText(str(self.ui.quarter_rest_slider.value()) + '%')
         self.dodec.rest_chances["Quarter"] = self.ui.quarter_rest_slider.value()
+
+    def update_dotted_quarter_rest(self):
+        self.ui.dotted_quarter_rest_pc.setText(str(self.ui.dotted_quarter_rest_slider.value()) + '%')
+        self.dodec.rest_chances["Dotted-quarter"] = self.ui.dotted_quarter_rest_slider.value()
 
     def update_eighth_rest(self):
         self.ui.eighth_rest_pc.setText(str(self.ui.eighth_rest_slider.value()) + '%')
         self.dodec.rest_chances["Eighth"] = self.ui.eighth_rest_slider.value()
 
+    def update_dotted_eighth_rest(self):
+        self.ui.dotted_eighth_rest_pc.setText(str(self.ui.dotted_eighth_rest_slider.value()) + '%')
+        self.dodec.rest_chances["Dotted-eighth"] = self.ui.dotted_eighth_rest_slider.value()
+
     def update_sixteenth_rest(self):
         self.ui.sixteenth_rest_pc.setText(str(self.ui.sixteenth_rest_slider.value()) + '%')
         self.dodec.rest_chances["Sixteenth"] = self.ui.sixteenth_rest_slider.value()
-
-    def update_thirty_second_rest(self):
-        self.ui.thirty_second_note_pc.setText(str(self.ui.thirty_second_note_slider.value()) + '%')
-        self.dodec.rest_chances["Thirty-second"] = self.ui.thirty_second_rest_slider.value()
 
     def update_folder_name(self):
         """ Selects the folder in which the generated files will be saved. """
@@ -267,26 +298,32 @@ class MainWindow(QMainWindow):
         self.dodec.time_enumerator = self.ui.time_enumerator.currentIndex() + 1
         self.dodec.time_denominator = int(self.ui.time_denominator.currentText())
         self.dodec.repeats = self.ui.no_of_repeats.value()
-        self.dodec.voices = self.ui.no_of_voices.value()
+        self.update_voices()
         self.dodec.tempo = self.ui.tempo.value()
         self.dodec.notes_value = self.ui.notes_rests_slider.value()
         self.dodec.rests_value = 100 - self.dodec.notes_value
-        self.dodec.repeat_current = self.ui.repeat_current_note.isChecked()
+        self.dodec.repeat_current = self.ui.currentslider.value() != 0
         self.dodec.current_chance = self.ui.currentslider.value()
-        self.dodec.repeat_previous = self.ui.repeat_previous_note.isChecked()
+        self.dodec.repeat_previous = self.ui.currentslider.value() != 0
         self.dodec.previous_chance = self.ui.previousslider.value()
         self.dodec.note_chances["Whole"] = self.ui.whole_note_slider.value()
+        self.dodec.note_chances["Dotted-whole"] = self.ui.dotted_whole_note_slider.value()
         self.dodec.note_chances["Half"] = self.ui.half_note_slider.value()
+        self.dodec.note_chances["Dotted-half"] = self.ui.dotted_half_note_slider.value()
         self.dodec.note_chances["Quarter"] = self.ui.quarter_note_slider.value()
+        self.dodec.note_chances["Dotted-quarter"] = self.ui.dotted_quarter_note_slider.value()
         self.dodec.note_chances["Eighth"] = self.ui.eighth_note_slider.value()
+        self.dodec.note_chances["Dotted-eighth"] = self.ui.dotted_eighth_note_slider.value()
         self.dodec.note_chances["Sixteenth"] = self.ui.sixteenth_note_slider.value()
-        self.dodec.note_chances["Thirty-second"] = self.ui.thirty_second_note_slider.value()
         self.dodec.rest_chances["Whole"] = self.ui.whole_rest_slider.value()
+        self.dodec.rest_chances["Dotted-whole"] = self.ui.dotted_whole_rest_slider.value()
         self.dodec.rest_chances["Half"] = self.ui.half_rest_slider.value()
+        self.dodec.rest_chances["Dotted-half"] = self.ui.dotted_half_rest_slider.value()
         self.dodec.rest_chances["Quarter"] = self.ui.quarter_rest_slider.value()
+        self.dodec.rest_chances["Dotted-quarter"] = self.ui.dotted_quarter_rest_slider.value()
         self.dodec.rest_chances["Eighth"] = self.ui.eighth_rest_slider.value()
+        self.dodec.rest_chances["Dotted-eighth"] = self.ui.dotted_eighth_rest_slider.value()
         self.dodec.rest_chances["Sixteenth"] = self.ui.sixteenth_rest_slider.value()
-        self.dodec.rest_chances["Thirty-second"] = self.ui.thirty_second_rest_slider.value()
         self.dodec.title = self.ui.score_title.text()
         self.dodec.filename = self.ui.output_filename_2.text()
         self.dodec.foldername = self.ui.output_foldername.text()

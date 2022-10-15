@@ -19,17 +19,23 @@ class Dodecaphony():
         self.inverse = []
         self.retrogradeinverse = []
         self.note_chances = {"Whole": 0,
+                             "Dotted-whole": 0,
                              "Half": 0,
+                             "Dotted-half": 0,
                              "Quarter": 0,
+                             "Dotted-quarter": 0,
                              "Eighth": 0,
-                             "Sixteenth": 0,
-                             "Thirty-second": 0}
+                             "Dotted-eighth": 0,
+                             "Sixteenth": 0}
         self.rest_chances = {"Whole": 0,
+                             "Dotted-whole": 0,
                              "Half": 0,
+                             "Dotted-half": 0,
                              "Quarter": 0,
+                             "Dotted-quarter": 0,
                              "Eighth": 0,
-                             "Sixteenth": 0,
-                             "Thirty-second": 0}
+                             "Dotted-eighth": 0,
+                             "Sixteenth": 0}
 
 
     def generate_series(self):

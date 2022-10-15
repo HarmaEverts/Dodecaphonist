@@ -13,5 +13,13 @@
         <file alias="thirty second rest">images/thirty second rest.png</file>
         <file alias="whole note">images/whole_note.png</file>
         <file alias="whole rest">images/whole rest.png</file>
+        <file alias="dotted whole note">images/dotted_whole_note.png</file>
+        <file alias="dotted whole rest">images/dotted_whole_rest.png</file>
+        <file alias="dotted half note">images/dotted_half_note.png</file>
+        <file alias="dotted half rest">images/dotted_half_rest.png</file>
+        <file alias="dotted quarter note">images/dotted_quarter_note.png</file>
+        <file alias="dotted quarter rest">images/dotted_quarter_rest.png</file>
+        <file alias="dotted eighth note">images/dotted_eighth_note.png</file>
+        <file alias="dotted eighth rest">images/dotted_eighth_rest.png</file>
     </qresource>
 </RCC>
