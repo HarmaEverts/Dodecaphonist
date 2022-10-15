@@ -14,7 +14,7 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
         self.dodec = Dodecaphony()
 
-    # SIGNALS ===============================================================================
+        # SIGNALS ===============================================================================
 
         # Set up the UI options in drop-downs etc.
         # Compusition template:
@@ -26,12 +26,18 @@ class MainWindow(QMainWindow):
 
         # Key signature:
         self.ui.key.addItems(["Sharps", "Flats"])
+        self.ui.key.currentIndexChanged.connect(self.update_key_signature)
 
         # Time signature:
         enumerator_options = range(1, 13)
         denominator_options = [1, 2, 4, 8, 16, 32]
         self.ui.time_enumerator.addItems([str(x) for x in enumerator_options])
         self.ui.time_denominator.addItems([str(x) for x in denominator_options])
+        self.ui.time_enumerator.currentIndexChanged.connect(self.update_time_enumerator)
+        self.ui.time_denominator.currentIndexChanged.connect(self.update_time_denominator)
+
+        # Tempo:
+        self.ui.tempo.valueChanged.connect(self.update_tempo)
 
         # Notes versus rests balance:
         self.ui.notes_rests_slider.valueChanged.connect(self.notes_rests_valuechange)
@@ -47,26 +53,43 @@ class MainWindow(QMainWindow):
         # Chance:
         self.ui.previousslider.valueChanged.connect(self.update_repeat_previous_note_chance)
 
+        # Number of series repeats:
+        self.ui.no_of_repeats.valueChanged.connect(self.update_no_of_repeats)
+
+        # Settings for different note and rest types:
+        self.ui.whole_note_slider.valueChanged.connect(self.update_whole_note)
+        self.ui.half_note_slider.valueChanged.connect(self.update_half_note)
+        self.ui.quarter_note_slider.valueChanged.connect(self.update_quarter_note)
+        self.ui.eighth_note_slider.valueChanged.connect(self.update_eighth_note)
+        self.ui.sixteenth_note_slider.valueChanged.connect(self.update_sixteenth_note)
+        self.ui.thirty_second_note_slider.valueChanged.connect(self.update_thirty_second_note)
+
+        self.ui.whole_rest_slider.valueChanged.connect(self.update_whole_rest)
+        self.ui.half_rest_slider.valueChanged.connect(self.update_half_rest)
+        self.ui.quarter_rest_slider.valueChanged.connect(self.update_quarter_rest)
+        self.ui.eighth_rest_slider.valueChanged.connect(self.update_eighth_rest)
+        self.ui.sixteenth_rest_slider.valueChanged.connect(self.update_sixteenth_rest)
+        self.ui.thirty_second_rest_slider.valueChanged.connect(self.update_thirty_second_rest)
+
         # Select output folder:
         self.ui.open_file_explorer.clicked.connect(self.update_folder_name)
+
+        # Generate the series:
+        self.ui.generate_series.clicked.connect(self.generate_series)
 
         # Generate the compusition:
         self.ui.generate_score.clicked.connect(self.create_score)
 
-    # INITIAL UI SETTINGS ==================================================+
+        # INITIAL UI SETTINGS ==================================================
 
         # Set initial focus:
         self.ui.composition_mode.setFocus()
 
-        # Hide extra voices and their labels:
-        self.ui.v2.hide()
-        self.ui.v3_2.hide()
-        self.ui.v4_2.hide()
-        self.ui.v5_2.hide()
-        self.ui.v6_2.hide()
+        # Enable 2 voices as the default:
+        self.ui.no_of_voices.setValue(2)
 
         # Set drop-down options for voices:
-        voice_list = ["Soprano", "Mezzo-soprano", "Alto", "Tenor", "Baritone", "Bass"]
+        voice_list = ["Not set", "Soprano", "Mezzo-soprano", "Alto", "Tenor", "Baritone", "Bass"]
         self.ui.voice1.addItems(voice_list)
         self.ui.voice2.addItems(voice_list)
         self.ui.voice3.addItems(voice_list)
@@ -75,6 +98,19 @@ class MainWindow(QMainWindow):
         self.ui.voice6.addItems(voice_list)
 
     # SLOTS =================================================================
+
+    def update_key_signature(self):
+        self.dodec.key = self.ui.key.currentIndex()
+
+    def update_time_enumerator(self):
+        self.dodec.time_enumerator = self.ui.time_enumerator.currentIndex() + 1
+
+    def update_time_denominator(self):
+        self.dodec.time_denominator = int(self.ui.time_denominator.currentText())
+
+    def update_tempo(self):
+        self.dodec.tempo = self.ui.tempo.value()
+
     def update_mode(self):
         """
         Updates the composition settings based on the selected mode.
@@ -89,10 +125,10 @@ class MainWindow(QMainWindow):
     def apply_schoenberg_template(self):
         """ Updates the composition settings and UI according to the Schoenberg template. """
         self.ui.no_of_voices.setValue(4)
-        self.ui.voice1.setCurrentIndex(0)
-        self.ui.voice2.setCurrentIndex(2)
-        self.ui.voice3.setCurrentIndex(3)
-        self.ui.voice4.setCurrentIndex(5)
+        self.ui.voice1.setCurrentIndex(1)
+        self.ui.voice2.setCurrentIndex(3)
+        self.ui.voice3.setCurrentIndex(4)
+        self.ui.voice4.setCurrentIndex(6)
         self.ui.key.setCurrentIndex(1)
         self.ui.tempo.setValue(44)
         self.ui.time_enumerator.setCurrentIndex(1)
@@ -114,52 +150,70 @@ class MainWindow(QMainWindow):
         """ Updates the composition settings and UI according to the Stravinsky template. """
         print("Stravinsky")
 
+    def update_no_of_repeats(self):
+        self.dodec.repeats = self.ui.no_of_repeats.value()
+
     def update_voices(self):
         """ Update the number of voices (1-6) """
         voices = self.ui.no_of_voices.value()
 
         if voices == 1:
-            self.ui.v1.show()
-            self.ui.v2.hide()
-            self.ui.v3_2.hide()
-            self.ui.v4_2.hide()
-            self.ui.v5_2.hide()
-            self.ui.v6_2.hide()
+            self.ui.v1.setEnabled(True)
+            self.ui.v2.setEnabled(False)
+            self.ui.voice2.setCurrentIndex(0)
+            self.ui.v3_2.setEnabled(False)
+            self.ui.voice3.setCurrentIndex(0)
+            self.ui.v4_2.setEnabled(False)
+            self.ui.voice4.setCurrentIndex(0)
+            self.ui.v5_2.setEnabled(False)
+            self.ui.voice5.setCurrentIndex(0)
+            self.ui.v6_2.setEnabled(False)
+            self.ui.voice6.setCurrentIndex(0)
         elif voices == 2:
-            self.ui.v1.show()
-            self.ui.v2.show()
-            self.ui.v3_2.hide()
-            self.ui.v4_2.hide()
-            self.ui.v5_2.hide()
-            self.ui.v6_2.hide()
+            self.ui.v1.setEnabled(True)
+            self.ui.v2.setEnabled(True)
+            self.ui.v3_2.setEnabled(False)
+            self.ui.voice3.setCurrentIndex(0)
+            self.ui.v4_2.setEnabled(False)
+            self.ui.voice4.setCurrentIndex(0)
+            self.ui.v5_2.setEnabled(False)
+            self.ui.voice5.setCurrentIndex(0)
+            self.ui.v6_2.setEnabled(False)
+            self.ui.voice6.setCurrentIndex(0)
         elif voices == 3:
-            self.ui.v1.show()
-            self.ui.v2.show()
-            self.ui.v3_2.show()
-            self.ui.v4_2.hide()
-            self.ui.v5_2.hide()
-            self.ui.v6_2.hide()
+            self.ui.v1.setEnabled(True)
+            self.ui.v2.setEnabled(True)
+            self.ui.v3_2.setEnabled(True)
+            self.ui.v4_2.setEnabled(False)
+            self.ui.voice4.setCurrentIndex(0)
+            self.ui.v5_2.setEnabled(False)
+            self.ui.voice5.setCurrentIndex(0)
+            self.ui.v6_2.setEnabled(False)
+            self.ui.voice6.setCurrentIndex(0)
         elif voices == 4:
-            self.ui.v1.show()
-            self.ui.v2.show()
-            self.ui.v3_2.show()
-            self.ui.v4_2.show()
-            self.ui.v5_2.hide()
-            self.ui.v6_2.hide()
+            self.ui.v1.setEnabled(True)
+            self.ui.v2.setEnabled(True)
+            self.ui.v3_2.setEnabled(True)
+            self.ui.v4_2.setEnabled(True)
+            self.ui.v5_2.setEnabled(False)
+            self.ui.voice5.setCurrentIndex(0)
+            self.ui.v6_2.setEnabled(False)
+            self.ui.voice6.setCurrentIndex(0)
         elif voices == 5:
-            self.ui.v1.show()
-            self.ui.v2.show()
-            self.ui.v3_2.show()
-            self.ui.v4_2.show()
-            self.ui.v5_2.show()
-            self.ui.v6_2.hide()
+            self.ui.v1.setEnabled(True)
+            self.ui.v2.setEnabled(True)
+            self.ui.v3_2.setEnabled(True)
+            self.ui.v4_2.setEnabled(True)
+            self.ui.v5_2.setEnabled(True)
+            self.ui.v6_2.setEnabled(False)
+            self.ui.voice6.setCurrentIndex(0)
         elif voices == 6:
-            self.ui.v1.show()
-            self.ui.v2.show()
-            self.ui.v3_2.show()
-            self.ui.v4_2.show()
-            self.ui.v5_2.show()
-            self.ui.v6_2.show()
+            self.ui.v1.setEnabled(True)
+            self.ui.v2.setEnabled(True)
+            self.ui.v3_2.setEnabled(True)
+            self.ui.v4_2.setEnabled(True)
+            self.ui.v5_2.setEnabled(True)
+            self.ui.v6_2.setEnabled(True)
 
     def notes_rests_valuechange(self):
         """ Checks the value of the notes - rests slider, and updates the notes and rests percentage labels accordingly.
@@ -175,12 +229,12 @@ class MainWindow(QMainWindow):
         self.ui.currentslider.setEnabled(self.ui.repeat_current_note.isChecked())
         self.ui.currentpercentage.setEnabled(self.ui.repeat_current_note.isChecked())
 
-        if not self.ui.repeat_current_note.isChecked():
+        if self.ui.repeat_current_note.isChecked():
+            self.ui.repeat_previous_note.setEnabled(True)
+        else:
             self.ui.repeat_previous_note.setChecked(False)
             self.toggle_repeat_previous_note()
             self.ui.repeat_previous_note.setEnabled(False)
-        else:
-            self.ui.repeat_previous_note.setEnabled(True)
 
     def update_repeat_current_note_chance(self):
         """ Updates the chance of repeating the current note. """
@@ -195,6 +249,54 @@ class MainWindow(QMainWindow):
     def update_repeat_previous_note_chance(self):
         """ Updates the chance of repeating the previous note. """
         self.ui.previouspercentage.setText(str(self.ui.previousslider.value()) + " %")
+
+    def update_whole_note(self):
+        self.ui.whole_note_pc.setText(str(self.ui.whole_note_slider.value()) + '%')
+        self.dodec.note_chances["Whole"] = self.ui.whole_note_slider.value()
+
+    def update_half_note(self):
+        self.ui.half_note_pc.setText(str(self.ui.half_note_slider.value()) + '%')
+        self.dodec.note_chances["Half"] = self.ui.half_note_slider.value()
+
+    def update_quarter_note(self):
+        self.ui.quarter_note_pc.setText(str(self.ui.quarter_note_slider.value()) + '%')
+        self.dodec.note_chances["Quarter"] = self.ui.quarter_note_slider.value()
+
+    def update_eighth_note(self):
+        self.ui.eighth_note_pc.setText(str(self.ui.eighth_note_slider.value()) + '%')
+        self.dodec.note_chances["Eighth"] = self.ui.eighth_note_slider.value()
+
+    def update_sixteenth_note(self):
+        self.ui.sixteenth_note_pc.setText(str(self.ui.sixteenth_note_slider.value()) + '%')
+        self.dodec.note_chances["Sixteenth"] = self.ui.sixteenth_note_slider.value()
+
+    def update_thirty_second_note(self):
+        self.ui.thirty_second_note_pc.setText(str(self.ui.thirty_second_note_slider.value()) + '%')
+        self.dodec.note_chances["Thirty-second"] = self.ui.thirty_second_note_slider.value()
+
+    def update_whole_rest(self):
+        self.ui.whole_rest_pc.setText(str(self.ui.whole_rest_slider.value()) + '%')
+        self.dodec.rest_chances["Whole"] = self.ui.whole_rest_slider.value()
+
+    def update_half_rest(self):
+        self.ui.half_rest_pc.setText(str(self.ui.half_rest_slider.value()) + '%')
+        self.dodec.rest_chances["Half"] = self.ui.half_rest_slider.value()
+
+    def update_quarter_rest(self):
+        self.ui.quarter_rest_pc.setText(str(self.ui.quarter_rest_slider.value()) + '%')
+        self.dodec.rest_chances["Quarter"] = self.ui.quarter_rest_slider.value()
+
+    def update_eighth_rest(self):
+        self.ui.eighth_rest_pc.setText(str(self.ui.eighth_rest_slider.value()) + '%')
+        self.dodec.rest_chances["Eighth"] = self.ui.eighth_rest_slider.value()
+
+    def update_sixteenth_rest(self):
+        self.ui.sixteenth_rest_pc.setText(str(self.ui.sixteenth_rest_slider.value()) + '%')
+        self.dodec.rest_chances["Sixteenth"] = self.ui.sixteenth_rest_slider.value()
+
+    def update_thirty_second_rest(self):
+        self.ui.thirty_second_note_pc.setText(str(self.ui.thirty_second_note_slider.value()) + '%')
+        self.dodec.rest_chances["Thirty-second"] = self.ui.thirty_second_rest_slider.value()
 
     def update_folder_name(self):
         """ Selects the folder in which the generated files will be saved. """
@@ -217,6 +319,18 @@ class MainWindow(QMainWindow):
         self.dodec.current_chance = self.ui.currentslider.value()
         self.dodec.repeat_previous = self.ui.repeat_previous_note.isChecked()
         self.dodec.previous_chance = self.ui.previousslider.value()
+        self.dodec.note_chances["Whole"] = self.ui.whole_note_slider.value()
+        self.dodec.note_chances["Half"] = self.ui.half_note_slider.value()
+        self.dodec.note_chances["Quarter"] = self.ui.quarter_note_slider.value()
+        self.dodec.note_chances["Eighth"] = self.ui.eighth_note_slider.value()
+        self.dodec.note_chances["Sixteenth"] = self.ui.sixteenth_note_slider.value()
+        self.dodec.note_chances["Thirty-second"] = self.ui.thirty_second_note_slider.value()
+        self.dodec.rest_chances["Whole"] = self.ui.whole_rest_slider.value()
+        self.dodec.rest_chances["Half"] = self.ui.half_rest_slider.value()
+        self.dodec.rest_chances["Quarter"] = self.ui.quarter_rest_slider.value()
+        self.dodec.rest_chances["Eighth"] = self.ui.eighth_rest_slider.value()
+        self.dodec.rest_chances["Sixteenth"] = self.ui.sixteenth_rest_slider.value()
+        self.dodec.rest_chances["Thirty-second"] = self.ui.thirty_second_rest_slider.value()
         self.dodec.title = self.ui.score_title.text()
         self.dodec.filename = self.ui.output_filename_2.text()
         self.dodec.foldername = self.ui.output_foldername.text()
@@ -230,13 +344,20 @@ class MainWindow(QMainWindow):
 
         return True
 
+    def generate_series(self):
+        if self.validate_settings():
+            self.dodec.generate_series()
+            self.ui.generate_series.setText("Regenerate")
+        else:
+            print("Invalid settings, cannot generate series.")
+
     def create_score(self):
         """ Creates a Dodecaphony object based on the provided settings and outputs the generated composition
         to the specified folder with the filename as its name. """
         if self.validate_settings():
-            self.dodec.generate()
+            self.dodec.generate_score()
         else:
-            print("Invalid settings.")
+            print("Invalid settings, cannot generate score.")
 
 
 if __name__ == "__main__":

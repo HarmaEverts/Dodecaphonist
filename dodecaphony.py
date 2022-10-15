@@ -8,7 +8,7 @@ class Dodecaphony():
         self.key = 0                 # 0 is sharps, 1 is flats
         self.repeats = 0             # Number of times the series is repeated
         self.voices = 0              # Number of voices (1-6)
-        self.voices = []             # List of voice types, one for each voice
+        self.voices = []             # List of voice types, one for each voice (0 is not set!)
         self.time_enumerator = 0     # Beats per measure (1-12)
         self.time_denominator = 0    # Counting unit (1/1 - 1/32)
         self.tempo = 0               # Tempo (bpm)
@@ -20,8 +20,25 @@ class Dodecaphony():
         self.retrograde = []
         self.inverse = []
         self.retrogradeinverse = []
+        self.note_chances = {"Whole": 0,
+                             "Half": 0,
+                             "Quarter": 0,
+                             "Eighth": 0,
+                             "Sixteenth": 0,
+                             "Thirty-second": 0}
+        self.rest_chances = {"Whole": 0,
+                             "Half": 0,
+                             "Quarter": 0,
+                             "Eighth": 0,
+                             "Sixteenth": 0,
+                             "Thirty-second": 0}
 
 
-    def generate(self):
+    def generate_series(self):
+        """ Generate a random dodecaphony series and its variations """
+        print("generating series")
+
+
+    def generate_score(self):
         """ Generate a compusition based on the settings provided. """
         print("generating compusition")

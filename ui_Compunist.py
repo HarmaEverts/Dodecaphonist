@@ -136,151 +136,121 @@ class Ui_MainWindow(object):
 
         self.gridLayout_6.addWidget(self.groupBox_6, 1, 0, 2, 2)
 
-        self.horizontalLayout_5 = QHBoxLayout()
-        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.groupBox_5 = QGroupBox(self.groupBox)
+        self.groupBox_5.setObjectName(u"groupBox_5")
+        self.gridLayout_8 = QGridLayout(self.groupBox_5)
+        self.gridLayout_8.setObjectName(u"gridLayout_8")
+        self.label_16 = QLabel(self.groupBox_5)
+        self.label_16.setObjectName(u"label_16")
+        self.label_16.setPixmap(QPixmap(u":/icons/quarter note"))
+        self.label_16.setScaledContents(True)
 
-        self.horizontalLayout_5.addItem(self.horizontalSpacer_2)
+        self.gridLayout_8.addWidget(self.label_16, 2, 0, 1, 1)
 
-        self.generate_score = QPushButton(self.groupBox)
-        self.generate_score.setObjectName(u"generate_score")
+        self.label_14 = QLabel(self.groupBox_5)
+        self.label_14.setObjectName(u"label_14")
+        self.label_14.setPixmap(QPixmap(u":/icons/whole note"))
+        self.label_14.setScaledContents(True)
 
-        self.horizontalLayout_5.addWidget(self.generate_score)
+        self.gridLayout_8.addWidget(self.label_14, 0, 0, 1, 1)
 
+        self.label_15 = QLabel(self.groupBox_5)
+        self.label_15.setObjectName(u"label_15")
+        self.label_15.setStyleSheet(u"")
+        self.label_15.setPixmap(QPixmap(u":/icons/half note"))
+        self.label_15.setScaledContents(True)
 
-        self.gridLayout_6.addLayout(self.horizontalLayout_5, 4, 2, 1, 1)
+        self.gridLayout_8.addWidget(self.label_15, 1, 0, 1, 1)
 
-        self.groupBox_2 = QGroupBox(self.groupBox)
-        self.groupBox_2.setObjectName(u"groupBox_2")
-        self.gridLayout_2 = QGridLayout(self.groupBox_2)
-        self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.label_3 = QLabel(self.groupBox_2)
-        self.label_3.setObjectName(u"label_3")
+        self.label_19 = QLabel(self.groupBox_5)
+        self.label_19.setObjectName(u"label_19")
+        self.label_19.setPixmap(QPixmap(u":/icons/eighth note"))
+        self.label_19.setScaledContents(True)
 
-        self.gridLayout_2.addWidget(self.label_3, 0, 0, 1, 1)
+        self.gridLayout_8.addWidget(self.label_19, 4, 0, 1, 1)
 
-        self.no_of_voices = QSpinBox(self.groupBox_2)
-        self.no_of_voices.setObjectName(u"no_of_voices")
-        self.no_of_voices.setMinimum(1)
-        self.no_of_voices.setMaximum(6)
+        self.label_20 = QLabel(self.groupBox_5)
+        self.label_20.setObjectName(u"label_20")
+        self.label_20.setPixmap(QPixmap(u":/icons/sixteenth note"))
+        self.label_20.setScaledContents(True)
 
-        self.gridLayout_2.addWidget(self.no_of_voices, 0, 1, 1, 1)
+        self.gridLayout_8.addWidget(self.label_20, 6, 0, 1, 1)
 
-        self.verticalLayout_2 = QVBoxLayout()
-        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.v1 = QWidget(self.groupBox_2)
-        self.v1.setObjectName(u"v1")
-        self.horizontalLayout_6 = QHBoxLayout(self.v1)
-        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.voice1label = QLabel(self.v1)
-        self.voice1label.setObjectName(u"voice1label")
-        self.voice1label.setStyleSheet(u"")
+        self.label_21 = QLabel(self.groupBox_5)
+        self.label_21.setObjectName(u"label_21")
+        self.label_21.setPixmap(QPixmap(u":/icons/thirty second note"))
+        self.label_21.setScaledContents(True)
 
-        self.horizontalLayout_6.addWidget(self.voice1label)
+        self.gridLayout_8.addWidget(self.label_21, 9, 0, 1, 1)
 
-        self.voice1 = QComboBox(self.v1)
-        self.voice1.setObjectName(u"voice1")
+        self.eighth_note_slider = QSlider(self.groupBox_5)
+        self.eighth_note_slider.setObjectName(u"eighth_note_slider")
+        self.eighth_note_slider.setOrientation(Qt.Horizontal)
 
-        self.horizontalLayout_6.addWidget(self.voice1)
+        self.gridLayout_8.addWidget(self.eighth_note_slider, 4, 1, 1, 1)
 
+        self.sixteenth_note_slider = QSlider(self.groupBox_5)
+        self.sixteenth_note_slider.setObjectName(u"sixteenth_note_slider")
+        self.sixteenth_note_slider.setOrientation(Qt.Horizontal)
 
-        self.verticalLayout_2.addWidget(self.v1)
+        self.gridLayout_8.addWidget(self.sixteenth_note_slider, 6, 1, 1, 1)
 
-        self.v2 = QWidget(self.groupBox_2)
-        self.v2.setObjectName(u"v2")
-        self.horizontalLayout_7 = QHBoxLayout(self.v2)
-        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.voice2label = QLabel(self.v2)
-        self.voice2label.setObjectName(u"voice2label")
-        self.voice2label.setStyleSheet(u"")
+        self.thirty_second_note_slider = QSlider(self.groupBox_5)
+        self.thirty_second_note_slider.setObjectName(u"thirty_second_note_slider")
+        self.thirty_second_note_slider.setOrientation(Qt.Horizontal)
 
-        self.horizontalLayout_7.addWidget(self.voice2label)
+        self.gridLayout_8.addWidget(self.thirty_second_note_slider, 9, 1, 1, 1)
 
-        self.voice2 = QComboBox(self.v2)
-        self.voice2.setObjectName(u"voice2")
+        self.half_note_slider = QSlider(self.groupBox_5)
+        self.half_note_slider.setObjectName(u"half_note_slider")
+        self.half_note_slider.setOrientation(Qt.Horizontal)
 
-        self.horizontalLayout_7.addWidget(self.voice2)
+        self.gridLayout_8.addWidget(self.half_note_slider, 1, 1, 1, 1)
 
+        self.whole_note_slider = QSlider(self.groupBox_5)
+        self.whole_note_slider.setObjectName(u"whole_note_slider")
+        self.whole_note_slider.setOrientation(Qt.Horizontal)
 
-        self.verticalLayout_2.addWidget(self.v2)
+        self.gridLayout_8.addWidget(self.whole_note_slider, 0, 1, 1, 1)
 
-        self.v3_2 = QWidget(self.groupBox_2)
-        self.v3_2.setObjectName(u"v3_2")
-        self.v3 = QHBoxLayout(self.v3_2)
-        self.v3.setObjectName(u"v3")
-        self.voice3label = QLabel(self.v3_2)
-        self.voice3label.setObjectName(u"voice3label")
-        self.voice3label.setStyleSheet(u"")
+        self.quarter_note_slider = QSlider(self.groupBox_5)
+        self.quarter_note_slider.setObjectName(u"quarter_note_slider")
+        self.quarter_note_slider.setOrientation(Qt.Horizontal)
 
-        self.v3.addWidget(self.voice3label)
+        self.gridLayout_8.addWidget(self.quarter_note_slider, 2, 1, 1, 1)
 
-        self.voice3 = QComboBox(self.v3_2)
-        self.voice3.setObjectName(u"voice3")
+        self.whole_note_pc = QLabel(self.groupBox_5)
+        self.whole_note_pc.setObjectName(u"whole_note_pc")
 
-        self.v3.addWidget(self.voice3)
+        self.gridLayout_8.addWidget(self.whole_note_pc, 0, 2, 1, 1)
 
+        self.half_note_pc = QLabel(self.groupBox_5)
+        self.half_note_pc.setObjectName(u"half_note_pc")
 
-        self.verticalLayout_2.addWidget(self.v3_2)
+        self.gridLayout_8.addWidget(self.half_note_pc, 1, 2, 1, 1)
 
-        self.v4_2 = QWidget(self.groupBox_2)
-        self.v4_2.setObjectName(u"v4_2")
-        self.v4 = QHBoxLayout(self.v4_2)
-        self.v4.setObjectName(u"v4")
-        self.voice4label = QLabel(self.v4_2)
-        self.voice4label.setObjectName(u"voice4label")
-        self.voice4label.setStyleSheet(u"")
+        self.quarter_note_pc = QLabel(self.groupBox_5)
+        self.quarter_note_pc.setObjectName(u"quarter_note_pc")
 
-        self.v4.addWidget(self.voice4label)
+        self.gridLayout_8.addWidget(self.quarter_note_pc, 2, 2, 1, 1)
 
-        self.voice4 = QComboBox(self.v4_2)
-        self.voice4.setObjectName(u"voice4")
+        self.eighth_note_pc = QLabel(self.groupBox_5)
+        self.eighth_note_pc.setObjectName(u"eighth_note_pc")
 
-        self.v4.addWidget(self.voice4)
+        self.gridLayout_8.addWidget(self.eighth_note_pc, 4, 2, 1, 1)
 
+        self.sixteenth_note_pc = QLabel(self.groupBox_5)
+        self.sixteenth_note_pc.setObjectName(u"sixteenth_note_pc")
 
-        self.verticalLayout_2.addWidget(self.v4_2)
+        self.gridLayout_8.addWidget(self.sixteenth_note_pc, 6, 2, 1, 1)
 
-        self.v5_2 = QWidget(self.groupBox_2)
-        self.v5_2.setObjectName(u"v5_2")
-        self.v5 = QHBoxLayout(self.v5_2)
-        self.v5.setObjectName(u"v5")
-        self.voice5label = QLabel(self.v5_2)
-        self.voice5label.setObjectName(u"voice5label")
-        self.voice5label.setStyleSheet(u"")
+        self.thirty_second_note_pc = QLabel(self.groupBox_5)
+        self.thirty_second_note_pc.setObjectName(u"thirty_second_note_pc")
 
-        self.v5.addWidget(self.voice5label)
-
-        self.voice5 = QComboBox(self.v5_2)
-        self.voice5.setObjectName(u"voice5")
-
-        self.v5.addWidget(self.voice5)
+        self.gridLayout_8.addWidget(self.thirty_second_note_pc, 9, 2, 1, 1)
 
 
-        self.verticalLayout_2.addWidget(self.v5_2)
-
-        self.v6_2 = QWidget(self.groupBox_2)
-        self.v6_2.setObjectName(u"v6_2")
-        self.v6 = QHBoxLayout(self.v6_2)
-        self.v6.setObjectName(u"v6")
-        self.voice6label = QLabel(self.v6_2)
-        self.voice6label.setObjectName(u"voice6label")
-        self.voice6label.setStyleSheet(u"")
-
-        self.v6.addWidget(self.voice6label)
-
-        self.voice6 = QComboBox(self.v6_2)
-        self.voice6.setObjectName(u"voice6")
-
-        self.v6.addWidget(self.voice6)
-
-
-        self.verticalLayout_2.addWidget(self.v6_2)
-
-
-        self.gridLayout_2.addLayout(self.verticalLayout_2, 1, 0, 1, 2)
-
-
-        self.gridLayout_6.addWidget(self.groupBox_2, 0, 2, 3, 1)
+        self.gridLayout_6.addWidget(self.groupBox_5, 3, 0, 1, 2)
 
         self.groupBox_4 = QGroupBox(self.groupBox)
         self.groupBox_4.setObjectName(u"groupBox_4")
@@ -487,39 +457,166 @@ class Ui_MainWindow(object):
 
         self.gridLayout_6.addWidget(self.groupBox_7, 3, 2, 1, 1)
 
+        self.groupBox_2 = QGroupBox(self.groupBox)
+        self.groupBox_2.setObjectName(u"groupBox_2")
+        self.gridLayout_2 = QGridLayout(self.groupBox_2)
+        self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.label_3 = QLabel(self.groupBox_2)
+        self.label_3.setObjectName(u"label_3")
+
+        self.gridLayout_2.addWidget(self.label_3, 0, 0, 1, 1)
+
+        self.no_of_voices = QSpinBox(self.groupBox_2)
+        self.no_of_voices.setObjectName(u"no_of_voices")
+        self.no_of_voices.setMinimum(1)
+        self.no_of_voices.setMaximum(6)
+
+        self.gridLayout_2.addWidget(self.no_of_voices, 0, 1, 1, 1)
+
+        self.verticalLayout_2 = QVBoxLayout()
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.v1 = QWidget(self.groupBox_2)
+        self.v1.setObjectName(u"v1")
+        self.horizontalLayout_6 = QHBoxLayout(self.v1)
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.voice1label = QLabel(self.v1)
+        self.voice1label.setObjectName(u"voice1label")
+        self.voice1label.setStyleSheet(u"")
+
+        self.horizontalLayout_6.addWidget(self.voice1label)
+
+        self.voice1 = QComboBox(self.v1)
+        self.voice1.setObjectName(u"voice1")
+
+        self.horizontalLayout_6.addWidget(self.voice1)
+
+
+        self.verticalLayout_2.addWidget(self.v1)
+
+        self.v2 = QWidget(self.groupBox_2)
+        self.v2.setObjectName(u"v2")
+        self.horizontalLayout_7 = QHBoxLayout(self.v2)
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.voice2label = QLabel(self.v2)
+        self.voice2label.setObjectName(u"voice2label")
+        self.voice2label.setStyleSheet(u"")
+
+        self.horizontalLayout_7.addWidget(self.voice2label)
+
+        self.voice2 = QComboBox(self.v2)
+        self.voice2.setObjectName(u"voice2")
+
+        self.horizontalLayout_7.addWidget(self.voice2)
+
+
+        self.verticalLayout_2.addWidget(self.v2)
+
+        self.v3_2 = QWidget(self.groupBox_2)
+        self.v3_2.setObjectName(u"v3_2")
+        self.v3 = QHBoxLayout(self.v3_2)
+        self.v3.setObjectName(u"v3")
+        self.voice3label = QLabel(self.v3_2)
+        self.voice3label.setObjectName(u"voice3label")
+        self.voice3label.setStyleSheet(u"")
+
+        self.v3.addWidget(self.voice3label)
+
+        self.voice3 = QComboBox(self.v3_2)
+        self.voice3.setObjectName(u"voice3")
+
+        self.v3.addWidget(self.voice3)
+
+
+        self.verticalLayout_2.addWidget(self.v3_2)
+
+        self.v4_2 = QWidget(self.groupBox_2)
+        self.v4_2.setObjectName(u"v4_2")
+        self.v4 = QHBoxLayout(self.v4_2)
+        self.v4.setObjectName(u"v4")
+        self.voice4label = QLabel(self.v4_2)
+        self.voice4label.setObjectName(u"voice4label")
+        self.voice4label.setStyleSheet(u"")
+
+        self.v4.addWidget(self.voice4label)
+
+        self.voice4 = QComboBox(self.v4_2)
+        self.voice4.setObjectName(u"voice4")
+
+        self.v4.addWidget(self.voice4)
+
+
+        self.verticalLayout_2.addWidget(self.v4_2)
+
+        self.v5_2 = QWidget(self.groupBox_2)
+        self.v5_2.setObjectName(u"v5_2")
+        self.v5 = QHBoxLayout(self.v5_2)
+        self.v5.setObjectName(u"v5")
+        self.voice5label = QLabel(self.v5_2)
+        self.voice5label.setObjectName(u"voice5label")
+        self.voice5label.setStyleSheet(u"")
+
+        self.v5.addWidget(self.voice5label)
+
+        self.voice5 = QComboBox(self.v5_2)
+        self.voice5.setObjectName(u"voice5")
+
+        self.v5.addWidget(self.voice5)
+
+
+        self.verticalLayout_2.addWidget(self.v5_2)
+
+        self.v6_2 = QWidget(self.groupBox_2)
+        self.v6_2.setObjectName(u"v6_2")
+        self.v6 = QHBoxLayout(self.v6_2)
+        self.v6.setObjectName(u"v6")
+        self.voice6label = QLabel(self.v6_2)
+        self.voice6label.setObjectName(u"voice6label")
+        self.voice6label.setStyleSheet(u"")
+
+        self.v6.addWidget(self.voice6label)
+
+        self.voice6 = QComboBox(self.v6_2)
+        self.voice6.setObjectName(u"voice6")
+
+        self.v6.addWidget(self.voice6)
+
+
+        self.verticalLayout_2.addWidget(self.v6_2)
+
+
+        self.gridLayout_2.addLayout(self.verticalLayout_2, 1, 0, 1, 2)
+
+
+        self.gridLayout_6.addWidget(self.groupBox_2, 0, 2, 3, 1)
+
         self.groupBox_3 = QGroupBox(self.groupBox)
         self.groupBox_3.setObjectName(u"groupBox_3")
         self.gridLayout_3 = QGridLayout(self.groupBox_3)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.label_13 = QLabel(self.groupBox_3)
-        self.label_13.setObjectName(u"label_13")
-
-        self.gridLayout_3.addWidget(self.label_13, 0, 0, 1, 1)
-
-        self.score_title = QLineEdit(self.groupBox_3)
-        self.score_title.setObjectName(u"score_title")
-
-        self.gridLayout_3.addWidget(self.score_title, 0, 1, 1, 1)
-
-        self.label_9 = QLabel(self.groupBox_3)
-        self.label_9.setObjectName(u"label_9")
-
-        self.gridLayout_3.addWidget(self.label_9, 1, 0, 1, 1)
-
-        self.output_filename_2 = QLineEdit(self.groupBox_3)
-        self.output_filename_2.setObjectName(u"output_filename_2")
-
-        self.gridLayout_3.addWidget(self.output_filename_2, 1, 1, 1, 1)
-
         self.label_10 = QLabel(self.groupBox_3)
         self.label_10.setObjectName(u"label_10")
 
-        self.gridLayout_3.addWidget(self.label_10, 1, 2, 1, 1)
+        self.gridLayout_3.addWidget(self.label_10, 1, 3, 1, 1)
+
+        self.label_13 = QLabel(self.groupBox_3)
+        self.label_13.setObjectName(u"label_13")
+
+        self.gridLayout_3.addWidget(self.label_13, 0, 1, 1, 1)
 
         self.label_7 = QLabel(self.groupBox_3)
         self.label_7.setObjectName(u"label_7")
 
-        self.gridLayout_3.addWidget(self.label_7, 2, 0, 1, 1)
+        self.gridLayout_3.addWidget(self.label_7, 2, 1, 1, 1)
+
+        self.score_title = QLineEdit(self.groupBox_3)
+        self.score_title.setObjectName(u"score_title")
+
+        self.gridLayout_3.addWidget(self.score_title, 0, 2, 1, 1)
+
+        self.label_9 = QLabel(self.groupBox_3)
+        self.label_9.setObjectName(u"label_9")
+
+        self.gridLayout_3.addWidget(self.label_9, 1, 1, 1, 1)
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
@@ -534,126 +631,41 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.open_file_explorer)
 
 
-        self.gridLayout_3.addLayout(self.horizontalLayout, 2, 1, 1, 1)
+        self.gridLayout_3.addLayout(self.horizontalLayout, 2, 2, 1, 1)
+
+        self.output_filename_2 = QLineEdit(self.groupBox_3)
+        self.output_filename_2.setObjectName(u"output_filename_2")
+
+        self.gridLayout_3.addWidget(self.output_filename_2, 1, 2, 1, 1)
+
+        self.generate_score = QPushButton(self.groupBox_3)
+        self.generate_score.setObjectName(u"generate_score")
+
+        self.gridLayout_3.addWidget(self.generate_score, 3, 2, 1, 1)
 
 
-        self.gridLayout_6.addWidget(self.groupBox_3, 4, 0, 1, 2)
+        self.gridLayout_6.addWidget(self.groupBox_3, 4, 2, 1, 1)
 
-        self.groupBox_5 = QGroupBox(self.groupBox)
-        self.groupBox_5.setObjectName(u"groupBox_5")
-        self.gridLayout_8 = QGridLayout(self.groupBox_5)
-        self.gridLayout_8.setObjectName(u"gridLayout_8")
-        self.label_16 = QLabel(self.groupBox_5)
-        self.label_16.setObjectName(u"label_16")
-        self.label_16.setPixmap(QPixmap(u":/icons/quarter note"))
-        self.label_16.setScaledContents(True)
+        self.groupBox_8 = QGroupBox(self.groupBox)
+        self.groupBox_8.setObjectName(u"groupBox_8")
+        self.gridLayout_10 = QGridLayout(self.groupBox_8)
+        self.gridLayout_10.setObjectName(u"gridLayout_10")
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.gridLayout_8.addWidget(self.label_16, 2, 0, 1, 1)
+        self.gridLayout_10.addItem(self.horizontalSpacer_2, 0, 1, 1, 1)
 
-        self.label_14 = QLabel(self.groupBox_5)
-        self.label_14.setObjectName(u"label_14")
-        self.label_14.setPixmap(QPixmap(u":/icons/whole note"))
-        self.label_14.setScaledContents(True)
+        self.series_label = QLabel(self.groupBox_8)
+        self.series_label.setObjectName(u"series_label")
 
-        self.gridLayout_8.addWidget(self.label_14, 0, 0, 1, 1)
+        self.gridLayout_10.addWidget(self.series_label, 1, 0, 1, 1)
 
-        self.label_15 = QLabel(self.groupBox_5)
-        self.label_15.setObjectName(u"label_15")
-        self.label_15.setStyleSheet(u"")
-        self.label_15.setPixmap(QPixmap(u":/icons/half note"))
-        self.label_15.setScaledContents(True)
+        self.generate_series = QPushButton(self.groupBox_8)
+        self.generate_series.setObjectName(u"generate_series")
 
-        self.gridLayout_8.addWidget(self.label_15, 1, 0, 1, 1)
-
-        self.label_19 = QLabel(self.groupBox_5)
-        self.label_19.setObjectName(u"label_19")
-        self.label_19.setPixmap(QPixmap(u":/icons/eighth note"))
-        self.label_19.setScaledContents(True)
-
-        self.gridLayout_8.addWidget(self.label_19, 4, 0, 1, 1)
-
-        self.label_20 = QLabel(self.groupBox_5)
-        self.label_20.setObjectName(u"label_20")
-        self.label_20.setPixmap(QPixmap(u":/icons/sixteenth note"))
-        self.label_20.setScaledContents(True)
-
-        self.gridLayout_8.addWidget(self.label_20, 6, 0, 1, 1)
-
-        self.label_21 = QLabel(self.groupBox_5)
-        self.label_21.setObjectName(u"label_21")
-        self.label_21.setPixmap(QPixmap(u":/icons/thirty second note"))
-        self.label_21.setScaledContents(True)
-
-        self.gridLayout_8.addWidget(self.label_21, 9, 0, 1, 1)
-
-        self.eighth_note_slider = QSlider(self.groupBox_5)
-        self.eighth_note_slider.setObjectName(u"eighth_note_slider")
-        self.eighth_note_slider.setOrientation(Qt.Horizontal)
-
-        self.gridLayout_8.addWidget(self.eighth_note_slider, 4, 1, 1, 1)
-
-        self.sixteenth_note_slider = QSlider(self.groupBox_5)
-        self.sixteenth_note_slider.setObjectName(u"sixteenth_note_slider")
-        self.sixteenth_note_slider.setOrientation(Qt.Horizontal)
-
-        self.gridLayout_8.addWidget(self.sixteenth_note_slider, 6, 1, 1, 1)
-
-        self.thirty_second_note_slider = QSlider(self.groupBox_5)
-        self.thirty_second_note_slider.setObjectName(u"thirty_second_note_slider")
-        self.thirty_second_note_slider.setOrientation(Qt.Horizontal)
-
-        self.gridLayout_8.addWidget(self.thirty_second_note_slider, 9, 1, 1, 1)
-
-        self.half_note_slider = QSlider(self.groupBox_5)
-        self.half_note_slider.setObjectName(u"half_note_slider")
-        self.half_note_slider.setOrientation(Qt.Horizontal)
-
-        self.gridLayout_8.addWidget(self.half_note_slider, 1, 1, 1, 1)
-
-        self.whole_note_slider = QSlider(self.groupBox_5)
-        self.whole_note_slider.setObjectName(u"whole_note_slider")
-        self.whole_note_slider.setOrientation(Qt.Horizontal)
-
-        self.gridLayout_8.addWidget(self.whole_note_slider, 0, 1, 1, 1)
-
-        self.quarter_note_slider = QSlider(self.groupBox_5)
-        self.quarter_note_slider.setObjectName(u"quarter_note_slider")
-        self.quarter_note_slider.setOrientation(Qt.Horizontal)
-
-        self.gridLayout_8.addWidget(self.quarter_note_slider, 2, 1, 1, 1)
-
-        self.whole_note_pc = QLabel(self.groupBox_5)
-        self.whole_note_pc.setObjectName(u"whole_note_pc")
-
-        self.gridLayout_8.addWidget(self.whole_note_pc, 0, 2, 1, 1)
-
-        self.half_note_pc = QLabel(self.groupBox_5)
-        self.half_note_pc.setObjectName(u"half_note_pc")
-
-        self.gridLayout_8.addWidget(self.half_note_pc, 1, 2, 1, 1)
-
-        self.quarter_note_pc = QLabel(self.groupBox_5)
-        self.quarter_note_pc.setObjectName(u"quarter_note_pc")
-
-        self.gridLayout_8.addWidget(self.quarter_note_pc, 2, 2, 1, 1)
-
-        self.eighth_note_pc = QLabel(self.groupBox_5)
-        self.eighth_note_pc.setObjectName(u"eighth_note_pc")
-
-        self.gridLayout_8.addWidget(self.eighth_note_pc, 4, 2, 1, 1)
-
-        self.sixteenth_note_pc = QLabel(self.groupBox_5)
-        self.sixteenth_note_pc.setObjectName(u"sixteenth_note_pc")
-
-        self.gridLayout_8.addWidget(self.sixteenth_note_pc, 6, 2, 1, 1)
-
-        self.thirty_second_note_pc = QLabel(self.groupBox_5)
-        self.thirty_second_note_pc.setObjectName(u"thirty_second_note_pc")
-
-        self.gridLayout_8.addWidget(self.thirty_second_note_pc, 9, 2, 1, 1)
+        self.gridLayout_10.addWidget(self.generate_series, 0, 0, 1, 1)
 
 
-        self.gridLayout_6.addWidget(self.groupBox_5, 3, 0, 1, 2)
+        self.gridLayout_6.addWidget(self.groupBox_8, 4, 0, 1, 2)
 
 
         self.gridLayout_4.addWidget(self.groupBox, 0, 0, 1, 1)
@@ -671,13 +683,12 @@ class Ui_MainWindow(object):
         self.previouslabel.setBuddy(self.previousslider)
         self.previouspercentage.setBuddy(self.previousslider)
         self.label_11.setBuddy(self.repeat_previous_note)
-        self.label_3.setBuddy(self.no_of_voices)
-        self.voice1label.setBuddy(self.voice1)
-        self.voice2label.setBuddy(self.voice2)
-        self.voice3label.setBuddy(self.voice3)
-        self.voice4label.setBuddy(self.voice4)
-        self.voice5label.setBuddy(self.voice5)
-        self.voice6label.setBuddy(self.voice6)
+        self.label_16.setBuddy(self.quarter_note_slider)
+        self.label_14.setBuddy(self.whole_note_slider)
+        self.label_15.setBuddy(self.half_note_slider)
+        self.label_19.setBuddy(self.eighth_note_slider)
+        self.label_20.setBuddy(self.sixteenth_note_slider)
+        self.label_21.setBuddy(self.thirty_second_note_slider)
         self.label_5.setBuddy(self.tempo)
         self.label_4.setBuddy(self.key)
         self.label_17.setBuddy(self.tempo)
@@ -688,50 +699,55 @@ class Ui_MainWindow(object):
         self.label_24.setBuddy(self.quarter_rest_slider)
         self.label_26.setBuddy(self.sixteenth_rest_slider)
         self.label_22.setBuddy(self.whole_rest_slider)
-        self.label_13.setBuddy(self.score_title)
-        self.label_9.setBuddy(self.output_filename_2)
+        self.label_3.setBuddy(self.no_of_voices)
+        self.voice1label.setBuddy(self.voice1)
+        self.voice2label.setBuddy(self.voice2)
+        self.voice3label.setBuddy(self.voice3)
+        self.voice4label.setBuddy(self.voice4)
+        self.voice5label.setBuddy(self.voice5)
+        self.voice6label.setBuddy(self.voice6)
         self.label_10.setBuddy(self.output_filename_2)
+        self.label_13.setBuddy(self.score_title)
         self.label_7.setBuddy(self.output_foldername)
-        self.label_16.setBuddy(self.quarter_note_slider)
-        self.label_14.setBuddy(self.whole_note_slider)
-        self.label_15.setBuddy(self.half_note_slider)
-        self.label_19.setBuddy(self.eighth_note_slider)
-        self.label_20.setBuddy(self.sixteenth_note_slider)
-        self.label_21.setBuddy(self.thirty_second_note_slider)
+        self.label_9.setBuddy(self.output_filename_2)
 #endif // QT_CONFIG(shortcut)
+        QWidget.setTabOrder(self.key, self.time_enumerator)
+        QWidget.setTabOrder(self.time_enumerator, self.time_denominator)
+        QWidget.setTabOrder(self.time_denominator, self.tempo)
+        QWidget.setTabOrder(self.tempo, self.notes_rests_slider)
+        QWidget.setTabOrder(self.notes_rests_slider, self.composition_mode)
         QWidget.setTabOrder(self.composition_mode, self.no_of_repeats)
-        QWidget.setTabOrder(self.no_of_repeats, self.no_of_voices)
+        QWidget.setTabOrder(self.no_of_repeats, self.repeat_current_note)
+        QWidget.setTabOrder(self.repeat_current_note, self.currentslider)
+        QWidget.setTabOrder(self.currentslider, self.repeat_previous_note)
+        QWidget.setTabOrder(self.repeat_previous_note, self.previousslider)
+        QWidget.setTabOrder(self.previousslider, self.whole_note_slider)
+        QWidget.setTabOrder(self.whole_note_slider, self.half_note_slider)
+        QWidget.setTabOrder(self.half_note_slider, self.quarter_note_slider)
+        QWidget.setTabOrder(self.quarter_note_slider, self.eighth_note_slider)
+        QWidget.setTabOrder(self.eighth_note_slider, self.sixteenth_note_slider)
+        QWidget.setTabOrder(self.sixteenth_note_slider, self.thirty_second_note_slider)
+        QWidget.setTabOrder(self.thirty_second_note_slider, self.generate_series)
+        QWidget.setTabOrder(self.generate_series, self.no_of_voices)
         QWidget.setTabOrder(self.no_of_voices, self.voice1)
         QWidget.setTabOrder(self.voice1, self.voice2)
         QWidget.setTabOrder(self.voice2, self.voice3)
         QWidget.setTabOrder(self.voice3, self.voice4)
         QWidget.setTabOrder(self.voice4, self.voice5)
         QWidget.setTabOrder(self.voice5, self.voice6)
-        QWidget.setTabOrder(self.voice6, self.time_enumerator)
-        QWidget.setTabOrder(self.time_enumerator, self.time_denominator)
-        QWidget.setTabOrder(self.time_denominator, self.notes_rests_slider)
-        QWidget.setTabOrder(self.notes_rests_slider, self.repeat_current_note)
-        QWidget.setTabOrder(self.repeat_current_note, self.currentslider)
-        QWidget.setTabOrder(self.currentslider, self.repeat_previous_note)
-        QWidget.setTabOrder(self.repeat_previous_note, self.previousslider)
-        QWidget.setTabOrder(self.previousslider, self.score_title)
+        QWidget.setTabOrder(self.voice6, self.whole_rest_slider)
+        QWidget.setTabOrder(self.whole_rest_slider, self.half_rest_slider)
+        QWidget.setTabOrder(self.half_rest_slider, self.quarter_rest_slider)
+        QWidget.setTabOrder(self.quarter_rest_slider, self.eighth_rest_slider)
+        QWidget.setTabOrder(self.eighth_rest_slider, self.sixteenth_rest_slider)
+        QWidget.setTabOrder(self.sixteenth_rest_slider, self.thirty_second_rest_slider)
+        QWidget.setTabOrder(self.thirty_second_rest_slider, self.score_title)
         QWidget.setTabOrder(self.score_title, self.output_filename_2)
         QWidget.setTabOrder(self.output_filename_2, self.output_foldername)
         QWidget.setTabOrder(self.output_foldername, self.open_file_explorer)
+        QWidget.setTabOrder(self.open_file_explorer, self.generate_score)
 
         self.retranslateUi(MainWindow)
-        self.whole_note_slider.valueChanged.connect(self.whole_note_pc.setNum)
-        self.half_note_slider.valueChanged.connect(self.half_note_pc.setNum)
-        self.quarter_note_slider.valueChanged.connect(self.quarter_note_pc.setNum)
-        self.eighth_note_slider.valueChanged.connect(self.eighth_note_pc.setNum)
-        self.sixteenth_note_slider.valueChanged.connect(self.sixteenth_note_pc.setNum)
-        self.thirty_second_note_slider.valueChanged.connect(self.thirty_second_note_pc.setNum)
-        self.whole_rest_slider.valueChanged.connect(self.whole_rest_pc.setNum)
-        self.half_rest_slider.valueChanged.connect(self.half_rest_pc.setNum)
-        self.quarter_rest_slider.valueChanged.connect(self.quarter_rest_pc.setNum)
-        self.eighth_rest_slider.valueChanged.connect(self.eighth_rest_pc.setNum)
-        self.sixteenth_rest_slider.valueChanged.connect(self.sixteenth_rest_pc.setNum)
-        self.thirty_second_rest_slider.valueChanged.connect(self.thirty_second_rest_pc.setNum)
 
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
@@ -750,15 +766,19 @@ class Ui_MainWindow(object):
         self.previouslabel.setText(QCoreApplication.translate("MainWindow", u"    Chance", None))
         self.previouspercentage.setText(QCoreApplication.translate("MainWindow", u"0%", None))
         self.label_11.setText(QCoreApplication.translate("MainWindow", u"Repeat previous note", None))
-        self.generate_score.setText(QCoreApplication.translate("MainWindow", u"Generate score", None))
-        self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"Voices", None))
-        self.label_3.setText(QCoreApplication.translate("MainWindow", u"Number of voices", None))
-        self.voice1label.setText(QCoreApplication.translate("MainWindow", u"Voice 1", None))
-        self.voice2label.setText(QCoreApplication.translate("MainWindow", u"Voice 2", None))
-        self.voice3label.setText(QCoreApplication.translate("MainWindow", u"Voice 3", None))
-        self.voice4label.setText(QCoreApplication.translate("MainWindow", u"Voice 4", None))
-        self.voice5label.setText(QCoreApplication.translate("MainWindow", u"Voice 5", None))
-        self.voice6label.setText(QCoreApplication.translate("MainWindow", u"Voice 6", None))
+        self.groupBox_5.setTitle(QCoreApplication.translate("MainWindow", u"Notes", None))
+        self.label_16.setText("")
+        self.label_14.setText("")
+        self.label_15.setText("")
+        self.label_19.setText("")
+        self.label_20.setText("")
+        self.label_21.setText("")
+        self.whole_note_pc.setText(QCoreApplication.translate("MainWindow", u"0%", None))
+        self.half_note_pc.setText(QCoreApplication.translate("MainWindow", u"0%", None))
+        self.quarter_note_pc.setText(QCoreApplication.translate("MainWindow", u"0%", None))
+        self.eighth_note_pc.setText(QCoreApplication.translate("MainWindow", u"0%", None))
+        self.sixteenth_note_pc.setText(QCoreApplication.translate("MainWindow", u"0%", None))
+        self.thirty_second_note_pc.setText(QCoreApplication.translate("MainWindow", u"0%", None))
         self.groupBox_4.setTitle(QCoreApplication.translate("MainWindow", u"General score settings", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"Tempo", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Time signature", None))
@@ -775,30 +795,29 @@ class Ui_MainWindow(object):
         self.label_24.setText("")
         self.label_26.setText("")
         self.label_22.setText("")
-        self.whole_rest_pc.setText(QCoreApplication.translate("MainWindow", u" %", None))
-        self.half_rest_pc.setText(QCoreApplication.translate("MainWindow", u" %", None))
-        self.quarter_rest_pc.setText(QCoreApplication.translate("MainWindow", u" %", None))
-        self.eighth_rest_pc.setText(QCoreApplication.translate("MainWindow", u" %", None))
-        self.sixteenth_rest_pc.setText(QCoreApplication.translate("MainWindow", u" %", None))
-        self.thirty_second_rest_pc.setText(QCoreApplication.translate("MainWindow", u" %", None))
+        self.whole_rest_pc.setText(QCoreApplication.translate("MainWindow", u"0%", None))
+        self.half_rest_pc.setText(QCoreApplication.translate("MainWindow", u"0%", None))
+        self.quarter_rest_pc.setText(QCoreApplication.translate("MainWindow", u"0%", None))
+        self.eighth_rest_pc.setText(QCoreApplication.translate("MainWindow", u"0%", None))
+        self.sixteenth_rest_pc.setText(QCoreApplication.translate("MainWindow", u"0%", None))
+        self.thirty_second_rest_pc.setText(QCoreApplication.translate("MainWindow", u"0%", None))
+        self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"Voices", None))
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"Number of voices", None))
+        self.voice1label.setText(QCoreApplication.translate("MainWindow", u"Voice 1", None))
+        self.voice2label.setText(QCoreApplication.translate("MainWindow", u"Voice 2", None))
+        self.voice3label.setText(QCoreApplication.translate("MainWindow", u"Voice 3", None))
+        self.voice4label.setText(QCoreApplication.translate("MainWindow", u"Voice 4", None))
+        self.voice5label.setText(QCoreApplication.translate("MainWindow", u"Voice 5", None))
+        self.voice6label.setText(QCoreApplication.translate("MainWindow", u"Voice 6", None))
         self.groupBox_3.setTitle(QCoreApplication.translate("MainWindow", u"Output", None))
-        self.label_13.setText(QCoreApplication.translate("MainWindow", u"Score title", None))
-        self.label_9.setText(QCoreApplication.translate("MainWindow", u"Output filename", None))
         self.label_10.setText(QCoreApplication.translate("MainWindow", u".pdf", None))
+        self.label_13.setText(QCoreApplication.translate("MainWindow", u"Score title", None))
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"Output folder", None))
+        self.label_9.setText(QCoreApplication.translate("MainWindow", u"Output filename", None))
         self.open_file_explorer.setText(QCoreApplication.translate("MainWindow", u"...", None))
-        self.groupBox_5.setTitle(QCoreApplication.translate("MainWindow", u"Notes", None))
-        self.label_16.setText("")
-        self.label_14.setText("")
-        self.label_15.setText("")
-        self.label_19.setText("")
-        self.label_20.setText("")
-        self.label_21.setText("")
-        self.whole_note_pc.setText(QCoreApplication.translate("MainWindow", u" %", None))
-        self.half_note_pc.setText(QCoreApplication.translate("MainWindow", u" %", None))
-        self.quarter_note_pc.setText(QCoreApplication.translate("MainWindow", u" %", None))
-        self.eighth_note_pc.setText(QCoreApplication.translate("MainWindow", u" %", None))
-        self.sixteenth_note_pc.setText(QCoreApplication.translate("MainWindow", u" %", None))
-        self.thirty_second_note_pc.setText(QCoreApplication.translate("MainWindow", u" %", None))
+        self.generate_score.setText(QCoreApplication.translate("MainWindow", u"Generate score", None))
+        self.groupBox_8.setTitle(QCoreApplication.translate("MainWindow", u"Series", None))
+        self.series_label.setText(QCoreApplication.translate("MainWindow", u"Series preview:", None))
+        self.generate_series.setText(QCoreApplication.translate("MainWindow", u"Generate series", None))
     # retranslateUi
 
