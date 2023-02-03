@@ -285,7 +285,7 @@ class MainWindow(QMainWindow):
         self.dodec.rest_chances["Eighth"] = self.ui.eighth_rest_slider.value()
 
     def update_dotted_eighth_rest(self):
-        self.ui.dotted_eighth_rest_pc.setText(str(self.ui.dotted_eighth_rest_slider.value()) + '%')
+        self.ui.dotted_eighth_rest_labe.setText(str(self.ui.dotted_eighth_rest_slider.value()) + '%')
         self.dodec.rest_chances["Dotted-eighth"] = self.ui.dotted_eighth_rest_slider.value()
 
     def update_sixteenth_rest(self):
