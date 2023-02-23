@@ -5,6 +5,7 @@ from PySide6.QtWidgets import (
 import sys
 from ui_Compunist import Ui_MainWindow
 from dodecaphony import Dodecaphony
+from scoregenerator import ScoreGenerator
 
 
 class MainWindow(QMainWindow):
@@ -357,7 +358,11 @@ class MainWindow(QMainWindow):
         to the specified folder with the filename as its name. """
         if self.validate_settings():
             self.dodec.generate_series()
-            self.dodec.generate_score()
+            score_generator = ScoreGenerator(self.dodec)
+            score_generator.generate_score()
+            score_generator.save_lilypond_file()
+            score_generator.save_pdf_file()
+            score_generator.save_midi_file()
         else:
             print("Invalid settings, cannot generate score.")
 
