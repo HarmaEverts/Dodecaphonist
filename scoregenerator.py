@@ -12,12 +12,15 @@ class ScoreGenerator():
         self._score = ""
 
     def save_lilypond_file(self):
+        self._dodec.filename += '.ly'
         path = os.path.join(self._dodec.foldername, self._dodec.filename)
-        with open(path, 'w', 'utf-8') as f:
+        with open(path, 'w') as f:
             f.write(self._score)
 
     def save_pdf_file(self):
         print("Saving PDF file")
+        os.system('cd ' + self._dodec.foldername)
+        os.system('lilypond' + self._dodec.filename)
 
     def save_midi_file(self):
         print("Saving midi file")
