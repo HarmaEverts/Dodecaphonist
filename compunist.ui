@@ -433,6 +433,9 @@
             </property>
            </widget>
           </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="series_preview"/>
+          </item>
          </layout>
         </widget>
        </item>
@@ -817,7 +820,7 @@
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">align: right;</string>
+             <string notr="true"/>
             </property>
             <property name="text">
              <string>Generate score</string>

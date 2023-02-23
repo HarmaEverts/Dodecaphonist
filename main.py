@@ -5,7 +5,6 @@ from PySide6.QtWidgets import (
 import sys
 from ui_Compunist import Ui_MainWindow
 from dodecaphony import Dodecaphony
-from dodecgenerator import DodecGenerator
 
 
 class MainWindow(QMainWindow):
@@ -127,9 +126,7 @@ class MainWindow(QMainWindow):
         self.dodec.tempo = self.ui.tempo.value()
 
     def update_mode(self):
-        """
-        Updates the composition settings based on the selected mode.
-        """
+        """ Updates the composition settings based on the selected mode. """
         if self.ui.composition_mode.currentIndex() == 1:
             self.apply_schoenberg_template()
         elif self.ui.composition_mode.currentIndex() == 2:
@@ -288,7 +285,7 @@ class MainWindow(QMainWindow):
         self.dodec.rest_chances["Eighth"] = self.ui.eighth_rest_slider.value()
 
     def update_dotted_eighth_rest(self):
-        self.ui.dotted_eighth_rest_pc.setText(str(self.ui.dotted_eighth_rest_slider.value()) + '%')
+        self.ui.dotted_eighth_rest_labe.setText(str(self.ui.dotted_eighth_rest_slider.value()) + '%')
         self.dodec.rest_chances["Dotted-eighth"] = self.ui.dotted_eighth_rest_slider.value()
 
     def update_sixteenth_rest(self):
@@ -305,16 +302,16 @@ class MainWindow(QMainWindow):
     def update_from_ui(self):
         """ Get all current UI settings and update the Dodecaphony object accordingly """
         self.dodec.key = self.ui.key.currentIndex()
-        self.dodec.time_enumerator = self.ui.time_enumerator.currentIndex() + 1
+        self.dodec.time_enumerator = int(self.ui.time_enumerator.currentText())
         self.dodec.time_denominator = int(self.ui.time_denominator.currentText())
         self.dodec.repeats = self.ui.no_of_repeats.value()
         self.update_voices()
         self.dodec.tempo = self.ui.tempo.value()
         self.dodec.notes_value = self.ui.notes_rests_slider.value()
         self.dodec.rests_value = 100 - self.dodec.notes_value
-        self.dodec.repeat_current = self.ui.currentslider.value() != 0
+        self.dodec.repeat_current = self.ui.currentslider.value() != 0  # Remove
         self.dodec.current_chance = self.ui.currentslider.value()
-        self.dodec.repeat_previous = self.ui.currentslider.value() != 0
+        self.dodec.repeat_previous = self.ui.currentslider.value() != 0  # Remove
         self.dodec.previous_chance = self.ui.previousslider.value()
         self.dodec.note_chances["Whole"] = self.ui.whole_note_slider.value()
         self.dodec.note_chances["Dotted-whole"] = self.ui.dotted_whole_note_slider.value()
@@ -344,13 +341,14 @@ class MainWindow(QMainWindow):
         :return: False if the settings are not valid """
         # First, make sure that all UI settings are registered.
         self.update_from_ui()
-
+        self.dodec.validate()
         return True
 
     def generate_series(self):
         if self.validate_settings():
             self.dodec.generate_series()
             self.ui.generate_series.setText("Regenerate series")
+            self.ui.series_preview.setText(str(self.dodec.series))
         else:
             print("Invalid settings, cannot generate series.")
 
@@ -358,10 +356,8 @@ class MainWindow(QMainWindow):
         """ Creates a Dodecaphony object based on the provided settings and outputs the generated composition
         to the specified folder with the filename as its name. """
         if self.validate_settings():
-            dodec_generator = DodecGenerator(self.dodec)
-            dodec_generator.generate_score()
-            dodec_generator.save_lilypond_file()
-
+            self.dodec.generate_series()
+            self.dodec.generate_score()
         else:
             print("Invalid settings, cannot generate score.")
 

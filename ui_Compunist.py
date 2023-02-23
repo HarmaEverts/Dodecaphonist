@@ -329,6 +329,11 @@ class Ui_MainWindow(object):
 
         self.gridLayout_10.addWidget(self.generate_series, 0, 0, 1, 1)
 
+        self.series_preview = QLineEdit(self.groupBox_8)
+        self.series_preview.setObjectName(u"series_preview")
+
+        self.gridLayout_10.addWidget(self.series_preview, 1, 1, 1, 1)
+
 
         self.gridLayout_6.addWidget(self.groupBox_8, 1, 0, 1, 3)
 
@@ -573,7 +578,7 @@ class Ui_MainWindow(object):
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.generate_score.sizePolicy().hasHeightForWidth())
         self.generate_score.setSizePolicy(sizePolicy1)
-        self.generate_score.setStyleSheet(u"align: right;")
+        self.generate_score.setStyleSheet(u"")
 
         self.gridLayout_3.addWidget(self.generate_score, 3, 2, 1, 1)
 
