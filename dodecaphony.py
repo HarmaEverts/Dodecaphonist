@@ -42,7 +42,3 @@ class Dodecaphony():
         """ Generate a random dodecaphony series and its variations """
         print("generating series")
 
-
-    def generate_score(self):
-        """ Generate a compusition based on the settings provided. """
-        print("generating compusition")

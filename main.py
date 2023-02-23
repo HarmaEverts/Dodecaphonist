@@ -5,6 +5,7 @@ from PySide6.QtWidgets import (
 import sys
 from ui_Compunist import Ui_MainWindow
 from dodecaphony import Dodecaphony
+from dodecgenerator import DodecGenerator
 
 
 class MainWindow(QMainWindow):
@@ -357,7 +358,10 @@ class MainWindow(QMainWindow):
         """ Creates a Dodecaphony object based on the provided settings and outputs the generated composition
         to the specified folder with the filename as its name. """
         if self.validate_settings():
-            self.dodec.generate_score()
+            dodec_generator = DodecGenerator(self.dodec)
+            dodec_generator.generate_score()
+            dodec_generator.save_lilypond_file()
+
         else:
             print("Invalid settings, cannot generate score.")
 
