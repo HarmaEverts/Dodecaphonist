@@ -11,27 +11,41 @@ class Variations(Enum):
     RETROGRADEINVERSE = 3
 
 
+class VoiceTypes(Enum):
+    SOPRANO = 1
+    MEZZOSOPRANO = 2
+    ALTO = 3
+    TENOR = 4
+    BARITONE = 5
+    BASS = 6
+
+
 class ScoreGenerator:
     def __init__(self, dodec: dodecaphony.Dodecaphony):
         self._dodec = dodec
         self._composition = ""
         self._score = ""
+        self._lengths = [16, 24, 8, 12, 4, 6, 2, 3, 1, 16, 24, 8, 12, 4, 6, 2, 3, 1]  # Ordered from longest to shortest - counted in 16ths
+        self._range = range(18)
+        self._chances = list(self._dodec.note_chances.values()) + list(self._dodec.rest_chances.values())  # Same order as lengths
 
-    def generate_standard(self):
-        print("Generating standard series")
-        return ""
+    def generate_repeat(self, series, voice_type):
+        series_repeat = ""
+        counter = 0
+        # Keep adding notes/rests until one series is complete.
+        # Keep track of the note range to make sure that the line stays within the boundaries.
+        # Decide whether to add a note or a rest
+        while counter < 12:
+            next_type = random.choices(self._range, self._chances)
+            if next_type[0] < 9:  # Note
+                series_repeat += series[counter]
+                counter += 1
+            else:  # Rest
+                series_repeat += "r"
+            series_repeat += str(self._lengths[next_type[0]])
+            series_repeat += " "
+        return series_repeat
 
-    def generate_inverse(self):
-        print("Generating inverser series")
-        return ""
-
-    def generate_retrograde(self):
-        print("Generating retrograde series")
-        return ""
-
-    def generate_retrogradeinverse(self):
-        print("Generating retrograde inverse")
-        return ""
 
     def create_voice_preamble(self, voice):
         preamble = ""
@@ -84,14 +98,15 @@ class ScoreGenerator:
                 # First, determine the variation of this repeat
                 variation = random.randint(0, 3)
                 if variation == Variations.SERIES:
-                    self._composition += self.generate_standard()
+                    self._composition += self.generate_repeat(self._dodec.series, voice)
                 elif variation == Variations.INVERSE:
-                    self._composition += self.generate_inverse()
+                    self._composition += self.generate_repeat(self._dodec.inverse, voice)
                 elif variation == Variations.RETROGRADE:
-                    self._composition += self.generate_retrograde()
+                    self._composition += self.generate_repeat(self._dodec.retrograde, voice)
                 else:  # RETROGRADEINVERSE
-                    self._composition += self.generate_retrogradeinverse()
-        self._composition += " } }\n>>"
+                    self._composition += self.generate_repeat(self._dodec.retrograde_inverse, voice)
+            self._composition += "} }\n>>\n\n"
+        self._composition += ">> >> } }\n"
 
     def generate_score(self):
         """ Generate a composition based on the settings provided. """
@@ -105,7 +120,7 @@ class ScoreGenerator:
         self._score += "\\new StaffGroup\n\\relative <<\n"
         self.generate_composition()
         self._score += self._composition
-        self._score += "\n\n>>\n\n>>\n }\n\\midi { } \n\\layout { }\n}\n"
+        self._score += "\n\n\\midi { } \n\\layout { }\n}\n"
 
     def save_lilypond_file(self):
         self._dodec.filename += '.ly'
