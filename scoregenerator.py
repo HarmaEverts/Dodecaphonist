@@ -25,9 +25,13 @@ class ScoreGenerator:
         self._dodec = dodec
         self._composition = ""
         self._score = ""
-        self._lengths = [16, 24, 8, 12, 4, 6, 2, 3, 1, 16, 24, 8, 12, 4, 6, 2, 3, 1]  # Ordered from longest to shortest - counted in 16ths
+        self._value_per_measure = self._dodec.time_enumerator * (16/self._dodec.time_denominator)
+        self._lengths_ly = ["1", "1.", "2", "2.", "4", "4.", "8", "8.", "16", "1", "1.", "2", "2.", "4", "4.", "8", "8.",
+                         "16"]  # Ordered from longest to shortest - counted in 16ths
+        self._lengths_py = [16, 24, 8, 12, 4, 6, 2, 3, 1, 16, 24, 8, 12, 4, 6, 2, 3, 1]
         self._range = range(18)
-        self._chances = list(self._dodec.note_chances.values()) + list(self._dodec.rest_chances.values())  # Same order as lengths
+        self._chances = list(self._dodec.note_chances.values()) + list(
+            self._dodec.rest_chances.values())  # Same order as lengths
 
     def generate_repeat(self, series, voice_type):
         series_repeat = ""
@@ -42,10 +46,10 @@ class ScoreGenerator:
                 counter += 1
             else:  # Rest
                 series_repeat += "r"
-            series_repeat += str(self._lengths[next_type[0]])
+            series_repeat += self._lengths_ly[next_type[0]]
             series_repeat += " "
+        series_repeat += "\n"
         return series_repeat
-
 
     def create_voice_preamble(self, voice):
         preamble = ""
@@ -53,11 +57,16 @@ class ScoreGenerator:
             preamble += "\n\\new Staff = \""
             if voice == 1:
                 preamble += "Soprano\" "
+                preamble += "<<\n\\new Voice = \"vocal\" \\with {\n\\remove \"Forbid_line_break_engraver\"\n}\n"
+                preamble += "{ \\fixed g' { \n\\tempo 4 = "
             elif voice == 2:
                 preamble += "Mezzo-soprano\" "
+                preamble += "<<\n\\new Voice = \"vocal\" \\with {\n\\remove \"Forbid_line_break_engraver\"\n}\n"
+                preamble += "{ \\fixed e' { \n\\tempo 4 = "
             elif voice == 3:
                 preamble += "Alto\" "
-            preamble += "<<\n\\new Voice = \"vocal\" { \\relative c'' { \n\\tempo 4 = "
+                preamble += "<<\n\\new Voice = \"vocal\" \\with {\n\\remove \"Forbid_line_break_engraver\"\n}\n"
+                preamble += "{ \\fixed c' { \n\\tempo 4 = "
             tempo = str(self._dodec.tempo)
             preamble += tempo
             preamble += "\n\\set midiInstrument = #\"flute\"\n\\clef \"treble\" \n\\key c \\major\n\\time "
@@ -66,9 +75,11 @@ class ScoreGenerator:
             preamble += str(self._dodec.time_denominator)
             preamble += "\n"
         elif voice == 4:  # G clef octave down
-            preamble += "\n\\new Staff = \"Tenor\" <<\n\\new Voice = \"vocal\" { \\relative c' { \n\\tempo 4 = "
+            preamble += "\n\\new Staff = \"Tenor\""
+            preamble += "<<\n\\new Voice = \"vocal\" \\with {\n\\remove \"Forbid_line_break_engraver\"\n}\n"
+            preamble += "{ \\fixed g { \n\\tempo 4 = "
             preamble += str(self._dodec.tempo)
-            preamble += "\n\\set midiInstrument = #\"clarinet\"\n\\clef \"treble\" \n\\key c \\major\n\\time "
+            preamble += "\n\\set midiInstrument = #\"clarinet\"\n\\clef \"treble_8\" \n\\key c \\major\n\\time "
             preamble += str(self._dodec.time_enumerator)
             preamble += "/"
             preamble += str(self._dodec.time_denominator)
@@ -77,9 +88,12 @@ class ScoreGenerator:
             preamble += "\n\\new Staff = \""
             if voice == 5:
                 preamble += "Baritone\""
+                preamble += "<<\n\\new Voice = \"vocal\" \\with {\n\\remove \"Forbid_line_break_engraver\"\n}\n"
+                preamble += "{ \\fixed e { \n\\tempo 4 = "
             elif voice == 6:
                 preamble += "Bass\""
-            preamble += " <<\n\\new Voice = \"vocal\" { \\relative f { \n\\tempo 4 = "
+                preamble += "<<\n\\new Voice = \"vocal\" \\with {\n\\remove \"Forbid_line_break_engraver\"\n}\n"
+                preamble += "{ \\fixed c { \n\\tempo 4 = "
             preamble += str(self._dodec.tempo)
             preamble += "\n\\set midiInstrument = #\"piano\"\n\\clef \"bass\" \n\\key c \\major\n\\time "
             preamble += str(self._dodec.time_enumerator)
@@ -93,6 +107,7 @@ class ScoreGenerator:
         # For each voice, generate the number of repeats for the series.
         for voice in self._dodec.voices:
             self._composition += self.create_voice_preamble(voice)
+            bar_count = 0
             for i in range(self._dodec.repeats):
                 # Generate the repeat based on the series and the provided characteristics
                 # First, determine the variation of this repeat
@@ -105,12 +120,12 @@ class ScoreGenerator:
                     self._composition += self.generate_repeat(self._dodec.retrograde, voice)
                 else:  # RETROGRADEINVERSE
                     self._composition += self.generate_repeat(self._dodec.retrograde_inverse, voice)
-            self._composition += "} }\n>>\n\n"
+            self._composition += "\n} \n}\n>>\n\n"
         self._composition += ">> >> } }\n"
 
     def generate_score(self):
         """ Generate a composition based on the settings provided. """
-        self._score += "\\version \"2.10.33\"\n"
+        self._score += "\\version \"2.20.0\"\n"
         self._score += "\\header\n{\n"
         self._score += "title = \""
         self._score += self._dodec.title
@@ -120,7 +135,7 @@ class ScoreGenerator:
         self._score += "\\new StaffGroup\n\\relative <<\n"
         self.generate_composition()
         self._score += self._composition
-        self._score += "\n\n\\midi { } \n\\layout { }\n}\n"
+        self._score += "\n\n\\midi { } \n\\layout { }"
 
     def save_lilypond_file(self):
         self._dodec.filename += '.ly'
