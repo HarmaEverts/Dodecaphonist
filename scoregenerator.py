@@ -121,7 +121,6 @@ class ScoreGenerator:
                 else:  # RETROGRADEINVERSE
                     self._composition += self.generate_repeat(self._dodec.retrograde_inverse, voice)
             self._composition += "\n} \n}\n>>\n\n"
-        self._composition += ">> >> } }\n"
 
     def generate_score(self):
         """ Generate a composition based on the settings provided. """
@@ -135,7 +134,8 @@ class ScoreGenerator:
         self._score += "\\new StaffGroup\n\\relative <<\n"
         self.generate_composition()
         self._score += self._composition
-        self._score += "\n\n\\midi { } \n\\layout { }"
+        self._score += "\n>>\n >>}\n\\midi\n{\n}\n\\layout\n{ \n}\n}\n"
+
 
     def save_lilypond_file(self):
         self._dodec.filename += '.ly'
