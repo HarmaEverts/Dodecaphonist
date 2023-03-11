@@ -12,7 +12,7 @@ class VoiceTypes(Enum):
 
 
 class Voice:
-    def __int__(self, voice_type: VoiceTypes):
+    def __init__(self, voice_type: VoiceTypes):
         self._voice_type = voice_type
         self._melody = []
 

@@ -43,8 +43,10 @@ class ScoreGenerator:
                 counter += 1
             else:  # Rest
                 element_type = ElementType.REST
+                pitch = None
             length = self._lengths_ly[next_type[0]]
-        return score_element.ScoreElement(element_type, length, pitch)
+            series_repeat.append(score_element.ScoreElement(element_type, length, pitch))
+        return series_repeat
 
     def generate_composition(self):
         # For each voice, generate the number of repeats for the series.

@@ -360,6 +360,7 @@ class MainWindow(QMainWindow):
         if self.validate_settings():
             self.dodec.generate_series()
             score_generator = ScoreGenerator(self.dodec)
+            score_generator.generate_composition()
             lilypond_generator = LilypondGenerator(score_generator.Composition, score_generator._dodec.tempo, score_generator._dodec.time_enumerator, score_generator._dodec.time_denominator, score_generator._dodec.foldername, score_generator._path, score_generator._dodec.title)
             lilypond_generator.generate_files()
         else:
