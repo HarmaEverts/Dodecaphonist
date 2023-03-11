@@ -361,8 +361,7 @@ class MainWindow(QMainWindow):
             score_generator = ScoreGenerator(self.dodec)
             score_generator.generate_score()
             score_generator.save_lilypond_file()
-            score_generator.save_pdf_file()
-            score_generator.save_midi_file()
+            score_generator.save_other_formats()
         else:
             print("Invalid settings, cannot generate score.")
 

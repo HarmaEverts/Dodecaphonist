@@ -25,9 +25,11 @@ class ScoreGenerator:
         self._dodec = dodec
         self._composition = ""
         self._score = ""
-        self._value_per_measure = self._dodec.time_enumerator * (16/self._dodec.time_denominator)
-        self._lengths_ly = ["1", "1.", "2", "2.", "4", "4.", "8", "8.", "16", "1", "1.", "2", "2.", "4", "4.", "8", "8.",
-                         "16"]  # Ordered from longest to shortest - counted in 16ths
+        self._path = os.path.join(self._dodec.foldername, self._dodec.filename)
+        self._value_per_measure = self._dodec.time_enumerator * (16 / self._dodec.time_denominator)
+        self._lengths_ly = ["1", "1.", "2", "2.", "4", "4.", "8", "8.", "16", "1", "1.", "2", "2.", "4", "4.", "8",
+                            "8.",
+                            "16"]  # Ordered from longest to shortest - counted in 16ths
         self._lengths_py = [16, 24, 8, 12, 4, 6, 2, 3, 1, 16, 24, 8, 12, 4, 6, 2, 3, 1]
         self._range = range(18)
         self._chances = list(self._dodec.note_chances.values()) + list(
@@ -136,17 +138,13 @@ class ScoreGenerator:
         self._score += self._composition
         self._score += "\n>>\n >>}\n\\midi\n{\n}\n\\layout\n{ \n}\n}\n"
 
-
     def save_lilypond_file(self):
         self._dodec.filename += '.ly'
-        path = os.path.join(self._dodec.foldername, self._dodec.filename)
-        with open(path, 'w') as f:
+        with open(self._path, 'w') as f:
             f.write(self._score)
 
-    def save_pdf_file(self):
-        print("Saving PDF file")
-        os.system('cd ' + self._dodec.foldername)
-        os.system('lilypond ' + self._dodec.filename)
+    def save_other_formats(self):
+        os.system('lilypond -o ' + self._dodec.foldername + ' ' + self._path)
 
     def save_midi_file(self):
         print("Saving midi file")
