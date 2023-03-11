@@ -35,7 +35,7 @@ class ScoreGenerator:
         self._chances = list(self._dodec.note_chances.values()) + list(
             self._dodec.rest_chances.values())  # Same order as lengths
 
-    def generate_repeat(self, series, voice_type):
+    def generate_repeat(self, series):
         series_repeat = ""
         counter = 0
         # Keep adding notes/rests until one series is complete.
@@ -115,13 +115,13 @@ class ScoreGenerator:
                 # First, determine the variation of this repeat
                 variation = random.randint(0, 3)
                 if variation == Variations.SERIES:
-                    self._composition += self.generate_repeat(self._dodec.series, voice)
+                    self._composition += self.generate_repeat(self._dodec.series)
                 elif variation == Variations.INVERSE:
-                    self._composition += self.generate_repeat(self._dodec.inverse, voice)
+                    self._composition += self.generate_repeat(self._dodec.inverse)
                 elif variation == Variations.RETROGRADE:
-                    self._composition += self.generate_repeat(self._dodec.retrograde, voice)
+                    self._composition += self.generate_repeat(self._dodec.retrograde)
                 else:  # RETROGRADEINVERSE
-                    self._composition += self.generate_repeat(self._dodec.retrograde_inverse, voice)
+                    self._composition += self.generate_repeat(self._dodec.retrograde_inverse)
             self._composition += "\n} \n}\n>>\n\n"
 
     def generate_score(self):
@@ -145,6 +145,3 @@ class ScoreGenerator:
 
     def save_other_formats(self):
         os.system('lilypond -o ' + self._dodec.foldername + ' ' + self._path)
-
-    def save_midi_file(self):
-        print("Saving midi file")
