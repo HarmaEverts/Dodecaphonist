@@ -1,4 +1,6 @@
 import scoregenerator
+import score_element
+from score_element import ElementType
 import os
 
 
@@ -8,10 +10,23 @@ class LilypondGenerator:
         self._tempo = tempo
         self._time_enumerator = time_enumerator
         self._time_denominator = time_denominator
+        self._bar_length = time_enumerator * (16/time_denominator)
         self._foldername = foldername
-        self._path = path
+        self._path = path + '.ly'
         self._title = title
         self._score = []
+        self._lengths_ly = {24: "1.",
+                            16: "1",
+                            14: "2..",
+                            12: "2.",
+                            8: "2",
+                            7: "4..",
+                            6: "4.",
+                            4: "4",
+                            3: "8.",
+                            2: "8",
+                            1: "16"}
+        # Lilypond lengths, counted from whole note, dotted whole note to sixteenth note.
 
     def create_voice_preamble(self, voice):
         preamble = ""
@@ -64,6 +79,81 @@ class LilypondGenerator:
             preamble += "\n"
         return preamble
 
+    def convert_score_element_to_lilypond(self, current_score_element: score_element):
+        result = ''
+        result += current_score_element.get_pitch()
+        result += self._lengths_ly[current_score_element.get_length()]
+        result += ' '
+        return result
+
+    def split_items(self, length):
+        if length == 5:
+            return 4, 1
+        elif length == 9:
+            return 8, 1
+        elif length == 10:
+            return 8, 2
+        elif length == 11:
+            return 8, 3
+        elif length == 13:
+            return 12, 1
+        elif length == 15:
+            return 12, 3
+        elif length == 17:
+            return 14, 3
+        elif length == 18:
+            return 12, 6
+        elif length == 19:
+            return 16, 3
+        elif length == 20:
+            return 16, 4
+        elif length == 21:
+            return 16, 4, 1
+        elif length == 22:
+            return 16, 4, 2
+        elif length == 23:
+            return 16, 4, 3
+
+    def split(self, current_score_element, remainder):
+        item_length = current_score_element.get_length()
+        second_part = item_length - remainder
+        first_part = item_length - second_part
+        element = current_score_element.get_pitch()
+        result = ''
+        if first_part in self._lengths_ly:
+            result = element + self._lengths_ly[first_part] + '~ '
+        else:
+            split_items = self.split_items(first_part)
+            for item in split_items:
+                result += element + self._lengths_ly[item] + '~ '
+            result = result[:-2]
+            result += ' '
+        if second_part in self._lengths_ly:
+            result += element + self._lengths_ly[second_part]
+        else:
+            split_items = self.split_items(second_part)
+            for item in split_items:
+                result += element + self._lengths_ly[item] + '~ '
+            result = result[:-2]
+            result += ' '
+        return result
+
+    def convert_melody_to_lilypond(self, melody):
+        converted_melody = ""
+        current_bar_length = 0
+        for item in melody:
+            new_bar_length = current_bar_length + item.get_length()
+            if new_bar_length > self._bar_length:
+                converted_melody += self.split(item, new_bar_length - self._bar_length)
+                current_bar_length = new_bar_length % self._bar_length
+            elif new_bar_length == self._bar_length:
+                converted_melody += self.convert_score_element_to_lilypond(item)
+                current_bar_length = 0
+            else:
+                converted_melody += self.convert_score_element_to_lilypond(item)
+                current_bar_length = new_bar_length
+        return converted_melody
+
     def generate_score(self):
         """ Generate a composition based on the settings provided. """
         self._score += "\\version \"2.20.0\"\n"
@@ -77,21 +167,20 @@ class LilypondGenerator:
         voices = self._composition.get_voices()
         for voice in voices:
             self._score += self.create_voice_preamble(voice)
-            self._score += voice.get_melody()
+            self._score += self.convert_melody_to_lilypond(voice.get_melody())
             self._score += "\n} \n}\n>>\n\n"
         self._score += "\n>>\n >>}\n\\midi\n{\n}\n\\layout\n{ \n}\n}\n"
 
     def save_lilypond_file(self):
-
-        with open(os.join(self._path, '.ly'), 'w') as f:
+        with open(self._path, 'w') as f:
             f.write(self._score)
 
     def save_other_formats(self):
-        os.system('lilypond -o ' + self._dodec.foldername + ' ' + self._path)
+        os.system('lilypond -o ' + self.foldername + ' ' + self._path)
 
     def generate_files(self):
         self.generate_score()
-        # self.save_lilypond_file()
-        # self.save_other_formats()
+        self.save_lilypond_file()
+        self.save_other_formats()
 
 

@@ -20,9 +20,7 @@ class ScoreGenerator:
         self._score = ""
         self._path = os.path.join(self._dodec.foldername, self._dodec.filename)
         self._value_per_measure = self._dodec.time_enumerator * (16 / self._dodec.time_denominator)
-        self._lengths_ly = ["1", "1.", "2", "2.", "4", "4.", "8", "8.", "16", "1", "1.", "2", "2.", "4", "4.", "8",
-                            "8.",
-                            "16"]  # Ordered from longest to shortest - counted in 16ths
+        # Ordered from longest to shortest - counted in 16ths
         self._lengths_py = [16, 24, 8, 12, 4, 6, 2, 3, 1, 16, 24, 8, 12, 4, 6, 2, 3, 1]
         self._range = range(18)
         self._chances = list(self._dodec.note_chances.values()) + list(
@@ -43,8 +41,8 @@ class ScoreGenerator:
                 counter += 1
             else:  # Rest
                 element_type = ElementType.REST
-                pitch = None
-            length = self._lengths_ly[next_type[0]]
+                pitch = 'r'
+            length = self._lengths_py[next_type[0]]
             series_repeat.append(score_element.ScoreElement(element_type, length, pitch))
         return series_repeat
 
