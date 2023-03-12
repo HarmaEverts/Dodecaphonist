@@ -14,7 +14,7 @@ class LilypondGenerator:
         self._foldername = foldername
         self._path = path + '.ly'
         self._title = title
-        self._score = []
+        self._score = ''
         self._lengths_ly = {24: "1.",
                             16: "1",
                             14: "2..",
@@ -129,7 +129,7 @@ class LilypondGenerator:
             result = result[:-2]
             result += ' '
         if second_part in self._lengths_ly:
-            result += element + self._lengths_ly[second_part]
+            result += element + self._lengths_ly[second_part] + ' '
         else:
             split_items = self.split_items(second_part)
             for item in split_items:
@@ -166,7 +166,7 @@ class LilypondGenerator:
         self._score += "\\new StaffGroup\n\\relative <<\n"
         voices = self._composition.get_voices()
         for voice in voices:
-            self._score += self.create_voice_preamble(voice)
+            self._score += self.create_voice_preamble(voice.get_voice_type())
             self._score += self.convert_melody_to_lilypond(voice.get_melody())
             self._score += "\n} \n}\n>>\n\n"
         self._score += "\n>>\n >>}\n\\midi\n{\n}\n\\layout\n{ \n}\n}\n"
@@ -176,7 +176,7 @@ class LilypondGenerator:
             f.write(self._score)
 
     def save_other_formats(self):
-        os.system('lilypond -o ' + self.foldername + ' ' + self._path)
+        os.system('lilypond -o ' + self._foldername + ' ' + self._path)
 
     def generate_files(self):
         self.generate_score()

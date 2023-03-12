@@ -16,6 +16,9 @@ class Voice:
         self._voice_type = voice_type
         self._melody = []
 
+    def get_voice_type(self):
+        return self._voice_type
+
     def get_melody(self):
         return self._melody
 
