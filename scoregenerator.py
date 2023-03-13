@@ -17,14 +17,24 @@ class Variations(Enum):
 class ScoreGenerator:
     def __init__(self, dodec: dodecaphony.Dodecaphony):
         self._dodec = dodec
-        self._score = ""
+        # self._score = ""
         self._path = os.path.join(self._dodec.foldername, self._dodec.filename)
+
+        # The number of 16th notes per measure
         self._value_per_measure = self._dodec.time_enumerator * (16 / self._dodec.time_denominator)
-        # Ordered from longest to shortest - counted in 16ths
+
+        # The lengths of the different element types, ordered from longest to shortest - counted in 16ths.
         self._lengths_py = [16, 24, 8, 12, 4, 6, 2, 3, 1, 16, 24, 8, 12, 4, 6, 2, 3, 1]
+        # Helper list for the random function to select an element from the available elements.
         self._range = range(18)
-        self._chances = list(self._dodec.note_chances.values()) + list(
-            self._dodec.rest_chances.values())  # Same order as lengths
+
+        # The chances for notes and rests must be calculated from their relative chances within their element type
+        # (notes or rests) and the chance for note vs rest.
+        self._chances = [self._dodec.notes_value * x for x in self._dodec.note_chances.values()] + \
+                        [self._dodec.rests_value * y for y in self._dodec.rest_chances.values()]
+
+        # The dodecaphony score as expressed in a list of voices that each consist of score_elements, plus metadata
+        # for each object level.
         self.Composition = score.Score()
 
     def generate_repeat(self, series):
@@ -62,4 +72,3 @@ class ScoreGenerator:
                     new_voice.add_repeat(self.generate_repeat(self._dodec.retrograde))
                 else:  # RETROGRADEINVERSE
                     new_voice.add_repeat(self.generate_repeat(self._dodec.retrograde_inverse))
-
