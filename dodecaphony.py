@@ -17,11 +17,12 @@ class Dodecaphony:
         self.current_chance = 0      # Repeat current note chance
         self.previous_chance = 0     # Repeat previous note chance
 
-        # Apart object maken
         self.series = []
         self.retrograde = []
         self.inverse = []
         self.retrograde_inverse = []
+
+        self.log = []
 
         self.note_chances = {"Whole": 0,
                              "Dotted-whole": 0,
@@ -89,6 +90,48 @@ class Dodecaphony:
                 self.inverse.append(self.flat_reflections[note])
         self.retrograde_inverse = list(reversed(self.inverse))
 
+    def add_to_log(self, log_message):
+        self.log.append(log_message)
+
     def validate(self):
         print("validating")
-        return True
+        valid = True
+        if self.title == "":
+            self.add_to_log("You have not entered a title for your composition.")
+            valid = False
+        if self.filename == "":
+            self.add_to_log("You have not entered a filename for your composition.")
+            valid = False
+        if self.foldername == "":
+            self.add_to_log("You have not selected a location where to save your composition.")
+            valid = False
+        if self.no_of_voices == 0:
+            self.add_to_log("You need at least one voice to create a composition.")
+            valid = False
+        if len(self.voices) == 0:
+            self.add_to_log("You need at least one voice to create a composition.")
+            valid = False
+        if self.time_enumerator == 0:
+            self.add_to_log("You have not set the time enumerator.")
+            valid = False
+        if self.time_denominator == 0:
+            self.add_to_log("You have not set the time denominator.")
+            valid = False
+        if self.tempo == 0:
+            self.add_to_log("You have not set a tempo.")
+            valid = False
+
+        if len(self.series) == 0:
+            self.add_to_log("You have not generated a dodecaphony series yet.")
+            valid = False
+        if len(self.retrograde) == 0:
+            self.add_to_log("You have not generated a dodecaphony series yet.")
+            valid = False
+        if len(self.inverse) == 0:
+            self.add_to_log("You have not generated a dodecaphony series yet.")
+            valid = False
+        if len(self.retrograde_inverse) == 0:
+            self.add_to_log("You have not generated a dodecaphony series yet.")
+            valid = False
+
+        return valid

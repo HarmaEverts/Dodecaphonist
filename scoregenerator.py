@@ -56,10 +56,10 @@ class ScoreGenerator:
             length = self._lengths_py[next_type[0]]
             series_repeat.append(score_element.ScoreElement(element_type, length, pitch))
 
-            current_element = series_repeat[-1]
+            current_note = series_repeat[-1]
             if len(series_repeat) > 1:
                 repeat_previous_possible = True
-                previous_element = series_repeat[-2]
+                previous_note = series_repeat[-2]
             else:
                 repeat_previous_possible = False
             # Look at the current note chance and add extra note(s) based on that.
@@ -70,11 +70,11 @@ class ScoreGenerator:
                         repeat_previous_note = random.randint(0, 100)
                         if repeat_previous_note <= self._dodec.previous_chance:
                             # If you repeat the previous note, you should also repeat the current note after that.
-                            series_repeat.append(previous_element)
-                            series_repeat.append(current_element)
+                            series_repeat.append(previous_note)
+                            series_repeat.append(current_note)
                     repeat_current_note = random.randint(0, 100)
                     if repeat_current_note <= self._dodec.current_chance:
-                        series_repeat.append(current_element)
+                        series_repeat.append(current_note)
                     else:
                         try_again = False
         return series_repeat
