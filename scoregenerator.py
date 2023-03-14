@@ -38,6 +38,7 @@ class ScoreGenerator:
         self.Composition = score.Score()
 
     def generate_repeat(self, series):
+        """Create one repeat of the series for one of the voices and return it."""
         series_repeat = []
         counter = 0
         # Keep adding notes/rests until one series is complete.
@@ -54,21 +55,43 @@ class ScoreGenerator:
                 pitch = 'r'
             length = self._lengths_py[next_type[0]]
             series_repeat.append(score_element.ScoreElement(element_type, length, pitch))
+
+            current_element = series_repeat[-1]
+            if len(series_repeat) > 1:
+                repeat_previous_possible = True
+                previous_element = series_repeat[-2]
+            else:
+                repeat_previous_possible = False
+            # Look at the current note chance and add extra note(s) based on that.
+            if element_type.NOTE:
+                try_again = True
+                while try_again:
+                    if repeat_previous_possible:
+                        repeat_previous_note = random.randint(0, 100)
+                        if repeat_previous_note <= self._dodec.previous_chance:
+                            # If you repeat the previous note, you should also repeat the current note after that.
+                            series_repeat.append(previous_element)
+                            series_repeat.append(current_element)
+                    repeat_current_note = random.randint(0, 100)
+                    if repeat_current_note <= self._dodec.current_chance:
+                        series_repeat.append(current_element)
+                    else:
+                        try_again = False
         return series_repeat
 
     def generate_composition(self):
-        # For each voice, generate the number of repeats for the series.
+        """Generate each voice separately, one repeat at a time."""
         for voice in self._dodec.voices:
             new_voice = self.Composition.add_voice(voice)
             for i in range(self._dodec.repeats):
                 # Generate the repeat based on the series and the provided characteristics
                 # First, determine the variation of this repeat
                 variation = random.randint(0, 3)
-                if variation == Variations.SERIES:
+                if variation == Variations.SERIES.value:
                     new_voice.add_repeat(self.generate_repeat(self._dodec.series))
-                elif variation == Variations.INVERSE:
+                elif variation == Variations.INVERSE.value:
                     new_voice.add_repeat(self.generate_repeat(self._dodec.inverse))
-                elif variation == Variations.RETROGRADE:
+                elif variation == Variations.RETROGRADE.value:
                     new_voice.add_repeat(self.generate_repeat(self._dodec.retrograde))
                 else:  # RETROGRADEINVERSE
                     new_voice.add_repeat(self.generate_repeat(self._dodec.retrograde_inverse))
