@@ -1,6 +1,9 @@
 import os
 import random
 import dodecaphony
+import score
+import score_element
+from score_element import ElementType
 from enum import Enum
 
 
@@ -11,32 +14,32 @@ class Variations(Enum):
     RETROGRADEINVERSE = 3
 
 
-class VoiceTypes(Enum):
-    SOPRANO = 1
-    MEZZOSOPRANO = 2
-    ALTO = 3
-    TENOR = 4
-    BARITONE = 5
-    BASS = 6
-
-
 class ScoreGenerator:
     def __init__(self, dodec: dodecaphony.Dodecaphony):
         self._dodec = dodec
-        self._composition = ""
-        self._score = ""
+        # self._score = ""
         self._path = os.path.join(self._dodec.foldername, self._dodec.filename)
+
+        # The number of 16th notes per measure
         self._value_per_measure = self._dodec.time_enumerator * (16 / self._dodec.time_denominator)
-        self._lengths_ly = ["1", "1.", "2", "2.", "4", "4.", "8", "8.", "16", "1", "1.", "2", "2.", "4", "4.", "8",
-                            "8.",
-                            "16"]  # Ordered from longest to shortest - counted in 16ths
+
+        # The lengths of the different element types, ordered from longest to shortest - counted in 16ths.
         self._lengths_py = [16, 24, 8, 12, 4, 6, 2, 3, 1, 16, 24, 8, 12, 4, 6, 2, 3, 1]
+        # Helper list for the random function to select an element from the available elements.
         self._range = range(18)
-        self._chances = list(self._dodec.note_chances.values()) + list(
-            self._dodec.rest_chances.values())  # Same order as lengths
+
+        # The chances for notes and rests must be calculated from their relative chances within their element type
+        # (notes or rests) and the chance for note vs rest.
+        self._chances = [self._dodec.notes_value * x for x in self._dodec.note_chances.values()] + \
+                        [self._dodec.rests_value * y for y in self._dodec.rest_chances.values()]
+
+        # The dodecaphony score as expressed in a list of voices that each consist of score_elements, plus metadata
+        # for each object level.
+        self.Composition = score.Score()
 
     def generate_repeat(self, series):
-        series_repeat = ""
+        """Create one repeat of the series for one of the voices and return it."""
+        series_repeat = []
         counter = 0
         # Keep adding notes/rests until one series is complete.
         # Keep track of the note range to make sure that the line stays within the boundaries.
@@ -44,104 +47,51 @@ class ScoreGenerator:
         while counter < 12:
             next_type = random.choices(self._range, self._chances)
             if next_type[0] < 9:  # Note
-                series_repeat += series[counter]
+                pitch = series[counter]
+                element_type = ElementType.NOTE
                 counter += 1
             else:  # Rest
-                series_repeat += "r"
-            series_repeat += self._lengths_ly[next_type[0]]
-            series_repeat += " "
-        series_repeat += "\n"
+                element_type = ElementType.REST
+                pitch = 'r'
+            length = self._lengths_py[next_type[0]]
+            series_repeat.append(score_element.ScoreElement(element_type, length, pitch))
+
+            current_element = series_repeat[-1]
+            if len(series_repeat) > 1:
+                repeat_previous_possible = True
+                previous_element = series_repeat[-2]
+            else:
+                repeat_previous_possible = False
+            # Look at the current note chance and add extra note(s) based on that.
+            if element_type.NOTE:
+                try_again = True
+                while try_again:
+                    if repeat_previous_possible:
+                        repeat_previous_note = random.randint(0, 100)
+                        if repeat_previous_note <= self._dodec.previous_chance:
+                            # If you repeat the previous note, you should also repeat the current note after that.
+                            series_repeat.append(previous_element)
+                            series_repeat.append(current_element)
+                    repeat_current_note = random.randint(0, 100)
+                    if repeat_current_note <= self._dodec.current_chance:
+                        series_repeat.append(current_element)
+                    else:
+                        try_again = False
         return series_repeat
 
-    def create_voice_preamble(self, voice):
-        preamble = ""
-        if voice in range(1, 4):  # G clef
-            preamble += "\n\\new Staff = \""
-            if voice == 1:
-                preamble += "Soprano\" "
-                preamble += "<<\n\\new Voice = \"vocal\" \\with {\n\\remove \"Forbid_line_break_engraver\"\n}\n"
-                preamble += "{ \\fixed g' { \n\\tempo 4 = "
-            elif voice == 2:
-                preamble += "Mezzo-soprano\" "
-                preamble += "<<\n\\new Voice = \"vocal\" \\with {\n\\remove \"Forbid_line_break_engraver\"\n}\n"
-                preamble += "{ \\fixed e' { \n\\tempo 4 = "
-            elif voice == 3:
-                preamble += "Alto\" "
-                preamble += "<<\n\\new Voice = \"vocal\" \\with {\n\\remove \"Forbid_line_break_engraver\"\n}\n"
-                preamble += "{ \\fixed c' { \n\\tempo 4 = "
-            tempo = str(self._dodec.tempo)
-            preamble += tempo
-            preamble += "\n\\set midiInstrument = #\"flute\"\n\\clef \"treble\" \n\\key c \\major\n\\time "
-            preamble += str(self._dodec.time_enumerator)
-            preamble += "/"
-            preamble += str(self._dodec.time_denominator)
-            preamble += "\n"
-        elif voice == 4:  # G clef octave down
-            preamble += "\n\\new Staff = \"Tenor\""
-            preamble += "<<\n\\new Voice = \"vocal\" \\with {\n\\remove \"Forbid_line_break_engraver\"\n}\n"
-            preamble += "{ \\fixed g { \n\\tempo 4 = "
-            preamble += str(self._dodec.tempo)
-            preamble += "\n\\set midiInstrument = #\"clarinet\"\n\\clef \"treble_8\" \n\\key c \\major\n\\time "
-            preamble += str(self._dodec.time_enumerator)
-            preamble += "/"
-            preamble += str(self._dodec.time_denominator)
-            preamble += "\n"
-        elif voice in range(5, 7):  # F clef
-            preamble += "\n\\new Staff = \""
-            if voice == 5:
-                preamble += "Baritone\""
-                preamble += "<<\n\\new Voice = \"vocal\" \\with {\n\\remove \"Forbid_line_break_engraver\"\n}\n"
-                preamble += "{ \\fixed e { \n\\tempo 4 = "
-            elif voice == 6:
-                preamble += "Bass\""
-                preamble += "<<\n\\new Voice = \"vocal\" \\with {\n\\remove \"Forbid_line_break_engraver\"\n}\n"
-                preamble += "{ \\fixed c { \n\\tempo 4 = "
-            preamble += str(self._dodec.tempo)
-            preamble += "\n\\set midiInstrument = #\"piano\"\n\\clef \"bass\" \n\\key c \\major\n\\time "
-            preamble += str(self._dodec.time_enumerator)
-            preamble += "/"
-            preamble += str(self._dodec.time_denominator)
-            preamble += "\n"
-        return preamble
-
     def generate_composition(self):
-        print("generating composition")
-        # For each voice, generate the number of repeats for the series.
+        """Generate each voice separately, one repeat at a time."""
         for voice in self._dodec.voices:
-            self._composition += self.create_voice_preamble(voice)
-            bar_count = 0
+            new_voice = self.Composition.add_voice(voice)
             for i in range(self._dodec.repeats):
                 # Generate the repeat based on the series and the provided characteristics
                 # First, determine the variation of this repeat
                 variation = random.randint(0, 3)
-                if variation == Variations.SERIES:
-                    self._composition += self.generate_repeat(self._dodec.series)
-                elif variation == Variations.INVERSE:
-                    self._composition += self.generate_repeat(self._dodec.inverse)
-                elif variation == Variations.RETROGRADE:
-                    self._composition += self.generate_repeat(self._dodec.retrograde)
+                if variation == Variations.SERIES.value:
+                    new_voice.add_repeat(self.generate_repeat(self._dodec.series))
+                elif variation == Variations.INVERSE.value:
+                    new_voice.add_repeat(self.generate_repeat(self._dodec.inverse))
+                elif variation == Variations.RETROGRADE.value:
+                    new_voice.add_repeat(self.generate_repeat(self._dodec.retrograde))
                 else:  # RETROGRADEINVERSE
-                    self._composition += self.generate_repeat(self._dodec.retrograde_inverse)
-            self._composition += "\n} \n}\n>>\n\n"
-
-    def generate_score(self):
-        """ Generate a composition based on the settings provided. """
-        self._score += "\\version \"2.20.0\"\n"
-        self._score += "\\header\n{\n"
-        self._score += "title = \""
-        self._score += self._dodec.title
-        self._score += "\"\n"
-        self._score += "composer = \"Randomly generated by Dodecaphonist\"\n}\n"
-        self._score += "\\score {\n{ \n<<\n"
-        self._score += "\\new StaffGroup\n\\relative <<\n"
-        self.generate_composition()
-        self._score += self._composition
-        self._score += "\n>>\n >>}\n\\midi\n{\n}\n\\layout\n{ \n}\n}\n"
-
-    def save_lilypond_file(self):
-        self._dodec.filename += '.ly'
-        with open(self._path, 'w') as f:
-            f.write(self._score)
-
-    def save_other_formats(self):
-        os.system('lilypond -o ' + self._dodec.foldername + ' ' + self._path)
+                    new_voice.add_repeat(self.generate_repeat(self._dodec.retrograde_inverse))

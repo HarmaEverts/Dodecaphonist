@@ -6,6 +6,7 @@ import sys
 from ui_Compunist import Ui_MainWindow
 from dodecaphony import Dodecaphony
 from scoregenerator import ScoreGenerator
+from lilypondgenerator import LilypondGenerator
 
 
 class MainWindow(QMainWindow):
@@ -194,10 +195,10 @@ class MainWindow(QMainWindow):
     def notes_rests_valuechange(self):
         """ Checks the value of the notes - rests slider, and updates the notes and rests percentage labels accordingly.
         The total should always sum up to 100%. """
-        notes_value = self.ui.notes_rests_slider.value()
-        rests_value = 100 - notes_value
-        self.ui.percent_notes.setText(str(notes_value) + " % notes")
-        self.ui.percent_rests.setText(str(rests_value) + " % rests")
+        self.dodec.notes_value = self.ui.notes_rests_slider.value()
+        self.dodec.rests_value = 100 - self.dodec.notes_value
+        self.ui.percent_notes.setText(str(self.dodec.notes_value) + " % notes")
+        self.ui.percent_rests.setText(str(self.dodec.rests_value) + " % rests")
 
     def update_repeat_note_settings(self):
         """ Toggles the repeat current note details depending on whether the checkbox is selected. """
@@ -359,9 +360,9 @@ class MainWindow(QMainWindow):
         if self.validate_settings():
             self.dodec.generate_series()
             score_generator = ScoreGenerator(self.dodec)
-            score_generator.generate_score()
-            score_generator.save_lilypond_file()
-            score_generator.save_other_formats()
+            score_generator.generate_composition()
+            lilypond_generator = LilypondGenerator(score_generator.Composition, score_generator._dodec.tempo, score_generator._dodec.time_enumerator, score_generator._dodec.time_denominator, score_generator._dodec.foldername, score_generator._path, score_generator._dodec.title)
+            lilypond_generator.generate_files()
         else:
             print("Invalid settings, cannot generate score.")
 

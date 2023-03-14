@@ -91,7 +91,4 @@ class Dodecaphony:
 
     def validate(self):
         print("validating")
-
-    def generate_score(self):
-        """ Generate a compusition based on the settings provided. """
-        print("generating composition")
+        return True
