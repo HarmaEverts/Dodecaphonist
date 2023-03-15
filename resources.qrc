@@ -21,5 +21,24 @@
         <file alias="dotted quarter rest">images/dotted_quarter_rest.png</file>
         <file alias="dotted eighth note">images/dotted_eighth_note.png</file>
         <file alias="dotted eighth rest">images/dotted_eighth_rest.png</file>
+        <file alias="c">images/c.png</file>
+        <file alias="cis">images/cis.png</file>
+        <file alias="d">images/d.png</file>
+        <file alias="des">images/des.png</file>
+        <file alias="dis">images/dis.png</file>
+        <file alias="es">images/es.png</file>
+        <file alias="e">images/e.png</file>
+        <file alias="f">images/f.png</file>
+        <file alias="fis">images/fis.png</file>
+        <file alias="g">images/g.png</file>
+        <file alias="ges">images/ges.png</file>
+        <file alias="gis">images/gis.png</file>
+        <file alias="aes">images/aes.png</file>
+        <file alias="a">images/a.png</file>
+        <file alias="ais">images/ais.png</file>
+        <file alias="bes">images/bes.png</file>
+        <file alias="b">images/b.png</file>
+        <file alias="clef">images/clef.png</file>
+        <file alias="barlines_background">images/barlines_background.png</file>
     </qresource>
 </RCC>
