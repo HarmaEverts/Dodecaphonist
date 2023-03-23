@@ -22,5 +22,5 @@ class Voice:
     def get_melody(self):
         return self._melody
 
-    def add_repeat(self, repeat):
+    def add(self, repeat):
         self._melody += repeat

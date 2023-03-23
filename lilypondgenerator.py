@@ -162,6 +162,26 @@ class LilypondGenerator:
                 current_bar_length = new_bar_length
         return converted_melody
 
+    def generate_preview(self):
+        self._score += "\\version \"2.20.0\"\n"
+        self._score += "\\header\n{\n}"
+        self._score += "\\score {\n{ \n<<\n"
+        self._score += "\\new StaffGroup\n\\relative <<\n"
+        voices = self._composition.get_voices()
+        for voice in voices:
+            self._score += "\n\\new Staff = \""
+            self._score += "Soprano\" "
+            self._score += "<<\n\\new Voice = \"vocal\" \\with {\n\\remove \"Forbid_line_break_engraver\"\n}\n"
+            self._score += "{ \\fixed g' { \n"
+            self._score += "\n\\set midiInstrument = #\"flute\"\n\\clef \"treble\" \n\\key c \\major\n\\time "
+            self._score += str(self._time_enumerator)
+            self._score += "/"
+            self._score += str(self._time_denominator)
+            self._score += "\n"
+            self._score += self.convert_melody_to_lilypond(voice.get_melody())
+            self._score += "\n} \n}\n>>\n\n"
+        self._score += "\n>>\n >>}\n\\midi\n{\n}\n\\layout\n{ \n}\n}\n"
+
     def generate_score(self):
         """ Generate a composition based on the settings provided. """
 
@@ -193,6 +213,9 @@ class LilypondGenerator:
     def save_other_formats(self):
         """Convert the generated file to PDF and MIDI by running Lilypond"""
         os.system('lilypond -o ' + self._foldername + ' ' + self._path)
+
+    def save_png(self):
+        os.system('lilypond --png -o ' + self._foldername + ' ' + self._path)
 
     def generate_files(self):
         """Generate the score and save the resulting files"""

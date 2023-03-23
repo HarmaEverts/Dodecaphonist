@@ -88,10 +88,21 @@ class ScoreGenerator:
                 # First, determine the variation of this repeat
                 variation = random.randint(0, 3)
                 if variation == Variations.SERIES.value:
-                    new_voice.add_repeat(self.generate_repeat(self._dodec.series))
+                    new_voice.add(self.generate_repeat(self._dodec.series))
                 elif variation == Variations.INVERSE.value:
-                    new_voice.add_repeat(self.generate_repeat(self._dodec.inverse))
+                    new_voice.add(self.generate_repeat(self._dodec.inverse))
                 elif variation == Variations.RETROGRADE.value:
-                    new_voice.add_repeat(self.generate_repeat(self._dodec.retrograde))
+                    new_voice.add(self.generate_repeat(self._dodec.retrograde))
                 else:  # RETROGRADEINVERSE
-                    new_voice.add_repeat(self.generate_repeat(self._dodec.retrograde_inverse))
+                    new_voice.add(self.generate_repeat(self._dodec.retrograde_inverse))
+
+    def generate_series_preview(self):
+        for voice in self._dodec.voices:
+            new_voice = self.Composition.add_voice(voice)
+            series = []
+            for note in self._dodec.series:
+                pitch = note
+                element_type = ElementType.NOTE
+                length = 16
+                series.append(score_element.ScoreElement(element_type, length, pitch))
+            new_voice.add(series)

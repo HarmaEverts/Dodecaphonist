@@ -346,9 +346,26 @@ class MainWindow(QMainWindow):
         self.dodec.validate()
         return True
 
+    def generate_series_preview(self, series):
+        series_preview = Dodecaphony()
+        series_preview.series = series
+        series_preview.time_enumerator = 2
+        series_preview.time_denominator = 1
+        series_preview.voices.append(1)
+        series_preview.foldername = self.dodec.foldername
+        series_preview.filename = "series_preview"
+        preview_generator = ScoreGenerator(series_preview)
+        preview_generator.generate_series_preview()
+        lilypond_preview = LilypondGenerator(preview_generator.Composition, 44, 2, 1, series_preview.foldername, preview_generator._path, "")
+        lilypond_preview.generate_preview()
+        lilypond_preview.save_lilypond_file()
+        lilypond_preview.save_other_formats()
+        lilypond_preview.save_png()
+
     def generate_series(self):
         if self.validate_settings():
             self.dodec.generate_series()
+            self.generate_series_preview(self.dodec.series)
             self.ui.generate_series.setText("Regenerate series")
             self.ui.series_preview.setText(str(self.dodec.series))
         else:
