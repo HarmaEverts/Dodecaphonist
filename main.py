@@ -3,10 +3,16 @@ from PySide6.QtWidgets import (
     QApplication, QMainWindow, QFileDialog
 )
 import sys
+import os
+
+import lilypondoutputgenerator
 from ui_Compunist import Ui_MainWindow
 from dodecaphony import Dodecaphony
-from scoregenerator import ScoreGenerator
-from lilypondgenerator import LilypondGenerator
+from dodecaphony_preview import DodecaphonyPreview
+from compositiongenerator import CompositionGenerator
+from lilypondscoregenerator import LilypondScoreGenerator
+from lilypondpreviewgenerator import LilypondPreviewGenerator
+from lilypondoutputgenerator import LilypondOutputGenerator
 
 
 class MainWindow(QMainWindow):
@@ -347,20 +353,16 @@ class MainWindow(QMainWindow):
         return True
 
     def generate_series_preview(self, series):
-        series_preview = Dodecaphony()
+        series_preview = DodecaphonyPreview()
         series_preview.series = series
-        series_preview.time_enumerator = 2
-        series_preview.time_denominator = 1
-        series_preview.voices.append(1)
         series_preview.foldername = self.dodec.foldername
         series_preview.filename = "series_preview"
-        preview_generator = ScoreGenerator(series_preview)
-        preview_generator.generate_series_preview()
-        lilypond_preview = LilypondGenerator(preview_generator.Composition, 44, 2, 1, series_preview.foldername, preview_generator._path, "")
-        lilypond_preview.generate_preview()
-        lilypond_preview.save_lilypond_file()
-        lilypond_preview.save_other_formats()
-        lilypond_preview.save_png()
+        lilypond_preview = LilypondPreviewGenerator(series_preview)
+        output_location = os.path.join(self.dodec.foldername, 'series_preview')
+        output_location += '.ly'
+        preview = LilypondOutputGenerator(lilypond_preview.get_score(), output_location)
+        preview.save_lilypond_file()
+        preview.save_png_file()
 
     def generate_series(self):
         if self.validate_settings():
@@ -376,9 +378,9 @@ class MainWindow(QMainWindow):
         to the specified folder with the filename as its name. """
         if self.validate_settings():
             self.dodec.generate_series()
-            score_generator = ScoreGenerator(self.dodec)
+            score_generator = CompositionGenerator(self.dodec)
             score_generator.generate_composition()
-            lilypond_generator = LilypondGenerator(score_generator.Composition, score_generator._dodec.tempo, score_generator._dodec.time_enumerator, score_generator._dodec.time_denominator, score_generator._dodec.foldername, score_generator._path, score_generator._dodec.title)
+            lilypond_generator = LilypondScoreGenerator(score_generator.Composition, score_generator.get_path())
             lilypond_generator.generate_files()
         else:
             print("Invalid settings, cannot generate score.")

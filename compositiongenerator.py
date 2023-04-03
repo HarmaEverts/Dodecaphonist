@@ -14,7 +14,7 @@ class Variations(Enum):
     RETROGRADEINVERSE = 3
 
 
-class ScoreGenerator:
+class CompositionGenerator:
     def __init__(self, dodec: dodecaphony.Dodecaphony):
         self._dodec = dodec
         # self._score = ""
@@ -106,3 +106,6 @@ class ScoreGenerator:
                 length = 16
                 series.append(score_element.ScoreElement(element_type, length, pitch))
             new_voice.add(series)
+
+    def get_path(self):
+        return self._path

@@ -1,19 +1,20 @@
-import scoregenerator
+import dodecaphony
+import dodecaphony_preview
+import compositiongenerator
 import score_element
 from score_element import ElementType
+from dodecaphony import Dodecaphony
 import os
 
 
-class LilypondGenerator:
-    def __init__(self, composition, tempo, time_enumerator, time_denominator, foldername, path, title):
-        self._composition = composition
-        self._tempo = tempo
-        self._time_enumerator = time_enumerator
-        self._time_denominator = time_denominator
-        self._bar_length = time_enumerator * (16/time_denominator)
-        self._foldername = foldername
-        self._path = path + '.ly'
-        self._title = title
+class LilypondScoreGenerator:
+    def __init__(self, dodec: dodecaphony.Dodecaphony, path):
+        self._composition = dodec.composition
+        self._tempo = dodec.tempo
+        self._time_enumerator = dodec.time_enumerator
+        self._time_denominator = dodec.time_denominator
+        self._bar_length = dodec.time_enumerator * (16/dodec.time_denominator)
+        self._title = dodec.title
         self._score = ''
         self._lengths_ly = {24: "1.",
                             16: "1",
@@ -162,26 +163,6 @@ class LilypondGenerator:
                 current_bar_length = new_bar_length
         return converted_melody
 
-    def generate_preview(self):
-        self._score += "\\version \"2.20.0\"\n"
-        self._score += "\\header\n{\n}"
-        self._score += "\\score {\n{ \n<<\n"
-        self._score += "\\new StaffGroup\n\\relative <<\n"
-        voices = self._composition.get_voices()
-        for voice in voices:
-            self._score += "\n\\new Staff = \""
-            self._score += "Soprano\" "
-            self._score += "<<\n\\new Voice = \"vocal\" \\with {\n\\remove \"Forbid_line_break_engraver\"\n}\n"
-            self._score += "{ \\fixed g' { \n"
-            self._score += "\n\\set midiInstrument = #\"flute\"\n\\clef \"treble\" \n\\key c \\major\n\\time "
-            self._score += str(self._time_enumerator)
-            self._score += "/"
-            self._score += str(self._time_denominator)
-            self._score += "\n"
-            self._score += self.convert_melody_to_lilypond(voice.get_melody())
-            self._score += "\n} \n}\n>>\n\n"
-        self._score += "\n>>\n >>}\n\\midi\n{\n}\n\\layout\n{ \n}\n}\n"
-
     def generate_score(self):
         """ Generate a composition based on the settings provided. """
 
@@ -203,24 +184,7 @@ class LilypondGenerator:
             self._score += "\n} \n}\n>>\n\n"
 
         # Footer
-        self._score += "\n>>\n >>}\n\\midi\n{\n}\n\\layout\n{ \n}\n}\n"
+        self._score += "\n>>\n >>}\n}\n"
 
-    def save_lilypond_file(self):
-        """Save the generated file to the provided path."""
-        with open(self._path, 'w') as f:
-            f.write(self._score)
-
-    def save_other_formats(self):
-        """Convert the generated file to PDF and MIDI by running Lilypond"""
-        os.system('lilypond -o ' + self._foldername + ' ' + self._path)
-
-    def save_png(self):
-        os.system('lilypond --png -o ' + self._foldername + ' ' + self._path)
-
-    def generate_files(self):
-        """Generate the score and save the resulting files"""
-        self.generate_score()
-        self.save_lilypond_file()
-        self.save_other_formats()
-
-
+    def get_score(self):
+        return self._score
