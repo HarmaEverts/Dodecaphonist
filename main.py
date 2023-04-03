@@ -353,14 +353,9 @@ class MainWindow(QMainWindow):
         return True
 
     def generate_series_preview(self, series):
-        series_preview = DodecaphonyPreview()
-        series_preview.series = series
-        series_preview.foldername = self.dodec.foldername
-        series_preview.filename = "series_preview"
+        series_preview = DodecaphonyPreview("series_preview", self.dodec.foldername, series)
         lilypond_preview = LilypondPreviewGenerator(series_preview)
-        output_location = os.path.join(self.dodec.foldername, 'series_preview')
-        output_location += '.ly'
-        preview = LilypondOutputGenerator(lilypond_preview.get_score(), output_location)
+        preview = LilypondOutputGenerator(lilypond_preview.get_score(), series_preview.foldername, series_preview.path)
         preview.save_lilypond_file()
         preview.save_png_file()
 

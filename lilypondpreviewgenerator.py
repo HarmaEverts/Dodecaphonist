@@ -2,9 +2,8 @@ import dodecaphony_preview
 
 
 class LilypondPreviewGenerator:
-    def __init__(self, dodec_preview: dodecaphony_preview.DodecaphonyPreview, path):
-        self._composition = dodec_preview.composition
-        self._tempo = dodec_preview.tempo
+    def __init__(self, dodec_preview: dodecaphony_preview.DodecaphonyPreview):
+        self._composition = dodec_preview.series
         self._time_enumerator = dodec_preview.time_enumerator
         self._time_denominator = dodec_preview.time_denominator
         self._title = dodec_preview.title
@@ -33,7 +32,11 @@ class LilypondPreviewGenerator:
         self._score += "/"
         self._score += str(self._time_denominator)
         self._score += "\n"
-        self._score += self.convert_melody_to_lilypond(self._composition.series)
+        self._score += self.convert_melody_to_lilypond(self._series)
         self._score += "\n} \n}\n>>\n\n"
         self._score += "\n>>\n >>}\n\\midi\n{\n}\n\\layout\n{ \n}\n}\n"
         self._score += "\n>>\n >>}\n\\midi\n{\n}\n\\layout\n{ \n}\n}\n"
+
+
+    def get_score(self):
+        return self._score
