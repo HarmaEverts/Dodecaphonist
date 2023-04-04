@@ -2,6 +2,7 @@ from PySide6 import QtCore, QtGui
 from PySide6.QtWidgets import (
     QApplication, QMainWindow, QFileDialog
 )
+from PySide6.QtGui import QPixmap
 import sys
 import os
 
@@ -355,9 +356,13 @@ class MainWindow(QMainWindow):
     def generate_series_preview(self, series):
         series_preview = DodecaphonyPreview("series_preview", self.dodec.foldername, series)
         lilypond_preview = LilypondPreviewGenerator(series_preview)
+        lilypond_preview.generate_preview()
         preview = LilypondOutputGenerator(lilypond_preview.get_score(), series_preview.foldername, series_preview.path)
         preview.save_lilypond_file()
         preview.save_png_file()
+        preview_image_path = series_preview.path + '.ly'
+        pix = QPixmap(preview_image_path)
+        self.ui.series_preview_label.setPixmap(pix)
 
     def generate_series(self):
         if self.validate_settings():
@@ -375,8 +380,10 @@ class MainWindow(QMainWindow):
             self.dodec.generate_series()
             score_generator = CompositionGenerator(self.dodec)
             score_generator.generate_composition()
-            lilypond_generator = LilypondScoreGenerator(score_generator.Composition, score_generator.get_path())
-            lilypond_generator.generate_files()
+            lilypond_generator = LilypondScoreGenerator(score_generator)
+            lilypond_generator.generate_score()
+            lilypond_output = LilypondOutputGenerator(lilypond_generator.get_score(), self.dodec.foldername, score_generator.get_path())
+            lilypond_output.save_all_filetypes()
         else:
             print("Invalid settings, cannot generate score.")
 

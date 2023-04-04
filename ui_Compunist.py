@@ -17,15 +17,15 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QComboBox, QGridLayout, QGroupBox,
     QHBoxLayout, QLabel, QLineEdit, QMainWindow,
-    QPushButton, QSizePolicy, QSlider, QSpacerItem,
-    QSpinBox, QStatusBar, QVBoxLayout, QWidget)
+    QPushButton, QSizePolicy, QSlider, QSpinBox,
+    QStatusBar, QVBoxLayout, QWidget)
 import resources_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1239, 746)
+        MainWindow.resize(1239, 747)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout_4 = QGridLayout(self.centralwidget)
@@ -315,15 +315,6 @@ class Ui_MainWindow(object):
         self.groupBox_8.setObjectName(u"groupBox_8")
         self.gridLayout_10 = QGridLayout(self.groupBox_8)
         self.gridLayout_10.setObjectName(u"gridLayout_10")
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout_10.addItem(self.horizontalSpacer_2, 0, 1, 1, 1)
-
-        self.series_label = QLabel(self.groupBox_8)
-        self.series_label.setObjectName(u"series_label")
-
-        self.gridLayout_10.addWidget(self.series_label, 1, 0, 1, 1)
-
         self.generate_series = QPushButton(self.groupBox_8)
         self.generate_series.setObjectName(u"generate_series")
 
@@ -332,7 +323,17 @@ class Ui_MainWindow(object):
         self.series_preview = QLineEdit(self.groupBox_8)
         self.series_preview.setObjectName(u"series_preview")
 
-        self.gridLayout_10.addWidget(self.series_preview, 1, 1, 1, 1)
+        self.gridLayout_10.addWidget(self.series_preview, 2, 1, 1, 1)
+
+        self.series_label = QLabel(self.groupBox_8)
+        self.series_label.setObjectName(u"series_label")
+
+        self.gridLayout_10.addWidget(self.series_label, 2, 0, 1, 1)
+
+        self.series_preview_label = QLabel(self.groupBox_8)
+        self.series_preview_label.setObjectName(u"series_preview_label")
+
+        self.gridLayout_10.addWidget(self.series_preview_label, 0, 1, 2, 1)
 
 
         self.gridLayout_6.addWidget(self.groupBox_8, 1, 0, 1, 3)
@@ -858,8 +859,9 @@ class Ui_MainWindow(object):
         self.voice5label.setText(QCoreApplication.translate("MainWindow", u"Voice 5", None))
         self.voice6label.setText(QCoreApplication.translate("MainWindow", u"Voice 6", None))
         self.groupBox_8.setTitle(QCoreApplication.translate("MainWindow", u"Series", None))
-        self.series_label.setText(QCoreApplication.translate("MainWindow", u"Series preview:", None))
         self.generate_series.setText(QCoreApplication.translate("MainWindow", u"Generate series", None))
+        self.series_label.setText(QCoreApplication.translate("MainWindow", u"Series preview:", None))
+        self.series_preview_label.setText(QCoreApplication.translate("MainWindow", u"Series preview", None))
         self.groupBox_5.setTitle(QCoreApplication.translate("MainWindow", u"Notes", None))
         self.dotted_eighth_note_pc.setText(QCoreApplication.translate("MainWindow", u"0%", None))
         self.eighth_note_pc.setText(QCoreApplication.translate("MainWindow", u"0%", None))

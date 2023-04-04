@@ -35,7 +35,25 @@ class CompositionGenerator:
 
         # The dodecaphony score as expressed in a list of voices that each consist of score_elements, plus metadata
         # for each object level.
-        self.Composition = score.Score()
+        self._composition = score.Score()
+
+    def get_tempo(self):
+        return self._dodec.tempo
+
+    def get_path(self):
+        return self._path
+
+    def get_composition(self):
+        return self._composition
+
+    def get_time_denominator(self):
+        return self._dodec.time_denominator
+
+    def get_time_enumerator(self):
+        return self._dodec.time_enumerator
+
+    def get_title(self):
+        return self._dodec.title
 
     def generate_repeat(self, series):
         """Create one repeat of the series for one of the voices and return it."""
@@ -82,7 +100,7 @@ class CompositionGenerator:
     def generate_composition(self):
         """Generate each voice separately, one repeat at a time."""
         for voice in self._dodec.voices:
-            new_voice = self.Composition.add_voice(voice)
+            new_voice = self._composition.add_voice(voice)
             for i in range(self._dodec.repeats):
                 # Generate the repeat based on the series and the provided characteristics
                 # First, determine the variation of this repeat
@@ -98,7 +116,7 @@ class CompositionGenerator:
 
     def generate_series_preview(self):
         for voice in self._dodec.voices:
-            new_voice = self.Composition.add_voice(voice)
+            new_voice = self._composition.add_voice(voice)
             series = []
             for note in self._dodec.series:
                 pitch = note

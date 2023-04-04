@@ -1,6 +1,7 @@
 import dodecaphony
 import dodecaphony_preview
 import compositiongenerator
+import score
 import score_element
 from score_element import ElementType
 from dodecaphony import Dodecaphony
@@ -8,13 +9,13 @@ import os
 
 
 class LilypondScoreGenerator:
-    def __init__(self, dodec: dodecaphony.Dodecaphony, path):
-        self._composition = dodec.composition
-        self._tempo = dodec.tempo
-        self._time_enumerator = dodec.time_enumerator
-        self._time_denominator = dodec.time_denominator
-        self._bar_length = dodec.time_enumerator * (16/dodec.time_denominator)
-        self._title = dodec.title
+    def __init__(self, composition_generator: compositiongenerator.CompositionGenerator):
+        self._composition = composition_generator.get_composition()
+        self._tempo = composition_generator.get_tempo()
+        self._time_enumerator = composition_generator.get_time_enumerator()
+        self._time_denominator = composition_generator.get_time_denominator()
+        self._bar_length = self._time_enumerator * (16/self._time_denominator)
+        self._title = composition_generator.get_title()
         self._score = ''
         self._lengths_ly = {24: "1.",
                             16: "1",

@@ -32,7 +32,7 @@ class LilypondPreviewGenerator:
         self._score += "/"
         self._score += str(self._time_denominator)
         self._score += "\n"
-        self._score += self.convert_melody_to_lilypond(self._series)
+        self._score += self.convert_melody_to_lilypond(self._composition)
         self._score += "\n} \n}\n>>\n\n"
         self._score += "\n>>\n >>}\n\\midi\n{\n}\n\\layout\n{ \n}\n}\n"
         self._score += "\n>>\n >>}\n\\midi\n{\n}\n\\layout\n{ \n}\n}\n"
