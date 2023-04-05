@@ -185,7 +185,7 @@ class LilypondScoreGenerator:
             self._score += "\n} \n}\n>>\n\n"
 
         # Footer
-        self._score += "\n>>\n >>}\n}\n"
+        self._score += "\n>>\n >>}\n\\midi\n{\n}\n\\layout\n{ \n}\n}\n"
 
     def get_score(self):
         return self._score

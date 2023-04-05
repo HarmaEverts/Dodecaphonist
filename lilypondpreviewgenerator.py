@@ -15,7 +15,7 @@ class LilypondPreviewGenerator:
         converted_melody = ""
         for note in melody:
             converted_melody += note
-            converted_melody += '16 '
+            converted_melody += '1 '
         return converted_melody
 
     def generate_preview(self):
@@ -34,7 +34,6 @@ class LilypondPreviewGenerator:
         self._score += "\n"
         self._score += self.convert_melody_to_lilypond(self._composition)
         self._score += "\n} \n}\n>>\n\n"
-        self._score += "\n>>\n >>}\n\\midi\n{\n}\n\\layout\n{ \n}\n}\n"
         self._score += "\n>>\n >>}\n\\midi\n{\n}\n\\layout\n{ \n}\n}\n"
 
 

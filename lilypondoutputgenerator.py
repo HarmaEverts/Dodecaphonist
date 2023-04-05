@@ -12,10 +12,6 @@ class LilypondOutputGenerator:
         with open(self._path, 'w') as f:
             f.write(self._score)
 
-    def save_midi_file(self):
-        """Convert the generated file to PDF and MIDI by running Lilypond"""
-        os.system('lilypond --midi -o ' + self._foldername + ' ' + self._path)
-
     def save_pdf_file(self):
         """Convert the generated file to PDF and MIDI by running Lilypond"""
         os.system('lilypond --pdf -o ' + self._foldername + ' ' + self._path)
@@ -26,5 +22,4 @@ class LilypondOutputGenerator:
     def save_all_filetypes(self):
         self.save_lilypond_file()
         self.save_pdf_file()
-        self.save_midi_file()
         self.save_png_file()
