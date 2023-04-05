@@ -413,17 +413,20 @@
             </property>
            </widget>
           </item>
-          <item row="2" column="1">
-           <widget class="QLineEdit" name="series_preview"/>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="series_label">
-            <property name="text">
-             <string>Series preview:</string>
+          <item row="0" column="1">
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
             </property>
-           </widget>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
           </item>
-          <item row="0" column="1" rowspan="2">
+          <item row="1" column="0" colspan="2">
            <widget class="QLabel" name="series_preview_label">
             <property name="text">
              <string>Series preview</string>
@@ -1138,7 +1141,6 @@
   <tabstop>quarter_note_slider</tabstop>
   <tabstop>eighth_note_slider</tabstop>
   <tabstop>sixteenth_note_slider</tabstop>
-  <tabstop>generate_series</tabstop>
   <tabstop>voice1</tabstop>
   <tabstop>voice2</tabstop>
   <tabstop>voice3</tabstop>

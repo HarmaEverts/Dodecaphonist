@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'compunist.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.3.2
+## Created by: Qt User Interface Compiler version 6.2.4
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -17,8 +17,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QComboBox, QGridLayout, QGroupBox,
     QHBoxLayout, QLabel, QLineEdit, QMainWindow,
-    QPushButton, QSizePolicy, QSlider, QSpinBox,
-    QStatusBar, QVBoxLayout, QWidget)
+    QPushButton, QSizePolicy, QSlider, QSpacerItem,
+    QSpinBox, QStatusBar, QVBoxLayout, QWidget)
 import resources_rc
 
 class Ui_MainWindow(object):
@@ -320,20 +320,14 @@ class Ui_MainWindow(object):
 
         self.gridLayout_10.addWidget(self.generate_series, 0, 0, 1, 1)
 
-        self.series_preview = QLineEdit(self.groupBox_8)
-        self.series_preview.setObjectName(u"series_preview")
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.gridLayout_10.addWidget(self.series_preview, 2, 1, 1, 1)
-
-        self.series_label = QLabel(self.groupBox_8)
-        self.series_label.setObjectName(u"series_label")
-
-        self.gridLayout_10.addWidget(self.series_label, 2, 0, 1, 1)
+        self.gridLayout_10.addItem(self.horizontalSpacer, 0, 1, 1, 1)
 
         self.series_preview_label = QLabel(self.groupBox_8)
         self.series_preview_label.setObjectName(u"series_preview_label")
 
-        self.gridLayout_10.addWidget(self.series_preview_label, 0, 1, 2, 1)
+        self.gridLayout_10.addWidget(self.series_preview_label, 1, 0, 1, 2)
 
 
         self.gridLayout_6.addWidget(self.groupBox_8, 1, 0, 1, 3)
@@ -812,8 +806,7 @@ class Ui_MainWindow(object):
         QWidget.setTabOrder(self.half_note_slider, self.quarter_note_slider)
         QWidget.setTabOrder(self.quarter_note_slider, self.eighth_note_slider)
         QWidget.setTabOrder(self.eighth_note_slider, self.sixteenth_note_slider)
-        QWidget.setTabOrder(self.sixteenth_note_slider, self.generate_series)
-        QWidget.setTabOrder(self.generate_series, self.voice1)
+        QWidget.setTabOrder(self.sixteenth_note_slider, self.voice1)
         QWidget.setTabOrder(self.voice1, self.voice2)
         QWidget.setTabOrder(self.voice2, self.voice3)
         QWidget.setTabOrder(self.voice3, self.voice4)
@@ -860,7 +853,6 @@ class Ui_MainWindow(object):
         self.voice6label.setText(QCoreApplication.translate("MainWindow", u"Voice 6", None))
         self.groupBox_8.setTitle(QCoreApplication.translate("MainWindow", u"Series", None))
         self.generate_series.setText(QCoreApplication.translate("MainWindow", u"Generate series", None))
-        self.series_label.setText(QCoreApplication.translate("MainWindow", u"Series preview:", None))
         self.series_preview_label.setText(QCoreApplication.translate("MainWindow", u"Series preview", None))
         self.groupBox_5.setTitle(QCoreApplication.translate("MainWindow", u"Notes", None))
         self.dotted_eighth_note_pc.setText(QCoreApplication.translate("MainWindow", u"0%", None))

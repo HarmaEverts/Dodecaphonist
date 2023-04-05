@@ -1,12 +1,10 @@
 from PySide6 import QtCore, QtGui
 from PySide6.QtWidgets import (
-    QApplication, QMainWindow, QFileDialog
+    QApplication, QMainWindow, QFileDialog, QSizePolicy
 )
-from PySide6.QtGui import QPixmap
+from PySide6.QtGui import QPixmap, QPalette
 import sys
-import os
 
-import lilypondoutputgenerator
 from ui_Compunist import Ui_MainWindow
 from dodecaphony import Dodecaphony
 from dodecaphony_preview import DodecaphonyPreview
@@ -360,16 +358,18 @@ class MainWindow(QMainWindow):
         preview = LilypondOutputGenerator(lilypond_preview.get_score(), series_preview.foldername, series_preview.path)
         preview.save_lilypond_file()
         preview.save_png_file()
-        preview_image_path = series_preview.path + '.ly'
-        pix = QPixmap(preview_image_path)
+        cropped_preview_path = preview.save_preview_png(series_preview.path)
+        pix = QPixmap(cropped_preview_path)
         self.ui.series_preview_label.setPixmap(pix)
+        self.ui.series_preview_label.setBackgroundRole(QPalette.Base)
+        self.ui.series_preview_label.setSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)
+        self.ui.series_preview_label.setScaledContents(False)
 
     def generate_series(self):
         if self.validate_settings():
             self.dodec.generate_series()
             self.generate_series_preview(self.dodec.series)
             self.ui.generate_series.setText("Regenerate series")
-            self.ui.series_preview.setText(str(self.dodec.series))
         else:
             print("Invalid settings, cannot generate series.")
 
