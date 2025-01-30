@@ -3,7 +3,7 @@ Dodecaphonist is an application with which you can generate random [twelve-tone 
 I wrote it in Python and used PySide 6 to make its user interface.
 
 # Requirements
-You need to have [Lilypond](https://lilypond.org) installed to use this program.
+You need to have Python and [Lilypond](https://lilypond.org) installed to use this program.
 It's still a work in progress, so please let me know if you find any bugs.
 At the moment, it only works on Linux. I'm planning to add support for other OSes in the future.
 
