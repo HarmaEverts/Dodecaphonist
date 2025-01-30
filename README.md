@@ -7,4 +7,4 @@ You need to have [Lilypond](https://lilypond.org) installed to use this program.
 It's still a work in progress, so please let me know if you find any bugs.
 
 # Running the program
-Clone the repository to your local computer and run main.py. A window should open, showing the available options to customise your twelve-tone piece. 
+Clone the repository to your local computer and run dodecaphonist.py. A window should open, showing the available options to customise your twelve-tone piece.
