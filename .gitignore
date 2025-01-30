@@ -71,7 +71,8 @@ Thumbs.db
 *.dll
 *.exe
 
-.idea\
+.idea
+
 /Schoenberg.ly
 /Schoenberg.pdf
 /Schoenberg.ly
