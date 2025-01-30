@@ -1,11 +1,5 @@
-import dodecaphony
-import dodecaphony_preview
 import compositiongenerator
-import score
 import score_element
-from score_element import ElementType
-from dodecaphony import Dodecaphony
-import os
 
 
 class LilypondScoreGenerator:
